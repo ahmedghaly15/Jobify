@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
-  runApp(const MainApp());
-}
+import 'app_provider_observer.dart';
+import 'src/jobify_app.dart';
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
-    );
-  }
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // To fix texts being hidden bug in release mode
+  await ScreenUtil.ensureScreenSize();
+  runApp(
+    ProviderScope(observers: [AppProviderObserver()], child: const JobifyApp()),
+  );
 }
