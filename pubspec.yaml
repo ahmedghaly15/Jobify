@@ -26,6 +26,8 @@ dependencies:
   riverpod_annotation: ^2.6.1
   # Converts already built widgets into skeleton loaders
   skeletonizer: ^1.4.3
+  # Provides a set of beautiful animations
+  flutter_animate: ^4.5.2
 
 
 dev_dependencies:
