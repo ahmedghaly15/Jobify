@@ -50,6 +50,8 @@ dev_dependencies:
   custom_lint:
   # A developer tool for users of Riverpod, designed to help stop common issues and simplify repetitive tasks.
   riverpod_lint: ^2.4.0
+  # Changes app name for all platforms
+  rename_app: ^1.6.2
 
 flutter:
   uses-material-design: true
