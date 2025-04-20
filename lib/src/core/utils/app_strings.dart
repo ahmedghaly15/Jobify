@@ -23,4 +23,9 @@ class AppStrings {
   static const String defaultError = 'Something went wrong. Please try again.';
   static const String noInternetConnection =
       'No internet connection. Please check your connection and try again.';
+  static const String createAccount = 'Create Account';
+  static const String registerViewDescription =
+      "Sign up now and start exploring all that our app has to offer. We're excited to welcome you to our community!";
+  static const confirmPass = 'Confirm Password';
+  static const String name = 'Name';
 }

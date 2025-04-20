@@ -6,6 +6,10 @@ import 'form_notifier_providers.dart';
 final registerFormKeyProvider = Provider.autoDispose<GlobalKey<FormState>>(
   (ref) => GlobalKey<FormState>(),
 );
+final registerNameControllerProvider =
+    Provider.autoDispose<TextEditingController>(
+      (ref) => TextEditingController(),
+    );
 final registerEmailControllerProvider =
     Provider.autoDispose<TextEditingController>(
       (ref) => TextEditingController(),

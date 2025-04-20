@@ -26,15 +26,16 @@ class LoginForm extends ConsumerWidget {
             emailController: emailController,
             nextFocusNode: passFocusNode,
           ),
-          const PassFieldConsumer(),
+          const _PassFieldConsumer(),
         ],
       ),
     );
   }
 }
 
-class PassFieldConsumer extends ConsumerWidget {
-  const PassFieldConsumer({super.key});
+class _PassFieldConsumer extends ConsumerWidget {
+  // ignore: unused_element_parameter
+  const _PassFieldConsumer({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
