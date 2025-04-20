@@ -60,18 +60,39 @@ class OnboardingRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [OtpVerificationView]
-class OtpVerificationRoute extends PageRouteInfo<void> {
-  const OtpVerificationRoute({List<PageRouteInfo>? children})
-    : super(OtpVerificationRoute.name, initialChildren: children);
+class OtpVerificationRoute extends PageRouteInfo<OtpVerificationRouteArgs> {
+  OtpVerificationRoute({
+    Key? key,
+    required String email,
+    List<PageRouteInfo>? children,
+  }) : super(
+         OtpVerificationRoute.name,
+         args: OtpVerificationRouteArgs(key: key, email: email),
+         initialChildren: children,
+       );
 
   static const String name = 'OtpVerificationRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const OtpVerificationView();
+      final args = data.argsAs<OtpVerificationRouteArgs>();
+      return OtpVerificationView(key: args.key, email: args.email);
     },
   );
+}
+
+class OtpVerificationRouteArgs {
+  const OtpVerificationRouteArgs({this.key, required this.email});
+
+  final Key? key;
+
+  final String email;
+
+  @override
+  String toString() {
+    return 'OtpVerificationRouteArgs{key: $key, email: $email}';
+  }
 }
 
 /// generated route for
