@@ -1,7 +1,8 @@
 part of 'app_router.dart';
 
 List<AutoRoute> appRoutes = [
-  AutoRoute(initial: true, page: OnboardingRoute.page),
+  AutoRoute(initial: isOnboardingVisited, page: OnboardingRoute.page),
+  _buildCustomRoute(initial: !isOnboardingVisited, page: LoginRoute.page),
 ];
 
 CustomRoute _buildCustomRoute({

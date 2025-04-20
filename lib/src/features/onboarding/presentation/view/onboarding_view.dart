@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/helpers/cache_helper.dart';
+import '../../../../core/helpers/cache_keys.dart';
+import '../../../../core/router/app_router.dart';
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/app_text_styles.dart';
 import '../../../../core/utils/app_strings.dart';
@@ -59,7 +62,7 @@ class OnboardingView extends StatelessWidget {
                 .fadeIn(delay: 800.milliseconds)
                 .slideY(delay: 800.milliseconds),
             PrimaryButton(
-              onPressed: () {},
+              onPressed: () async => await _goLogin(context),
               text: AppStrings.getStarted,
             ).animate().fadeIn(delay: 1.seconds).slideY(delay: 1.seconds),
             const Spacer(),
@@ -67,5 +70,10 @@ class OnboardingView extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> _goLogin(BuildContext context) async {
+    await CacheHelper.setData(CacheKeys.isOnboardingVisited, true);
+    context.replaceRoute(const LoginRoute());
   }
 }
