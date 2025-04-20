@@ -9,4 +9,16 @@ class AppStrings {
   static const String onboardingDescription =
       "Jobify is a powerful and intuitive platform designed to streamline your job search and application process. Whether you're actively job hunting, keeping track of applications, or organizing opportunities, Jobify helps you stay on top of your career journey with ease.";
   static const String getStarted = 'Get Started';
+  static const String email = 'Email';
+  static const String password = 'Password';
+  static const String welcomeBack = 'Welcome Back';
+  static const String loginViewSubTitle =
+      "We're excited to have you back, can't wait to see what you've been up to since you last logged in.";
+  static const String dontHaveAnAccount = "Don't have an account?";
+  static const String signUp = 'Sign Up';
+  static const String signIn = 'Sign In';
+  static const String forgotPassword = 'Forgot Password?';
+  static const String alreadyHaveAnAccount = 'Already have an account?';
+  static const String rememberMe = 'Remember Me';
+  static const String orContinueWith = 'Or continue with';
 }

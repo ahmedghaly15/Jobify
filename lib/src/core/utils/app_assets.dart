@@ -2,45 +2,21 @@
 class Assets {
   Assets._();
   
-  /// Assets for fontsInterBlack
-  /// assets/fonts/Inter-Black.ttf
-  static const String fontsInterBlack = "assets/fonts/Inter-Black.ttf";
+  /// Assets for fontsInterInter28ptBold
+  /// assets/fonts/Inter/Inter_28pt-Bold.ttf
+  static const String fontsInterInter28ptBold = "assets/fonts/Inter/Inter_28pt-Bold.ttf";
 
-  /// Assets for fontsInterBold
-  /// assets/fonts/Inter-Bold.ttf
-  static const String fontsInterBold = "assets/fonts/Inter-Bold.ttf";
+  /// Assets for fontsInterInter28ptMedium
+  /// assets/fonts/Inter/Inter_28pt-Medium.ttf
+  static const String fontsInterInter28ptMedium = "assets/fonts/Inter/Inter_28pt-Medium.ttf";
 
-  /// Assets for fontsInterExtraBold
-  /// assets/fonts/Inter-ExtraBold.ttf
-  static const String fontsInterExtraBold = "assets/fonts/Inter-ExtraBold.ttf";
+  /// Assets for fontsInterInter28ptRegular
+  /// assets/fonts/Inter/Inter_28pt-Regular.ttf
+  static const String fontsInterInter28ptRegular = "assets/fonts/Inter/Inter_28pt-Regular.ttf";
 
-  /// Assets for fontsInterExtraLight
-  /// assets/fonts/Inter-ExtraLight.ttf
-  static const String fontsInterExtraLight = "assets/fonts/Inter-ExtraLight.ttf";
-
-  /// Assets for fontsInterLight
-  /// assets/fonts/Inter-Light.ttf
-  static const String fontsInterLight = "assets/fonts/Inter-Light.ttf";
-
-  /// Assets for fontsInterMedium
-  /// assets/fonts/Inter-Medium.ttf
-  static const String fontsInterMedium = "assets/fonts/Inter-Medium.ttf";
-
-  /// Assets for fontsInterRegular
-  /// assets/fonts/Inter-Regular.ttf
-  static const String fontsInterRegular = "assets/fonts/Inter-Regular.ttf";
-
-  /// Assets for fontsInterSemiBold
-  /// assets/fonts/Inter-SemiBold.ttf
-  static const String fontsInterSemiBold = "assets/fonts/Inter-SemiBold.ttf";
-
-  /// Assets for fontsInterThin
-  /// assets/fonts/Inter-Thin.ttf
-  static const String fontsInterThin = "assets/fonts/Inter-Thin.ttf";
-
-  /// Assets for fontsOFL
-  /// assets/fonts/OFL.txt
-  static const String fontsOFL = "assets/fonts/OFL.txt";
+  /// Assets for fontsInterInter28ptSemiBold
+  /// assets/fonts/Inter/Inter_28pt-SemiBold.ttf
+  static const String fontsInterInter28ptSemiBold = "assets/fonts/Inter/Inter_28pt-SemiBold.ttf";
 
   /// Assets for imagesDarkSplash
   /// assets/images/dark_splash.png
@@ -50,6 +26,10 @@ class Assets {
   /// assets/images/dark_splash_android_12.png
   static const String imagesDarkSplashAndroid12 = "assets/images/dark_splash_android_12.png";
 
+  /// Assets for imagesSplash
+  /// assets/images/splash.png
+  static const String imagesSplash = "assets/images/splash.png";
+
   /// Assets for imagesSplashAndroid12
   /// assets/images/splash_android_12.png
   static const String imagesSplashAndroid12 = "assets/images/splash_android_12.png";
@@ -57,5 +37,17 @@ class Assets {
   /// Assets for jobifyIcon
   /// assets/jobify_icon.png
   static const String jobifyIcon = "assets/jobify_icon.png";
+
+  /// Assets for svgsFacebook
+  /// assets/svgs/facebook.svg
+  static const String svgsFacebook = "assets/svgs/facebook.svg";
+
+  /// Assets for svgsGoogle
+  /// assets/svgs/google.svg
+  static const String svgsGoogle = "assets/svgs/google.svg";
+
+  /// Assets for svgsLinkedin
+  /// assets/svgs/linkedin.svg
+  static const String svgsLinkedin = "assets/svgs/linkedin.svg";
 }
 

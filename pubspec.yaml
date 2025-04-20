@@ -28,7 +28,8 @@ dependencies:
   skeletonizer: ^1.4.3
   # Provides a set of beautiful animations
   flutter_animate: ^4.5.2
-
+  # SVG rendering library 
+  flutter_svg: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -60,6 +61,7 @@ flutter:
 
   assets:
     - assets/
+    - assets/svgs/
 
   fonts:
     - family: Inter

@@ -17,17 +17,18 @@ class JobifyApp extends ConsumerWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
-      child: MaterialApp.router(
-        debugShowCheckedModeBanner: false,
-        title: AppStrings.appTitle,
-        theme: AppThemes.light,
-        routerConfig: ref
-            .read(appRouterProvider)
-            .config(
-              navigatorObservers:
-                  () => [AppRouterObserver(), AutoRouteObserver()],
-            ),
-      ),
+      builder:
+          (_, __) => MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            title: AppStrings.appTitle,
+            theme: AppThemes.light,
+            routerConfig: ref
+                .read(appRouterProvider)
+                .config(
+                  navigatorObservers:
+                      () => [AppRouterObserver(), AutoRouteObserver()],
+                ),
+          ),
     );
   }
 }
