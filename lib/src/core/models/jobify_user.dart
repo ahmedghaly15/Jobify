@@ -8,8 +8,9 @@ part 'jobify_user.freezed.dart';
 abstract class JobifyUser with _$JobifyUser {
   @JsonSerializable(explicitToJson: true)
   const factory JobifyUser({
-    @SessionJsonConverter() required Session session,
-    @UserJsonConverter() required User user,
+    @SessionJsonConverter() Session? session,
+    @UserJsonConverter() User? user,
+    String? name,
     String? createdAt,
   }) = _JobifyUser;
 
@@ -18,30 +19,30 @@ abstract class JobifyUser with _$JobifyUser {
 }
 
 class SessionJsonConverter
-    extends JsonConverter<Session, Map<String, dynamic>> {
+    extends JsonConverter<Session?, Map<String, dynamic>> {
   const SessionJsonConverter();
 
   @override
-  Session fromJson(Map<String, dynamic> json) {
-    return Session.fromJson(json)!;
+  Session? fromJson(Map<String, dynamic> json) {
+    return Session.fromJson(json);
   }
 
   @override
-  Map<String, dynamic> toJson(Session session) {
-    return session.toJson();
+  Map<String, dynamic> toJson(Session? session) {
+    return session?.toJson() ?? {};
   }
 }
 
-class UserJsonConverter extends JsonConverter<User, Map<String, dynamic>> {
+class UserJsonConverter extends JsonConverter<User?, Map<String, dynamic>> {
   const UserJsonConverter();
 
   @override
-  User fromJson(Map<String, dynamic> json) {
-    return User.fromJson(json)!;
+  User? fromJson(Map<String, dynamic> json) {
+    return User.fromJson(json);
   }
 
   @override
-  Map<String, dynamic> toJson(User user) {
-    return user.toJson();
+  Map<String, dynamic> toJson(User? user) {
+    return user?.toJson() ?? {};
   }
 }

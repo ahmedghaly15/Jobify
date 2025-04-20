@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$JobifyUser {
 
-@SessionJsonConverter() Session get session;@UserJsonConverter() User get user; String? get createdAt;
+@SessionJsonConverter() Session? get session;@UserJsonConverter() User? get user; String? get name; String? get createdAt;
 /// Create a copy of JobifyUser
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,16 +29,16 @@ $JobifyUserCopyWith<JobifyUser> get copyWith => _$JobifyUserCopyWithImpl<JobifyU
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is JobifyUser&&(identical(other.session, session) || other.session == session)&&(identical(other.user, user) || other.user == user)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is JobifyUser&&(identical(other.session, session) || other.session == session)&&(identical(other.user, user) || other.user == user)&&(identical(other.name, name) || other.name == name)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,session,user,createdAt);
+int get hashCode => Object.hash(runtimeType,session,user,name,createdAt);
 
 @override
 String toString() {
-  return 'JobifyUser(session: $session, user: $user, createdAt: $createdAt)';
+  return 'JobifyUser(session: $session, user: $user, name: $name, createdAt: $createdAt)';
 }
 
 
@@ -49,7 +49,7 @@ abstract mixin class $JobifyUserCopyWith<$Res>  {
   factory $JobifyUserCopyWith(JobifyUser value, $Res Function(JobifyUser) _then) = _$JobifyUserCopyWithImpl;
 @useResult
 $Res call({
-@SessionJsonConverter() Session session,@UserJsonConverter() User user, String? createdAt
+@SessionJsonConverter() Session? session,@UserJsonConverter() User? user, String? name, String? createdAt
 });
 
 
@@ -66,11 +66,12 @@ class _$JobifyUserCopyWithImpl<$Res>
 
 /// Create a copy of JobifyUser
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? session = null,Object? user = null,Object? createdAt = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? session = freezed,Object? user = freezed,Object? name = freezed,Object? createdAt = freezed,}) {
   return _then(_self.copyWith(
-session: null == session ? _self.session : session // ignore: cast_nullable_to_non_nullable
-as Session,user: null == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
-as User,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+session: freezed == session ? _self.session : session // ignore: cast_nullable_to_non_nullable
+as Session?,user: freezed == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
+as User?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -82,11 +83,12 @@ as String?,
 
 @JsonSerializable(explicitToJson: true)
 class _JobifyUser implements JobifyUser {
-  const _JobifyUser({@SessionJsonConverter() required this.session, @UserJsonConverter() required this.user, this.createdAt});
+  const _JobifyUser({@SessionJsonConverter() this.session, @UserJsonConverter() this.user, this.name, this.createdAt});
   factory _JobifyUser.fromJson(Map<String, dynamic> json) => _$JobifyUserFromJson(json);
 
-@override@SessionJsonConverter() final  Session session;
-@override@UserJsonConverter() final  User user;
+@override@SessionJsonConverter() final  Session? session;
+@override@UserJsonConverter() final  User? user;
+@override final  String? name;
 @override final  String? createdAt;
 
 /// Create a copy of JobifyUser
@@ -102,16 +104,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _JobifyUser&&(identical(other.session, session) || other.session == session)&&(identical(other.user, user) || other.user == user)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _JobifyUser&&(identical(other.session, session) || other.session == session)&&(identical(other.user, user) || other.user == user)&&(identical(other.name, name) || other.name == name)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,session,user,createdAt);
+int get hashCode => Object.hash(runtimeType,session,user,name,createdAt);
 
 @override
 String toString() {
-  return 'JobifyUser(session: $session, user: $user, createdAt: $createdAt)';
+  return 'JobifyUser(session: $session, user: $user, name: $name, createdAt: $createdAt)';
 }
 
 
@@ -122,7 +124,7 @@ abstract mixin class _$JobifyUserCopyWith<$Res> implements $JobifyUserCopyWith<$
   factory _$JobifyUserCopyWith(_JobifyUser value, $Res Function(_JobifyUser) _then) = __$JobifyUserCopyWithImpl;
 @override @useResult
 $Res call({
-@SessionJsonConverter() Session session,@UserJsonConverter() User user, String? createdAt
+@SessionJsonConverter() Session? session,@UserJsonConverter() User? user, String? name, String? createdAt
 });
 
 
@@ -139,11 +141,12 @@ class __$JobifyUserCopyWithImpl<$Res>
 
 /// Create a copy of JobifyUser
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? session = null,Object? user = null,Object? createdAt = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? session = freezed,Object? user = freezed,Object? name = freezed,Object? createdAt = freezed,}) {
   return _then(_JobifyUser(
-session: null == session ? _self.session : session // ignore: cast_nullable_to_non_nullable
-as Session,user: null == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
-as User,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+session: freezed == session ? _self.session : session // ignore: cast_nullable_to_non_nullable
+as Session?,user: freezed == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
+as User?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
