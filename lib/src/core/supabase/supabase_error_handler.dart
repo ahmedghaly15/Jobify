@@ -10,13 +10,13 @@ class SupabaseErrorHandler {
 
   static SupabaseErrorModel handleError(dynamic error) {
     if (error is AuthException) {
-      return _fromCode(error.code);
+      return _handleAuthErrorFromCode(error.code);
     } else {
       return SupabaseErrorModel(message: error);
     }
   }
 
-  static SupabaseErrorModel _fromCode(String? code) {
+  static SupabaseErrorModel _handleAuthErrorFromCode(String? code) {
     switch (code) {
       case SupabaseErrorCode.emailAddressInvalid:
         return SupabaseErrorModel(
