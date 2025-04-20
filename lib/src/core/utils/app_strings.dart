@@ -21,4 +21,6 @@ class AppStrings {
   static const String rememberMe = 'Remember Me';
   static const String orContinueWith = 'Or continue with';
   static const String defaultError = 'Something went wrong. Please try again.';
+  static const String noInternetConnection =
+      'No internet connection. Please check your connection and try again.';
 }

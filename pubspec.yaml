@@ -34,6 +34,8 @@ dependencies:
   supabase_flutter: ^2.8.4
   # Easily configure global variables using .env 
   flutter_dotenv: ^5.2.1
+  # To check your internet connection
+  internet_connection_checker_plus: ^2.7.1
 
 dev_dependencies:
   flutter_test:
