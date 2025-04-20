@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/app_strings.dart';
-import '../../../../core/widgets/primary_button.dart';
 import 'widgets/auth_sub_title.dart';
 import 'widgets/auth_title.dart';
 import 'widgets/have_acc_questions.dart';
 import 'widgets/or_continue_with.dart';
 import 'widgets/password_validations.dart';
+import 'widgets/register_button_consumer.dart';
 import 'widgets/register_form.dart';
 import 'widgets/social_icons.dart';
 
@@ -41,9 +41,7 @@ class RegisterView extends StatelessWidget {
                 child: const PasswordValidations(),
               ),
             ),
-            SliverToBoxAdapter(
-              child: PrimaryButton(onPressed: () {}, text: AppStrings.signUp),
-            ),
+            const SliverToBoxAdapter(child: RegisterButtonConsumer()),
             SliverToBoxAdapter(
               child: Container(
                 margin: EdgeInsets.only(top: 46.h, bottom: 32.h),

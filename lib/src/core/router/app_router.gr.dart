@@ -59,6 +59,22 @@ class OnboardingRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [OtpVerificationView]
+class OtpVerificationRoute extends PageRouteInfo<void> {
+  const OtpVerificationRoute({List<PageRouteInfo>? children})
+    : super(OtpVerificationRoute.name, initialChildren: children);
+
+  static const String name = 'OtpVerificationRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const OtpVerificationView();
+    },
+  );
+}
+
+/// generated route for
 /// [RegisterView]
 class RegisterRoute extends PageRouteInfo<void> {
   const RegisterRoute({List<PageRouteInfo>? children})

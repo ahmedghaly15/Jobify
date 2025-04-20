@@ -31,4 +31,6 @@ class AppStrings {
   static const String opps = 'Oops!';
   static const String warning = 'Warning!';
   static const String success = 'Success!';
+  static const String accountCreatedSuccessfully =
+      'Account created successfully!';
 }

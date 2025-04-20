@@ -8,6 +8,7 @@ List<AutoRoute> appRoutes = [
     children: [
       _buildCustomRoute(initial: true, page: LoginRoute.page),
       _buildCustomRoute(page: RegisterRoute.page),
+      _buildCustomRoute(page: OtpVerificationRoute.page),
     ],
   ),
 ];

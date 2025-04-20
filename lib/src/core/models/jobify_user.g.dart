@@ -10,11 +10,11 @@ _$JobifyUserImpl _$$JobifyUserImplFromJson(Map<String, dynamic> json) =>
     _$JobifyUserImpl(
       session: _$JsonConverterFromJson<Map<String, dynamic>, Session?>(
         json['session'],
-        const SessionJsonConverter().fromJson,
+        const _SessionJsonConverter().fromJson,
       ),
       user: _$JsonConverterFromJson<Map<String, dynamic>, User?>(
         json['user'],
-        const UserJsonConverter().fromJson,
+        const _UserJsonConverter().fromJson,
       ),
       name: json['name'] as String?,
       createdAt: json['createdAt'] as String?,
@@ -22,8 +22,8 @@ _$JobifyUserImpl _$$JobifyUserImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$JobifyUserImplToJson(_$JobifyUserImpl instance) =>
     <String, dynamic>{
-      'session': const SessionJsonConverter().toJson(instance.session),
-      'user': const UserJsonConverter().toJson(instance.user),
+      'session': const _SessionJsonConverter().toJson(instance.session),
+      'user': const _UserJsonConverter().toJson(instance.user),
       'name': instance.name,
       'createdAt': instance.createdAt,
     };

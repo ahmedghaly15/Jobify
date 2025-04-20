@@ -21,9 +21,9 @@ JobifyUser _$JobifyUserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$JobifyUser {
-  @SessionJsonConverter()
+  @_SessionJsonConverter()
   Session? get session => throw _privateConstructorUsedError;
-  @UserJsonConverter()
+  @_UserJsonConverter()
   User? get user => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get createdAt => throw _privateConstructorUsedError;
@@ -46,8 +46,8 @@ abstract class $JobifyUserCopyWith<$Res> {
   ) = _$JobifyUserCopyWithImpl<$Res, JobifyUser>;
   @useResult
   $Res call({
-    @SessionJsonConverter() Session? session,
-    @UserJsonConverter() User? user,
+    @_SessionJsonConverter() Session? session,
+    @_UserJsonConverter() User? user,
     String? name,
     String? createdAt,
   });
@@ -111,8 +111,8 @@ abstract class _$$JobifyUserImplCopyWith<$Res>
   @override
   @useResult
   $Res call({
-    @SessionJsonConverter() Session? session,
-    @UserJsonConverter() User? user,
+    @_SessionJsonConverter() Session? session,
+    @_UserJsonConverter() User? user,
     String? name,
     String? createdAt,
   });
@@ -169,8 +169,8 @@ class __$$JobifyUserImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$JobifyUserImpl implements _JobifyUser {
   const _$JobifyUserImpl({
-    @SessionJsonConverter() this.session,
-    @UserJsonConverter() this.user,
+    @_SessionJsonConverter() this.session,
+    @_UserJsonConverter() this.user,
     this.name,
     this.createdAt,
   });
@@ -179,10 +179,10 @@ class _$JobifyUserImpl implements _JobifyUser {
       _$$JobifyUserImplFromJson(json);
 
   @override
-  @SessionJsonConverter()
+  @_SessionJsonConverter()
   final Session? session;
   @override
-  @UserJsonConverter()
+  @_UserJsonConverter()
   final User? user;
   @override
   final String? name;
@@ -226,8 +226,8 @@ class _$JobifyUserImpl implements _JobifyUser {
 
 abstract class _JobifyUser implements JobifyUser {
   const factory _JobifyUser({
-    @SessionJsonConverter() final Session? session,
-    @UserJsonConverter() final User? user,
+    @_SessionJsonConverter() final Session? session,
+    @_UserJsonConverter() final User? user,
     final String? name,
     final String? createdAt,
   }) = _$JobifyUserImpl;
@@ -236,10 +236,10 @@ abstract class _JobifyUser implements JobifyUser {
       _$JobifyUserImpl.fromJson;
 
   @override
-  @SessionJsonConverter()
+  @_SessionJsonConverter()
   Session? get session;
   @override
-  @UserJsonConverter()
+  @_UserJsonConverter()
   User? get user;
   @override
   String? get name;
