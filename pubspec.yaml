@@ -18,7 +18,7 @@ dependencies:
   # Automatically generate code for converting to and from JSON by annotating Dart classes.
   json_annotation: ^4.9.0
   # Code generator (mainly used with Bloc)
-  freezed_annotation: ^3.0.0
+  freezed_annotation: ^2.4.4
   # For caching secured data
   flutter_secure_storage: ^9.2.4 
   # Prints beautiful logs
@@ -52,7 +52,7 @@ dev_dependencies:
   # For generating auto_route file
   auto_route_generator: ^10.0.1
   # Code generator (mainly used with Bloc)
-  freezed: ^3.0.6
+  freezed: ^2.5.7
   # Automatically generate code for converting to and from JSON by annotating Dart classes.
   json_serializable: ^6.9.5
   # Code generation for riverpod
