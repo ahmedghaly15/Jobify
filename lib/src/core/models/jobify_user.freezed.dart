@@ -26,7 +26,6 @@ mixin _$JobifyUser {
   @_UserJsonConverter()
   User? get user => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
-  String? get createdAt => throw _privateConstructorUsedError;
 
   /// Serializes this JobifyUser to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,7 +48,6 @@ abstract class $JobifyUserCopyWith<$Res> {
     @_SessionJsonConverter() Session? session,
     @_UserJsonConverter() User? user,
     String? name,
-    String? createdAt,
   });
 }
 
@@ -71,7 +69,6 @@ class _$JobifyUserCopyWithImpl<$Res, $Val extends JobifyUser>
     Object? session = freezed,
     Object? user = freezed,
     Object? name = freezed,
-    Object? createdAt = freezed,
   }) {
     return _then(
       _value.copyWith(
@@ -89,11 +86,6 @@ class _$JobifyUserCopyWithImpl<$Res, $Val extends JobifyUser>
                 freezed == name
                     ? _value.name
                     : name // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            createdAt:
-                freezed == createdAt
-                    ? _value.createdAt
-                    : createdAt // ignore: cast_nullable_to_non_nullable
                         as String?,
           )
           as $Val,
@@ -114,7 +106,6 @@ abstract class _$$JobifyUserImplCopyWith<$Res>
     @_SessionJsonConverter() Session? session,
     @_UserJsonConverter() User? user,
     String? name,
-    String? createdAt,
   });
 }
 
@@ -135,7 +126,6 @@ class __$$JobifyUserImplCopyWithImpl<$Res>
     Object? session = freezed,
     Object? user = freezed,
     Object? name = freezed,
-    Object? createdAt = freezed,
   }) {
     return _then(
       _$JobifyUserImpl(
@@ -154,11 +144,6 @@ class __$$JobifyUserImplCopyWithImpl<$Res>
                 ? _value.name
                 : name // ignore: cast_nullable_to_non_nullable
                     as String?,
-        createdAt:
-            freezed == createdAt
-                ? _value.createdAt
-                : createdAt // ignore: cast_nullable_to_non_nullable
-                    as String?,
       ),
     );
   }
@@ -172,7 +157,6 @@ class _$JobifyUserImpl implements _JobifyUser {
     @_SessionJsonConverter() this.session,
     @_UserJsonConverter() this.user,
     this.name,
-    this.createdAt,
   });
 
   factory _$JobifyUserImpl.fromJson(Map<String, dynamic> json) =>
@@ -186,12 +170,10 @@ class _$JobifyUserImpl implements _JobifyUser {
   final User? user;
   @override
   final String? name;
-  @override
-  final String? createdAt;
 
   @override
   String toString() {
-    return 'JobifyUser(session: $session, user: $user, name: $name, createdAt: $createdAt)';
+    return 'JobifyUser(session: $session, user: $user, name: $name)';
   }
 
   @override
@@ -201,14 +183,12 @@ class _$JobifyUserImpl implements _JobifyUser {
             other is _$JobifyUserImpl &&
             (identical(other.session, session) || other.session == session) &&
             (identical(other.user, user) || other.user == user) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt));
+            (identical(other.name, name) || other.name == name));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, session, user, name, createdAt);
+  int get hashCode => Object.hash(runtimeType, session, user, name);
 
   /// Create a copy of JobifyUser
   /// with the given fields replaced by the non-null parameter values.
@@ -229,7 +209,6 @@ abstract class _JobifyUser implements JobifyUser {
     @_SessionJsonConverter() final Session? session,
     @_UserJsonConverter() final User? user,
     final String? name,
-    final String? createdAt,
   }) = _$JobifyUserImpl;
 
   factory _JobifyUser.fromJson(Map<String, dynamic> json) =
@@ -243,8 +222,6 @@ abstract class _JobifyUser implements JobifyUser {
   User? get user;
   @override
   String? get name;
-  @override
-  String? get createdAt;
 
   /// Create a copy of JobifyUser
   /// with the given fields replaced by the non-null parameter values.

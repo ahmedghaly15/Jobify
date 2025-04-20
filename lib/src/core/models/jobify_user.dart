@@ -16,7 +16,6 @@ abstract class JobifyUser with _$JobifyUser {
     @_SessionJsonConverter() Session? session,
     @_UserJsonConverter() User? user,
     String? name,
-    String? createdAt,
   }) = _JobifyUser;
 
   factory JobifyUser.fromJson(Map<String, dynamic> json) =>

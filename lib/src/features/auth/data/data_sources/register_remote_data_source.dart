@@ -26,7 +26,6 @@ class RegisterRemoteDataSource extends AuthRemoteDataSource {
     return JobifyUser(
       session: authResponse.session,
       user: authResponse.user,
-      createdAt: TimeOfDay.now().toString(),
       name: params.name,
     );
   }
