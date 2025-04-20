@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'app_provider_observer.dart';
+import 'src/core/utils/functions/check_if_onboarding_is_visited.dart';
 import 'src/jobify_app.dart';
 
 void main() async {
@@ -18,6 +19,7 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+  await checkIfOnboardingIsVisited();
   runApp(
     ProviderScope(observers: [AppProviderObserver()], child: const JobifyApp()),
   );
