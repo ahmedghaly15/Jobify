@@ -32,10 +32,10 @@ final registerConfirmPassFocusNodeProvider = Provider.autoDispose<FocusNode>(
   (ref) => FocusNode(),
 );
 final registerPassObscureTextProvider =
-    StateNotifierProvider.autoDispose<ObscureTextNotifier, bool>(
-      (ref) => ObscureTextNotifier(),
+    StateNotifierProvider.autoDispose<ToggleBoolNotifier, bool>(
+      (ref) => ToggleBoolNotifier(),
     );
 final confirmPassObscureTextProvider =
-    StateNotifierProvider.autoDispose<ObscureTextNotifier, bool>(
-      (ref) => ObscureTextNotifier(),
+    StateNotifierProvider.autoDispose<ToggleBoolNotifier, bool>(
+      (ref) => ToggleBoolNotifier(),
     );

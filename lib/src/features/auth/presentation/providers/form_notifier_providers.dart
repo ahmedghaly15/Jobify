@@ -4,8 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/helpers/app_regex.dart';
 import 'password_validations_state.dart';
 
-class ObscureTextNotifier extends StateNotifier<bool> {
-  ObscureTextNotifier() : super(true);
+class ToggleBoolNotifier extends StateNotifier<bool> {
+  final bool initial;
+  ToggleBoolNotifier({this.initial = true}) : super(initial);
 
   void toggle() => state = !state;
 }

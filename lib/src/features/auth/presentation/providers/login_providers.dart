@@ -17,6 +17,10 @@ final loginPassFocusNodeProvider = Provider.autoDispose<FocusNode>(
   (ref) => FocusNode(),
 );
 final loginPassObscureTextProvider =
-    StateNotifierProvider.autoDispose<ObscureTextNotifier, bool>(
-      (ref) => ObscureTextNotifier(),
+    StateNotifierProvider.autoDispose<ToggleBoolNotifier, bool>(
+      (ref) => ToggleBoolNotifier(),
+    );
+final checkboxValueProvider =
+    StateNotifierProvider.autoDispose<ToggleBoolNotifier, bool>(
+      (ref) => ToggleBoolNotifier(initial: false),
     );
