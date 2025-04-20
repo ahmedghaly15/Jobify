@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../theming/app_colors.dart';
-import '../theming/app_text_styles.dart';
+import '../../../../../core/theming/app_colors.dart';
+import '../../../../../core/theming/app_text_styles.dart';
 
 class AuthSubTitle extends StatelessWidget {
   const AuthSubTitle({super.key, required this.subTitle});
