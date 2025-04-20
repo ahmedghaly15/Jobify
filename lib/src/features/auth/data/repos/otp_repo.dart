@@ -13,9 +13,21 @@ class OtpRepo {
   final OtpRemoteDataSource _remoteDataSource;
   OtpRepo(this._remoteDataSource);
 
+  Future<SupabaseRequestResult<void>> sendOtp(String email) async {
+    return executeAndHandleErrors<void>(
+      () async => await _remoteDataSource.sendOtp(email),
+    );
+  }
+
   Future<SupabaseRequestResult<JobifyUser>> verifyOtp(String token) async {
     return executeAndHandleErrors<JobifyUser>(
       () async => await _remoteDataSource.verifyOtp(token),
+    );
+  }
+
+  Future<SupabaseRequestResult<void>> resendOtp(String email) async {
+    return executeAndHandleErrors<void>(
+      () async => await _remoteDataSource.resendOtp(email),
     );
   }
 }

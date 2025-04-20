@@ -32,7 +32,7 @@ class AppStrings {
   static const String warning = 'Warning!';
   static const String success = 'Success!';
   static const String accountCreatedSuccessfully =
-      'Account created successfully!';
+      'Account created successfully and a verification email has been sent to your email address. Please check your inbox and verify your email to complete the registration process.';
   static const String verifyYourEmail = 'Verify Your Email';
   static const String enterTheSentVerificationCode =
       'Enter the verification code sent to your email';

@@ -13,8 +13,19 @@ final pinputVerificationController = Provider.autoDispose(
 @riverpod
 class OtpVerification extends _$OtpVerification {
   @override
-  AsyncValue<JobifyUser>? build() {
+  AsyncValue<JobifyUser?>? build() {
     return null;
+  }
+
+  void sendOtp(String email) async {
+    state = const AsyncValue.loading();
+    final result = await ref.read(otpRepoProvider).sendOtp(email);
+    result.when(
+      success: (_) => state = const AsyncValue.data(null),
+      failure:
+          (error) =>
+              state = AsyncValue.error(error.message, StackTrace.current),
+    );
   }
 
   void verifyOtp() async {
@@ -24,6 +35,17 @@ class OtpVerification extends _$OtpVerification {
         .verifyOtp(ref.read(pinputVerificationController).text);
     result.when(
       success: (jobifyUser) => state = AsyncValue.data(jobifyUser),
+      failure:
+          (error) =>
+              state = AsyncValue.error(error.message, StackTrace.current),
+    );
+  }
+
+  void resendOtp(String email) async {
+    state = const AsyncValue.loading();
+    final result = await ref.read(otpRepoProvider).resendOtp(email);
+    result.when(
+      success: (_) => state = const AsyncValue.data(null),
       failure:
           (error) =>
               state = AsyncValue.error(error.message, StackTrace.current),
