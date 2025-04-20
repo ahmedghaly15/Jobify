@@ -1,4 +1,3 @@
-// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -10,168 +9,356 @@ part of 'supabase_request_result.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
+
 /// @nodoc
 mixin _$SupabaseRequestResult<T> {
-
-
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SupabaseRequestResult<T>);
-}
-
-
-@override
-int get hashCode => runtimeType.hashCode;
-
-@override
-String toString() {
-  return 'SupabaseRequestResult<$T>()';
-}
-
-
-}
-
-/// @nodoc
-class $SupabaseRequestResultCopyWith<T,$Res>  {
-$SupabaseRequestResultCopyWith(SupabaseRequestResult<T> _, $Res Function(SupabaseRequestResult<T>) __);
-}
-
-
-/// @nodoc
-
-
-class Success<T> implements SupabaseRequestResult<T> {
-  const Success(this.data);
-  
-
- final  T data;
-
-/// Create a copy of SupabaseRequestResult
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$SuccessCopyWith<T, Success<T>> get copyWith => _$SuccessCopyWithImpl<T, Success<T>>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Success<T>&&const DeepCollectionEquality().equals(other.data, data));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(data));
-
-@override
-String toString() {
-  return 'SupabaseRequestResult<$T>.success(data: $data)';
-}
-
-
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T data) success,
+    required TResult Function(SupabaseErrorModel errorModel) failure,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(T data)? success,
+    TResult? Function(SupabaseErrorModel errorModel)? failure,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T data)? success,
+    TResult Function(SupabaseErrorModel errorModel)? failure,
+    required TResult orElse(),
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Success<T> value) success,
+    required TResult Function(Failure<T> value) failure,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Success<T> value)? success,
+    TResult? Function(Failure<T> value)? failure,
+  }) => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Success<T> value)? success,
+    TResult Function(Failure<T> value)? failure,
+    required TResult orElse(),
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $SuccessCopyWith<T,$Res> implements $SupabaseRequestResultCopyWith<T, $Res> {
-  factory $SuccessCopyWith(Success<T> value, $Res Function(Success<T>) _then) = _$SuccessCopyWithImpl;
-@useResult
-$Res call({
- T data
-});
-
-
-
-
-}
-/// @nodoc
-class _$SuccessCopyWithImpl<T,$Res>
-    implements $SuccessCopyWith<T, $Res> {
-  _$SuccessCopyWithImpl(this._self, this._then);
-
-  final Success<T> _self;
-  final $Res Function(Success<T>) _then;
-
-/// Create a copy of SupabaseRequestResult
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? data = freezed,}) {
-  return _then(Success<T>(
-freezed == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
-as T,
-  ));
-}
-
-
+abstract class $SupabaseRequestResultCopyWith<T, $Res> {
+  factory $SupabaseRequestResultCopyWith(
+    SupabaseRequestResult<T> value,
+    $Res Function(SupabaseRequestResult<T>) then,
+  ) = _$SupabaseRequestResultCopyWithImpl<T, $Res, SupabaseRequestResult<T>>;
 }
 
 /// @nodoc
+class _$SupabaseRequestResultCopyWithImpl<
+  T,
+  $Res,
+  $Val extends SupabaseRequestResult<T>
+>
+    implements $SupabaseRequestResultCopyWith<T, $Res> {
+  _$SupabaseRequestResultCopyWithImpl(this._value, this._then);
 
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
-class Failure<T> implements SupabaseRequestResult<T> {
-  const Failure(this.errorModel);
-  
-
- final  SupabaseErrorModel errorModel;
-
-/// Create a copy of SupabaseRequestResult
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$FailureCopyWith<T, Failure<T>> get copyWith => _$FailureCopyWithImpl<T, Failure<T>>(this, _$identity);
-
-
-
-@override
-bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Failure<T>&&(identical(other.errorModel, errorModel) || other.errorModel == errorModel));
-}
-
-
-@override
-int get hashCode => Object.hash(runtimeType,errorModel);
-
-@override
-String toString() {
-  return 'SupabaseRequestResult<$T>.failure(errorModel: $errorModel)';
-}
-
-
+  /// Create a copy of SupabaseRequestResult
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract mixin class $FailureCopyWith<T,$Res> implements $SupabaseRequestResultCopyWith<T, $Res> {
-  factory $FailureCopyWith(Failure<T> value, $Res Function(Failure<T>) _then) = _$FailureCopyWithImpl;
-@useResult
-$Res call({
- SupabaseErrorModel errorModel
-});
-
-
-
-
+abstract class _$$SuccessImplCopyWith<T, $Res> {
+  factory _$$SuccessImplCopyWith(
+    _$SuccessImpl<T> value,
+    $Res Function(_$SuccessImpl<T>) then,
+  ) = __$$SuccessImplCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({T data});
 }
+
 /// @nodoc
-class _$FailureCopyWithImpl<T,$Res>
-    implements $FailureCopyWith<T, $Res> {
-  _$FailureCopyWithImpl(this._self, this._then);
+class __$$SuccessImplCopyWithImpl<T, $Res>
+    extends _$SupabaseRequestResultCopyWithImpl<T, $Res, _$SuccessImpl<T>>
+    implements _$$SuccessImplCopyWith<T, $Res> {
+  __$$SuccessImplCopyWithImpl(
+    _$SuccessImpl<T> _value,
+    $Res Function(_$SuccessImpl<T>) _then,
+  ) : super(_value, _then);
 
-  final Failure<T> _self;
-  final $Res Function(Failure<T>) _then;
-
-/// Create a copy of SupabaseRequestResult
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? errorModel = null,}) {
-  return _then(Failure<T>(
-null == errorModel ? _self.errorModel : errorModel // ignore: cast_nullable_to_non_nullable
-as SupabaseErrorModel,
-  ));
+  /// Create a copy of SupabaseRequestResult
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? data = freezed}) {
+    return _then(
+      _$SuccessImpl<T>(
+        freezed == data
+            ? _value.data
+            : data // ignore: cast_nullable_to_non_nullable
+                as T,
+      ),
+    );
+  }
 }
 
+/// @nodoc
 
+class _$SuccessImpl<T> implements Success<T> {
+  const _$SuccessImpl(this.data);
+
+  @override
+  final T data;
+
+  @override
+  String toString() {
+    return 'SupabaseRequestResult<$T>.success(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SuccessImpl<T> &&
+            const DeepCollectionEquality().equals(other.data, data));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(data));
+
+  /// Create a copy of SupabaseRequestResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SuccessImplCopyWith<T, _$SuccessImpl<T>> get copyWith =>
+      __$$SuccessImplCopyWithImpl<T, _$SuccessImpl<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T data) success,
+    required TResult Function(SupabaseErrorModel errorModel) failure,
+  }) {
+    return success(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(T data)? success,
+    TResult? Function(SupabaseErrorModel errorModel)? failure,
+  }) {
+    return success?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T data)? success,
+    TResult Function(SupabaseErrorModel errorModel)? failure,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Success<T> value) success,
+    required TResult Function(Failure<T> value) failure,
+  }) {
+    return success(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Success<T> value)? success,
+    TResult? Function(Failure<T> value)? failure,
+  }) {
+    return success?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Success<T> value)? success,
+    TResult Function(Failure<T> value)? failure,
+    required TResult orElse(),
+  }) {
+    if (success != null) {
+      return success(this);
+    }
+    return orElse();
+  }
 }
 
-// dart format on
+abstract class Success<T> implements SupabaseRequestResult<T> {
+  const factory Success(final T data) = _$SuccessImpl<T>;
+
+  T get data;
+
+  /// Create a copy of SupabaseRequestResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SuccessImplCopyWith<T, _$SuccessImpl<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FailureImplCopyWith<T, $Res> {
+  factory _$$FailureImplCopyWith(
+    _$FailureImpl<T> value,
+    $Res Function(_$FailureImpl<T>) then,
+  ) = __$$FailureImplCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({SupabaseErrorModel errorModel});
+}
+
+/// @nodoc
+class __$$FailureImplCopyWithImpl<T, $Res>
+    extends _$SupabaseRequestResultCopyWithImpl<T, $Res, _$FailureImpl<T>>
+    implements _$$FailureImplCopyWith<T, $Res> {
+  __$$FailureImplCopyWithImpl(
+    _$FailureImpl<T> _value,
+    $Res Function(_$FailureImpl<T>) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of SupabaseRequestResult
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({Object? errorModel = null}) {
+    return _then(
+      _$FailureImpl<T>(
+        null == errorModel
+            ? _value.errorModel
+            : errorModel // ignore: cast_nullable_to_non_nullable
+                as SupabaseErrorModel,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$FailureImpl<T> implements Failure<T> {
+  const _$FailureImpl(this.errorModel);
+
+  @override
+  final SupabaseErrorModel errorModel;
+
+  @override
+  String toString() {
+    return 'SupabaseRequestResult<$T>.failure(errorModel: $errorModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FailureImpl<T> &&
+            (identical(other.errorModel, errorModel) ||
+                other.errorModel == errorModel));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, errorModel);
+
+  /// Create a copy of SupabaseRequestResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FailureImplCopyWith<T, _$FailureImpl<T>> get copyWith =>
+      __$$FailureImplCopyWithImpl<T, _$FailureImpl<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(T data) success,
+    required TResult Function(SupabaseErrorModel errorModel) failure,
+  }) {
+    return failure(errorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(T data)? success,
+    TResult? Function(SupabaseErrorModel errorModel)? failure,
+  }) {
+    return failure?.call(errorModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T data)? success,
+    TResult Function(SupabaseErrorModel errorModel)? failure,
+    required TResult orElse(),
+  }) {
+    if (failure != null) {
+      return failure(errorModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Success<T> value) success,
+    required TResult Function(Failure<T> value) failure,
+  }) {
+    return failure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Success<T> value)? success,
+    TResult? Function(Failure<T> value)? failure,
+  }) {
+    return failure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Success<T> value)? success,
+    TResult Function(Failure<T> value)? failure,
+    required TResult orElse(),
+  }) {
+    if (failure != null) {
+      return failure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Failure<T> implements SupabaseRequestResult<T> {
+  const factory Failure(final SupabaseErrorModel errorModel) = _$FailureImpl<T>;
+
+  SupabaseErrorModel get errorModel;
+
+  /// Create a copy of SupabaseRequestResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FailureImplCopyWith<T, _$FailureImpl<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
