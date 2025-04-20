@@ -15,6 +15,8 @@ dependencies:
   auto_route: ^10.0.1
   # Flutter plugin for reading and writing simple key-value pairs for cache
   shared_preferences: ^2.5.3
+  # Automatically generate code for converting to and from JSON by annotating Dart classes.
+  json_annotation: ^4.9.0
   # Code generator (mainly used with Bloc)
   freezed_annotation: ^3.0.0
   # For caching secured data
