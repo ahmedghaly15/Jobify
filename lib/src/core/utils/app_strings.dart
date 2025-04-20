@@ -1,7 +1,6 @@
 class AppStrings {
   AppStrings._();
 
-  static const String fontFamily = 'Inter';
   static const String job = 'Job';
   static const String appTitle = 'Jobify';
   static const String tracking = 'Tracking';

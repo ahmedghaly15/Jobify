@@ -30,6 +30,10 @@ dependencies:
   flutter_animate: ^4.5.2
   # SVG rendering library 
   flutter_svg: ^2.1.0
+  # Flutter integration for Supabase
+  supabase_flutter: ^2.8.4
+  # Easily configure global variables using .env 
+  flutter_dotenv: ^5.2.1
 
 dev_dependencies:
   flutter_test:

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../utils/app_strings.dart';
+import '../utils/const_strings.dart';
 import 'app_colors.dart';
 
 class AppThemes {
@@ -10,7 +10,7 @@ class AppThemes {
   static ThemeData get light => ThemeData(
     primaryColor: AppColors.primaryColor,
     colorScheme: const ColorScheme.light(primary: AppColors.primaryColor),
-    fontFamily: AppStrings.fontFamily,
+    fontFamily: ConstStrings.fontFamily,
     useMaterial3: true,
     brightness: Brightness.light,
     scaffoldBackgroundColor: AppColors.lightModeColor,
