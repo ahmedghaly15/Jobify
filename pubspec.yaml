@@ -38,6 +38,8 @@ dependencies:
   flutter_dotenv: ^5.2.1
   # To check your internet connection
   internet_connection_checker_plus: ^2.7.1
+  # Provides customizable OTP text field
+  pinput: ^5.0.1
 
 dev_dependencies:
   flutter_test:

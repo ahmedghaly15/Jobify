@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/theming/app_colors.dart';
 import '../../../../../core/theming/app_text_styles.dart';
 
 class HaveAccQuestion extends StatelessWidget {
@@ -19,12 +18,7 @@ class HaveAccQuestion extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Text(
-          question,
-          style: AppTextStyles.font12SemiBold.copyWith(
-            color: AppColors.color242424,
-          ),
-        ),
+        Text(question, style: AppTextStyles.font12Regular),
         TextButton(onPressed: onPressed, child: Text(buttonText)),
       ],
     );

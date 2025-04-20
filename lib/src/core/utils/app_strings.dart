@@ -33,4 +33,10 @@ class AppStrings {
   static const String success = 'Success!';
   static const String accountCreatedSuccessfully =
       'Account created successfully!';
+  static const String verifyYourEmail = 'Verify Your Email';
+  static const String enterTheSentVerificationCode =
+      'Enter the verification code sent to your email';
+  static const String didntReceiveCode = "Didn't receive a code?";
+  static const String resend = 'Resend';
+  static const String verify = 'Verify';
 }

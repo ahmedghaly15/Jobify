@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../utils/const_strings.dart';
 import 'app_colors.dart';
+import 'app_text_styles.dart';
 
 class AppThemes {
   AppThemes._();
@@ -14,6 +15,12 @@ class AppThemes {
     useMaterial3: true,
     brightness: Brightness.light,
     scaffoldBackgroundColor: AppColors.lightModeColor,
+    appBarTheme: AppBarTheme(
+      backgroundColor: AppColors.lightModeColor,
+      elevation: 0,
+      titleTextStyle: AppTextStyles.font18Bold.copyWith(color: Colors.black),
+      centerTitle: true,
+    ),
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
         foregroundColor: const WidgetStatePropertyAll(AppColors.primaryColor),
@@ -22,6 +29,7 @@ class AppThemes {
         ),
         tapTargetSize: MaterialTapTargetSize.padded,
         minimumSize: const WidgetStatePropertyAll(Size.zero),
+        textStyle: WidgetStatePropertyAll(AppTextStyles.font12SemiBold),
       ),
     ),
     checkboxTheme: CheckboxThemeData(
