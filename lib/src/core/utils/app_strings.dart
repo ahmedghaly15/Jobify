@@ -28,4 +28,7 @@ class AppStrings {
       "Sign up now and start exploring all that our app has to offer. We're excited to welcome you to our community!";
   static const confirmPass = 'Confirm Password';
   static const String name = 'Name';
+  static const String opps = 'Oops!';
+  static const String warning = 'Warning!';
+  static const String success = 'Success!';
 }

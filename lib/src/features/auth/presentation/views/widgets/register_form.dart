@@ -17,9 +17,9 @@ class RegisterForm extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final autovalidateMode = ref.watch(registerAutovalidateModeProvider);
-    final formKey = ref.read(registerFormKeyProvider);
-    final nameController = ref.read(registerNameControllerProvider);
-    final emailController = ref.read(registerEmailControllerProvider);
+    final formKey = ref.watch(registerFormKeyProvider);
+    final nameController = ref.watch(registerNameControllerProvider);
+    final emailController = ref.watch(registerEmailControllerProvider);
     final emailFocusNode = ref.read(registerEmailFocusNodeProvider);
     final passwordFocusNode = ref.read(registerPassFocusNodeProvider);
     return Form(
@@ -57,11 +57,11 @@ class _ConfirmPassFieldConsumer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final confirmPassController = ref.read(
+    final confirmPassController = ref.watch(
       registerConfirmPassControllerProvider,
     );
     final confirmPassFocusNode = ref.read(registerConfirmPassFocusNodeProvider);
-    final passwordController = ref.read(registerPassControllerProvider);
+    final passwordController = ref.watch(registerPassControllerProvider);
     final confirmPassObscureText = ref.watch(confirmPassObscureTextProvider);
     return PasswordTextFormField(
       hintText: AppStrings.confirmPass,
@@ -87,7 +87,7 @@ class _PasswordTextFieldConsumer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final passwordController = ref.read(registerPassControllerProvider);
+    final passwordController = ref.watch(registerPassControllerProvider);
     final passwordFocusNode = ref.read(registerPassFocusNodeProvider);
     final confirmPassFocusNode = ref.read(registerConfirmPassFocusNodeProvider);
     final passObscureText = ref.watch(registerPassObscureTextProvider);
