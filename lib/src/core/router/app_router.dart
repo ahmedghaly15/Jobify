@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../features/auth/presentation/views/login_view.dart';
+import '../../features/auth/presentation/views/register_view.dart';
 import '../../features/onboarding/presentation/view/onboarding_view.dart';
 import '../utils/constants.dart';
 
@@ -18,4 +19,9 @@ class AppRouter extends RootStackRouter {
 
   @override
   List<AutoRoute> get routes => appRoutes;
+}
+
+@RoutePage()
+class AuthView extends AutoRouter {
+  const AuthView({super.key});
 }
