@@ -24,3 +24,20 @@ class FacebookAuthRepo extends SocialAuthRepo {
     );
   }
 }
+
+final googleAuthRepoProvider = Provider<GoogleAuthRepo>(
+  (ref) => GoogleAuthRepo(ref.read(googleAuthDataSourceProvider)),
+);
+
+class GoogleAuthRepo extends SocialAuthRepo {
+  final GoogleAuthDataSource _remoteDataSource;
+
+  GoogleAuthRepo(this._remoteDataSource);
+
+  @override
+  Future<SupabaseRequestResult<void>> signIn() {
+    return executeAndHandleErrors<void>(
+      () async => await _remoteDataSource.signIn(),
+    );
+  }
+}
