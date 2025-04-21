@@ -38,3 +38,20 @@ class GoogleAuth extends _$GoogleAuth {
     );
   }
 }
+
+@riverpod
+class LinkedInAuth extends _$LinkedInAuth {
+  @override
+  AsyncValue<void>? build() {
+    return null;
+  }
+
+  void signIn() async {
+    state = const AsyncLoading();
+    final result = await ref.read(linkedinAuthRepoProvider).signIn();
+    result.when(
+      success: (_) => state = const AsyncData(null),
+      failure: (error) => state = AsyncError(error.message, StackTrace.current),
+    );
+  }
+}

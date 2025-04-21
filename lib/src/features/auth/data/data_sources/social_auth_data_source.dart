@@ -30,6 +30,23 @@ class FacebookAuthDataSource extends SocialAuthDataSource {
   }
 }
 
+final linkedinAuthDataSourceProvider = Provider<LinkedInAuthDataSource>(
+  (ref) => LinkedInAuthDataSource(ref.read(supabaseAuthProvider)),
+);
+
+class LinkedInAuthDataSource extends SocialAuthDataSource {
+  final GoTrueClient _supabaseAuth;
+  LinkedInAuthDataSource(this._supabaseAuth);
+
+  @override
+  Future<void> signIn() async {
+    await _supabaseAuth.signInWithOAuth(
+      OAuthProvider.linkedin,
+      authScreenLaunchMode: LaunchMode.inAppBrowserView,
+    );
+  }
+}
+
 final googleAuthDataSourceProvider = Provider<GoogleAuthDataSource>(
   (ref) => GoogleAuthDataSource(ref.read(supabaseAuthProvider)),
 );

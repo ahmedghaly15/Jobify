@@ -41,3 +41,20 @@ class GoogleAuthRepo extends SocialAuthRepo {
     );
   }
 }
+
+final linkedinAuthRepoProvider = Provider<LinkedInAuthRepo>(
+  (ref) => LinkedInAuthRepo(ref.read(linkedinAuthDataSourceProvider)),
+);
+
+class LinkedInAuthRepo extends SocialAuthRepo {
+  final LinkedInAuthDataSource _remoteDataSource;
+
+  LinkedInAuthRepo(this._remoteDataSource);
+
+  @override
+  Future<SupabaseRequestResult<void>> signIn() {
+    return executeAndHandleErrors<void>(
+      () async => await _remoteDataSource.signIn(),
+    );
+  }
+}
