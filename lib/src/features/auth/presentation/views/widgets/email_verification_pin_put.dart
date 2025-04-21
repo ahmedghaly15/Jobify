@@ -13,7 +13,10 @@ class EmailVerificationPinput extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final pinputController = ref.watch(pinputVerificationController);
+    final pinputController = ref.read(pinputVerificationController);
+    pinputController.addListener(() {
+      ref.read(otpTextProvider.notifier).state = pinputController.text;
+    });
     return Pinput(
       autofocus: true,
       controller: pinputController,
@@ -40,7 +43,7 @@ class EmailVerificationPinput extends ConsumerWidget {
           border: Border.all(color: AppColors.primaryColor, width: 2.w),
         ),
       ),
-      onCompleted: (_) => context.unfocusKeyboard(),
+      closeKeyboardWhenCompleted: true,
       onTapOutside: (_) => context.unfocusKeyboard(),
       length: 6,
     );
