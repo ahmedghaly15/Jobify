@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/utils/app_assets.dart';
 import 'facebook_consumer_button.dart';
+import 'google_consumer_button.dart';
 import 'social_icon_widget.dart';
 
 class SocialIcons extends StatelessWidget {
@@ -14,12 +15,7 @@ class SocialIcons extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       spacing: 32.w,
       children: [
-        SocialIconWidget(
-          assetPath: Assets.svgsGoogle,
-          onPressed: () {
-            // Handle Google sign-in
-          },
-        ),
+        const GoogleConsumerButton(),
         const FacebookConsumerButton(),
         SocialIconWidget(
           assetPath: Assets.svgsLinkedin,

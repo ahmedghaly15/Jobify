@@ -8,16 +8,18 @@ class SocialIconWidget extends StatelessWidget {
     super.key,
     required this.assetPath,
     required this.onPressed,
+    this.icon,
   });
 
   final String assetPath;
   final VoidCallback onPressed;
+  final Widget? icon;
 
   @override
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: onPressed,
-      icon: SvgPicture.asset(assetPath, fit: BoxFit.cover),
+      icon: icon ?? SvgPicture.asset(assetPath, fit: BoxFit.cover),
       style: IconButton.styleFrom(
         backgroundColor: AppColors.colorF5F5F5,
         shape: const CircleBorder(),
