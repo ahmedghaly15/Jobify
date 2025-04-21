@@ -11,6 +11,7 @@ List<AutoRoute> appRoutes = [
       _buildCustomRoute(page: OtpVerificationRoute.page),
     ],
   ),
+  _buildCustomRoute(page: HomeRoute.page),
 ];
 
 CustomRoute _buildCustomRoute({
