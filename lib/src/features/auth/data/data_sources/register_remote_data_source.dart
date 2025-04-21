@@ -14,7 +14,7 @@ final registerRemoteDataSourceProvider = Provider<RegisterRemoteDataSource>(
 class RegisterRemoteDataSource extends AuthRemoteDataSource {
   final GoTrueClient _supabaseAuth;
 
-  RegisterRemoteDataSource(this._supabaseAuth) : super(_supabaseAuth);
+  RegisterRemoteDataSource(this._supabaseAuth);
 
   @override
   Future<JobifyUser> auth(AuthRequestParams params) async {

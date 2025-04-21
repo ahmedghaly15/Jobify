@@ -3,17 +3,22 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../../core/supabase/supabase_request_result.dart';
 
-final socialAuthDataSourceProvider = Provider<SocialAuthDataSource>(
-  (ref) => SocialAuthDataSource(ref.read(supabaseAuthProvider)),
+final facebookAuthDataSourceProvider = Provider<FacebookAuthDataSource>(
+  (ref) => FacebookAuthDataSource(ref.read(supabaseAuthProvider)),
 );
 
-class SocialAuthDataSource {
-  final GoTrueClient _supabaseAuth;
-  SocialAuthDataSource(this._supabaseAuth);
+abstract class SocialAuthDataSource {
+  Future<void> signIn();
+}
 
-  Future<void> signInWithOAuth(OAuthProvider authProvider) async {
+class FacebookAuthDataSource extends SocialAuthDataSource {
+  final GoTrueClient _supabaseAuth;
+  FacebookAuthDataSource(this._supabaseAuth);
+
+  @override
+  Future<void> signIn() async {
     await _supabaseAuth.signInWithOAuth(
-      authProvider,
+      OAuthProvider.facebook,
       authScreenLaunchMode: LaunchMode.inAppBrowserView,
     );
   }
