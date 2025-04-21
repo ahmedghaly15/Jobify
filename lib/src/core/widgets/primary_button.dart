@@ -40,12 +40,17 @@ class PrimaryButton extends StatelessWidget {
       width: isExpanded ? double.infinity : width?.w,
       height: height?.h,
       decoration: BoxDecoration(
-        color: backgroundColor ?? AppColors.primaryColor,
+        color:
+            backgroundColor ??
+            (onPressed == null ? Colors.grey.shade400 : AppColors.primaryColor),
         borderRadius: BorderRadiusDirectional.circular(
           (borderRadius?.r) ?? 16.0.r,
         ),
         boxShadow: boxShadow,
-        border: Border.all(color: AppColors.primaryColor, width: 1.w),
+        border:
+            onPressed == null
+                ? null
+                : Border.all(color: AppColors.primaryColor, width: 1.w),
       ),
       child: MaterialButton(
         onPressed: onPressed,

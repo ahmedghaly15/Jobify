@@ -31,8 +31,8 @@ class OtpRepo {
     }
   }
 
-  Future<SupabaseRequestResult<bool>> resendOtp(String email) async {
-    return executeAndHandleErrors<bool>(
+  Future<SupabaseRequestResult<void>> resendOtp(String email) async {
+    return executeAndHandleErrors<void>(
       () async => await _remoteDataSource.resendOtp(email),
     );
   }

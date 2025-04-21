@@ -19,7 +19,7 @@ void main() async {
   EmailOTP.config(
     appName: ConstStrings.appTitle,
     otpType: OTPType.numeric,
-    expiry: 30000,
+    expiry: 60000,
     emailTheme: EmailTheme.v6,
     appEmail: ConstStrings.appEmail,
     otpLength: 6,

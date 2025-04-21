@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_manual_providers_as_generated_provider_dependency
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../data/repos/otp_repo.dart';
@@ -9,6 +10,7 @@ part 'otp_verification_provider.g.dart';
 final pinputVerificationController = Provider.autoDispose(
   (ref) => TextEditingController(),
 );
+final otpTextProvider = StateProvider.autoDispose<String>((ref) => '');
 
 @riverpod
 class OtpVerification extends _$OtpVerification {
@@ -54,7 +56,7 @@ class SendOtp extends _$SendOtp {
 @riverpod
 class ResendOtp extends _$ResendOtp {
   @override
-  AsyncValue<bool>? build() {
+  AsyncValue<void>? build() {
     return null;
   }
 
@@ -62,10 +64,35 @@ class ResendOtp extends _$ResendOtp {
     state = const AsyncValue.loading();
     final result = await ref.read(otpRepoProvider).resendOtp(email);
     result.when(
-      success: (otpResent) => state = AsyncValue.data(otpResent),
+      success: (_) => state = const AsyncValue.data(null),
       failure:
           (error) =>
               state = AsyncValue.error(error.message, StackTrace.current),
     );
+  }
+}
+
+final resendTimerProvider =
+    StateNotifierProvider.autoDispose<ResendTimerNotifier, int>(
+      (ref) => ResendTimerNotifier(),
+    );
+
+class ResendTimerNotifier extends StateNotifier<int> {
+  ResendTimerNotifier() : super(60) {
+    _startTimer();
+  }
+
+  void _startTimer() {
+    Future.delayed(const Duration(seconds: 1), () {
+      if (state > 0) {
+        state--;
+        _startTimer();
+      }
+    });
+  }
+
+  void resetTimer() {
+    state = 60;
+    _startTimer();
   }
 }

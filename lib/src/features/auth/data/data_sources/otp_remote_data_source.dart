@@ -16,11 +16,10 @@ class OtpRemoteDataSource {
     return EmailOTP.verifyOTP(otp: otp);
   }
 
-  Future<bool> resendOtp(String email) async {
+  Future<void> resendOtp(String email) async {
     final bool isExpired = EmailOTP.isOtpExpired();
     if (isExpired) {
-      return await EmailOTP.sendOTP(email: email);
+      await EmailOTP.sendOTP(email: email);
     }
-    return isExpired; // which will be false
   }
 }

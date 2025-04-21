@@ -23,7 +23,7 @@ final otpVerificationProvider =
     );
 
 typedef _$OtpVerification = AutoDisposeNotifier<AsyncValue<bool>?>;
-String _$sendOtpHash() => r'0c5e5d679751de2d101a22fff3f890b24246208e';
+String _$sendOtpHash() => r'cd7a06d81494166a7df6ab5cea7fb4991256f429';
 
 /// See also [SendOtp].
 @ProviderFor(SendOtp)
@@ -38,12 +38,12 @@ final sendOtpProvider =
     );
 
 typedef _$SendOtp = AutoDisposeNotifier<AsyncValue<bool>?>;
-String _$resendOtpHash() => r'7d45b405e700dbbd86a1a3b181a7cd34355d8aa7';
+String _$resendOtpHash() => r'07d24f18059bec68142296167b93d85504631e68';
 
 /// See also [ResendOtp].
 @ProviderFor(ResendOtp)
 final resendOtpProvider =
-    AutoDisposeNotifierProvider<ResendOtp, AsyncValue<bool>?>.internal(
+    AutoDisposeNotifierProvider<ResendOtp, AsyncValue<void>?>.internal(
       ResendOtp.new,
       name: r'resendOtpProvider',
       debugGetCreateSourceHash:
@@ -54,6 +54,6 @@ final resendOtpProvider =
       allTransitiveDependencies: null,
     );
 
-typedef _$ResendOtp = AutoDisposeNotifier<AsyncValue<bool>?>;
+typedef _$ResendOtp = AutoDisposeNotifier<AsyncValue<void>?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

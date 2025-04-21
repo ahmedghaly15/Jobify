@@ -31,14 +31,16 @@ class AppStrings {
   static const String warning = 'Warning!';
   static const String success = 'Success!';
   static const String accountCreatedSuccessfully =
-      'Account created successfully. Please login to continue.';
+      'Account created successfully and a verification email has been sent to your email address. Please check your inbox and verify your email to complete the registration process.';
   static const String verifyYourEmail = 'Verify Your Email';
   static const String enterTheSentVerificationCode =
       'Enter the verification code sent to your email';
-  static const String didntReceiveCode = "Didn't receive a code?";
+  static const String otpExpiresIn = "OTP expires in";
   static const String resend = 'Resend';
   static const String verify = 'Verify';
   static const String otpResentSuc =
       'OTP has been resent successfully. Please check your email.';
-  static const String otpVerifiedSuc = 'OTP has been verified successfully.';
+  static const String otpVerifiedSuc =
+      'OTP has been verified successfully. Please login to your account.';
+  static const String invalidOtp = 'Invalid OTP. Please try again.';
 }

@@ -134,15 +134,12 @@ class _LoadingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        // height: 80.h,
-        // width: 80.h,
         padding: EdgeInsets.all(16.h),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(16.r)),
         ),
         child: const AdaptiveCircularProgressIndicator(
-          strokeWidth: 5,
           color: AppColors.primaryColor,
         ),
       ),
