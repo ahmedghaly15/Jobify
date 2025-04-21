@@ -1,36 +1,26 @@
-// import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:email_otp/email_otp.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-// import '../../../../core/models/jobify_user.dart';
-// import '../../../../core/supabase/supabase_request_result.dart';
-// import '../../../../core/utils/constants.dart';
+final otpRemoteDataSourceProvider = Provider<OtpRemoteDataSource>(
+  (ref) => const OtpRemoteDataSource(),
+);
 
-// final otpRemoteDataSourceProvider = Provider<OtpRemoteDataSource>(
-//   (ref) => OtpRemoteDataSource(ref.read(supabaseAuthProvider)),
-// );
+class OtpRemoteDataSource {
+  const OtpRemoteDataSource();
 
-// class OtpRemoteDataSource {
-//   final GoTrueClient _supabaseAuth;
+  Future<bool> sendOtp(String email) async {
+    return await EmailOTP.sendOTP(email: email);
+  }
 
-//   OtpRemoteDataSource(this._supabaseAuth);
+  bool verifyOtp(String otp) {
+    return EmailOTP.verifyOTP(otp: otp);
+  }
 
-//   Future<void> sendOtp(String email) async {
-//     await _supabaseAuth.signInWithOtp(email: email, channel: OtpChannel.sms);
-//   }
-
-//   Future<JobifyUser> verifyOtp(String token) async {
-//     final authResponse = await _supabaseAuth.verifyOTP(
-//       token: token,
-//       type: OtpType.signup,
-//     );
-//     return JobifyUser(
-//       session: authResponse.session,
-//       user: authResponse.user,
-//       name: currentUser?.name,
-//     );
-//   }
-
-//   Future<void> resendOtp(String email) async {
-//     await _supabaseAuth.resend(email: email, type: OtpType.signup);
-//   }
-// }
+  Future<bool> resendOtp(String email) async {
+    final bool isExpired = EmailOTP.isOtpExpired();
+    if (isExpired) {
+      return await EmailOTP.sendOTP(email: email);
+    }
+    return isExpired; // which will be false
+  }
+}

@@ -6,31 +6,29 @@ part of 'otp_verification_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$otpVerificationHash() => r'c250133aca853da8acf028a3cd0050e4bd58119f';
+String _$otpVerificationHash() => r'e156c70f2b1ec2aed86082b1ef2640e1cf7f6faa';
 
 /// See also [OtpVerification].
 @ProviderFor(OtpVerification)
-final otpVerificationProvider = AutoDisposeNotifierProvider<
-  OtpVerification,
-  AsyncValue<JobifyUser?>?
->.internal(
-  OtpVerification.new,
-  name: r'otpVerificationProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$otpVerificationHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+final otpVerificationProvider =
+    AutoDisposeNotifierProvider<OtpVerification, AsyncValue<bool>?>.internal(
+      OtpVerification.new,
+      name: r'otpVerificationProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$otpVerificationHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
-typedef _$OtpVerification = AutoDisposeNotifier<AsyncValue<JobifyUser?>?>;
-String _$sendOtpHash() => r'90e68af1654dfb560394b5166c7099c852cd6bfb';
+typedef _$OtpVerification = AutoDisposeNotifier<AsyncValue<bool>?>;
+String _$sendOtpHash() => r'0c5e5d679751de2d101a22fff3f890b24246208e';
 
 /// See also [SendOtp].
 @ProviderFor(SendOtp)
 final sendOtpProvider =
-    AutoDisposeNotifierProvider<SendOtp, AsyncValue<void>?>.internal(
+    AutoDisposeNotifierProvider<SendOtp, AsyncValue<bool>?>.internal(
       SendOtp.new,
       name: r'sendOtpProvider',
       debugGetCreateSourceHash:
@@ -39,13 +37,13 @@ final sendOtpProvider =
       allTransitiveDependencies: null,
     );
 
-typedef _$SendOtp = AutoDisposeNotifier<AsyncValue<void>?>;
-String _$resendOtpHash() => r'07d24f18059bec68142296167b93d85504631e68';
+typedef _$SendOtp = AutoDisposeNotifier<AsyncValue<bool>?>;
+String _$resendOtpHash() => r'7d45b405e700dbbd86a1a3b181a7cd34355d8aa7';
 
 /// See also [ResendOtp].
 @ProviderFor(ResendOtp)
 final resendOtpProvider =
-    AutoDisposeNotifierProvider<ResendOtp, AsyncValue<void>?>.internal(
+    AutoDisposeNotifierProvider<ResendOtp, AsyncValue<bool>?>.internal(
       ResendOtp.new,
       name: r'resendOtpProvider',
       debugGetCreateSourceHash:
@@ -56,6 +54,6 @@ final resendOtpProvider =
       allTransitiveDependencies: null,
     );
 
-typedef _$ResendOtp = AutoDisposeNotifier<AsyncValue<void>?>;
+typedef _$ResendOtp = AutoDisposeNotifier<AsyncValue<bool>?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

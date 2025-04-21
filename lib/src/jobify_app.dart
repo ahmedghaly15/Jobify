@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../app_router_observer.dart';
 import 'core/router/app_router.dart';
 import 'core/theming/app_themes.dart';
-import 'core/utils/app_strings.dart';
+import 'core/utils/const_strings.dart';
 
 class JobifyApp extends ConsumerWidget {
   const JobifyApp({super.key});
@@ -20,7 +20,7 @@ class JobifyApp extends ConsumerWidget {
       builder:
           (_, __) => MaterialApp.router(
             debugShowCheckedModeBanner: false,
-            title: AppStrings.appTitle,
+            title: ConstStrings.appTitle,
             theme: AppThemes.light,
             routerConfig: ref
                 .read(appRouterProvider)

@@ -2,7 +2,6 @@ class AppStrings {
   AppStrings._();
 
   static const String job = 'Job';
-  static const String appTitle = 'Jobify';
   static const String tracking = 'Tracking';
   static const String app = 'App';
   static const String onboardingDescription =

@@ -1,3 +1,4 @@
+import 'package:email_otp/email_otp.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter/services.dart';
@@ -15,6 +16,14 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // To fix texts being hidden bug in release mode
   await ScreenUtil.ensureScreenSize();
+  EmailOTP.config(
+    appName: ConstStrings.appTitle,
+    otpType: OTPType.numeric,
+    expiry: 30000,
+    emailTheme: EmailTheme.v6,
+    appEmail: ConstStrings.appEmail,
+    otpLength: 6,
+  );
   SystemChrome.setEnabledSystemUIMode(
     SystemUiMode.manual,
     overlays: [SystemUiOverlay.bottom, SystemUiOverlay.top],
