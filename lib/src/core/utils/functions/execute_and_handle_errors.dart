@@ -1,5 +1,7 @@
+import 'package:flutter/material.dart';
+
 import '../../network/internet_checker.dart';
-import '../../supabase/supabase_error_handler.dart';
+import '../../supabase/error_handler.dart';
 import '../../supabase/supabase_request_result.dart';
 import '../app_strings.dart';
 
@@ -12,13 +14,14 @@ Future<SupabaseRequestResult<T>> executeAndHandleErrors<T>(
       final response = await function();
       return SupabaseRequestResult<T>.success(response);
     } catch (error) {
-      return SupabaseRequestResult.failure(
-        SupabaseErrorHandler.handleError(error),
+      debugPrint(
+        '>>>>>>>>> CATCHED IN executeAndHandleErrors: $error <<<<<<<<<<',
       );
+      return SupabaseRequestResult.failure(ErrorHandler.handleError(error));
     }
   } else {
     return SupabaseRequestResult.failure(
-      SupabaseErrorHandler.handleError(AppStrings.noInternetConnection),
+      ErrorHandler.handleError(AppStrings.noInternetConnection),
     );
   }
 }

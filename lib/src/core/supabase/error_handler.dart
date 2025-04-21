@@ -1,18 +1,38 @@
+import 'package:flutter/services.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../utils/app_strings.dart';
+import 'platform_error_code.dart';
+import 'platform_error_message.dart';
 import 'supabase_error_code.dart';
 import 'supabase_error_message.dart';
 import 'supabase_error_model.dart';
 
-class SupabaseErrorHandler {
-  SupabaseErrorHandler._();
+class ErrorHandler {
+  ErrorHandler._();
 
   static SupabaseErrorModel handleError(dynamic error) {
     if (error is AuthException) {
       return _handleAuthErrorFromCode(error.code);
-    } else {
+    } else if (error is String) {
       return SupabaseErrorModel(message: error);
+    } else if (error is PlatformException) {
+      return _handlePlatformErrorFromCode(error.code);
+    } else {
+      return const SupabaseErrorModel(message: AppStrings.defaultError);
+    }
+  }
+
+  static SupabaseErrorModel _handlePlatformErrorFromCode(String? code) {
+    switch (code) {
+      case PlatformErrorCode.signInFailed:
+        return SupabaseErrorModel(
+          message: PlatformErrorMessage.signInFailed,
+          code: code,
+        );
+
+      default:
+        return SupabaseErrorModel(message: AppStrings.defaultError, code: code);
     }
   }
 
