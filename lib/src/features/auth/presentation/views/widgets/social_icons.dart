@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/utils/app_assets.dart';
 import 'facebook_consumer_button.dart';
 import 'google_consumer_button.dart';
-import 'social_icon_widget.dart';
+import 'linked_in_consumer_button.dart';
 
 class SocialIcons extends StatelessWidget {
   const SocialIcons({super.key});
@@ -14,15 +13,10 @@ class SocialIcons extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       spacing: 32.w,
-      children: [
-        const GoogleConsumerButton(),
-        const FacebookConsumerButton(),
-        SocialIconWidget(
-          assetPath: Assets.svgsLinkedin,
-          onPressed: () {
-            // Handle LinkedIn sign-in
-          },
-        ),
+      children: const [
+        GoogleConsumerButton(),
+        FacebookConsumerButton(),
+        LinkedInConsumerButton(),
       ],
     );
   }
