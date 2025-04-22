@@ -5,7 +5,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/models/jobify_user.dart';
 import '../../data/models/auth_request_params.dart';
-import '../../data/repos/register_repo.dart';
+import '../../data/repos/auth_repo.dart';
 import 'form_notifier_providers.dart';
 
 part 'register_providers.g.dart';

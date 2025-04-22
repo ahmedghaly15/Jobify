@@ -41,7 +41,7 @@ class LinkedInAuthDataSource extends SocialAuthDataSource {
   @override
   Future<void> signIn() async {
     await _supabaseAuth.signInWithOAuth(
-      OAuthProvider.linkedin,
+      OAuthProvider.linkedinOidc,
       authScreenLaunchMode: LaunchMode.inAppBrowserView,
     );
   }
