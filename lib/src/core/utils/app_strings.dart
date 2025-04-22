@@ -47,4 +47,9 @@ class AppStrings {
   static const String stats = 'Stats';
   static const String search = 'Search';
   static const String profile = 'Profile';
+  static const String position = 'Position';
+  static const String company = 'Company';
+  static const String location = 'Location';
+  static const String status = 'Status';
+  static const String mode = 'Mode';
 }

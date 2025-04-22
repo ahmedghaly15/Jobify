@@ -1,9 +1,11 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/utils/constants.dart';
+import '../../../../core/utils/app_strings.dart';
+import '../../../../core/widgets/primary_button.dart';
+import 'widgets/add_job_form_card.dart';
 
 @RoutePage()
 class AddJobView extends StatelessWidget {
@@ -11,16 +13,28 @@ class AddJobView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverPadding(
-          padding: EdgeInsets.symmetric(horizontal: 24.w),
-          sliver: const SliverFillRemaining(
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
+      child: CustomScrollView(
+        slivers: [
+          SliverFillRemaining(
             hasScrollBody: false,
-            child: Center(child: Card(child: Column())),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              spacing: 24.h,
+              children: [
+                const Spacer(),
+                const AddJobFormCard(),
+                PrimaryButton(onPressed: () {}, text: AppStrings.addJob)
+                    .animate()
+                    .fadeIn(duration: 500.milliseconds, curve: Curves.easeInOut)
+                    .scale(),
+                const Spacer(),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

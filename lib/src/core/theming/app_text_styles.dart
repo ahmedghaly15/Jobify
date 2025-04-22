@@ -6,6 +6,9 @@ class AppTextStyles {
 
   static TextStyle get font36Bold =>
       TextStyle(fontSize: 36.sp, fontWeight: FontWeight.w700);
+
+  static TextStyle get font36SemiBold =>
+      TextStyle(fontSize: 36.sp, fontWeight: FontWeight.w600);
   static TextStyle get font24Bold =>
       TextStyle(fontSize: 24.sp, fontWeight: FontWeight.w700);
   static TextStyle get font18Bold =>

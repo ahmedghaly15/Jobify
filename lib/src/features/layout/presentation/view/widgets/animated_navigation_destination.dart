@@ -31,9 +31,7 @@ class AnimatedNavigationDestination extends StatelessWidget {
                   shape: BoxShape.circle,
                 ),
                 child: LucideIconWidget(icon!, weight: LucideIconsWeight.w500),
-              ).animate().fadeIn().scale(
-                duration: const Duration(milliseconds: 200),
-              ),
+              ).animate().fadeIn().scale(duration: 200.milliseconds),
 
       label: label,
     );
