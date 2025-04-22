@@ -36,7 +36,7 @@ class LoginConsumerButton extends ConsumerWidget {
           await ref.read(loginProvider.notifier).rememberMe();
           await JobifyUser.secureUser(jobifyUser);
           context.popTop();
-          context.replaceRoute(const HomeRoute());
+          context.replaceRoute(const LayoutRoute());
         },
         error: (error, _) {
           context.popTop();

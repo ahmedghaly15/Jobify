@@ -32,7 +32,7 @@ void listenToSocialAuthProvider(
           user: ref.read(supabaseAuthProvider).currentUser,
         );
         await JobifyUser.secureUser(currentUser!);
-        context.router.replaceAll([const HomeRoute()]);
+        context.router.replaceAll([const LayoutRoute()]);
       },
       error: (error, _) {
         if (error.toString() != SupabaseErrorMessage.noAccessTokenFound &&

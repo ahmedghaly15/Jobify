@@ -11,6 +11,22 @@
 part of 'app_router.dart';
 
 /// generated route for
+/// [AddJobView]
+class AddJobRoute extends PageRouteInfo<void> {
+  const AddJobRoute({List<PageRouteInfo>? children})
+    : super(AddJobRoute.name, initialChildren: children);
+
+  static const String name = 'AddJobRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const AddJobView();
+    },
+  );
+}
+
+/// generated route for
 /// [AuthView]
 class AuthRoute extends PageRouteInfo<void> {
   const AuthRoute({List<PageRouteInfo>? children})
@@ -27,17 +43,17 @@ class AuthRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [HomeView]
-class HomeRoute extends PageRouteInfo<void> {
-  const HomeRoute({List<PageRouteInfo>? children})
-    : super(HomeRoute.name, initialChildren: children);
+/// [LayoutView]
+class LayoutRoute extends PageRouteInfo<void> {
+  const LayoutRoute({List<PageRouteInfo>? children})
+    : super(LayoutRoute.name, initialChildren: children);
 
-  static const String name = 'HomeRoute';
+  static const String name = 'LayoutRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const HomeView();
+      return const LayoutView();
     },
   );
 }
@@ -123,6 +139,22 @@ class RegisterRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const RegisterView();
+    },
+  );
+}
+
+/// generated route for
+/// [StatsView]
+class StatsRoute extends PageRouteInfo<void> {
+  const StatsRoute({List<PageRouteInfo>? children})
+    : super(StatsRoute.name, initialChildren: children);
+
+  static const String name = 'StatsRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const StatsView();
     },
   );
 }
