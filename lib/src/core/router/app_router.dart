@@ -8,6 +8,8 @@ import '../../features/auth/presentation/views/register_view.dart';
 import '../../features/add_job/presentation/view/add_job_view.dart';
 import '../../features/layout/presentation/view/layout_view.dart';
 import '../../features/onboarding/presentation/view/onboarding_view.dart';
+import '../../features/profile/presentation/view/profile_view.dart';
+import '../../features/search/presentation/view/search_view.dart';
 import '../../features/stats/presentation/view/stats_view.dart';
 import '../utils/constants.dart';
 

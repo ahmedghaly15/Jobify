@@ -45,4 +45,6 @@ class AppStrings {
   static const String invalidOtp = 'Invalid OTP. Please try again.';
   static const String addJob = 'Add Job';
   static const String stats = 'Stats';
+  static const String search = 'Search';
+  static const String profile = 'Profile';
 }

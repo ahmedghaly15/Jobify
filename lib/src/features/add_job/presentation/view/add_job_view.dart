@@ -1,5 +1,9 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../core/utils/constants.dart';
 
 @RoutePage()
 class AddJobView extends StatelessWidget {
@@ -7,13 +11,16 @@ class AddJobView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text(
-          'Add Job View',
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+    return CustomScrollView(
+      slivers: [
+        SliverPadding(
+          padding: EdgeInsets.symmetric(horizontal: 24.w),
+          sliver: const SliverFillRemaining(
+            hasScrollBody: false,
+            child: Center(child: Card(child: Column())),
+          ),
         ),
-      ),
+      ],
     );
   }
 }

@@ -51,19 +51,10 @@ class AppThemes {
       labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
       iconTheme: WidgetStateProperty.resolveWith<IconThemeData>((states) {
         if (states.contains(WidgetState.selected)) {
-          return IconThemeData(color: AppColors.primaryColor, size: 24.h);
+          return IconThemeData(color: Colors.white, size: 24.h);
         }
-        return IconThemeData(
-          color: AppColors.primaryColor.withAlpha(179),
-          size: 24.h,
-        );
+        return IconThemeData(color: AppColors.primaryColor, size: 24.h);
       }),
-    ),
-    floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: AppColors.primaryColor,
-      foregroundColor: Colors.white,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(27.r)),
-      iconSize: 32.h,
     ),
   );
 }

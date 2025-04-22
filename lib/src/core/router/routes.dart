@@ -16,7 +16,9 @@ List<AutoRoute> appRoutes = [
     page: LayoutRoute.page,
     children: [
       _buildCustomRoute(page: AddJobRoute.page),
+      _buildCustomRoute(page: SearchRoute.page),
       _buildCustomRoute(page: StatsRoute.page),
+      _buildCustomRoute(page: ProfileRoute.page),
     ],
   ),
 ];

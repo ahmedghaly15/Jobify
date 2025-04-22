@@ -128,6 +128,22 @@ class OtpVerificationRouteArgs {
 }
 
 /// generated route for
+/// [ProfileView]
+class ProfileRoute extends PageRouteInfo<void> {
+  const ProfileRoute({List<PageRouteInfo>? children})
+    : super(ProfileRoute.name, initialChildren: children);
+
+  static const String name = 'ProfileRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ProfileView();
+    },
+  );
+}
+
+/// generated route for
 /// [RegisterView]
 class RegisterRoute extends PageRouteInfo<void> {
   const RegisterRoute({List<PageRouteInfo>? children})
@@ -139,6 +155,22 @@ class RegisterRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const RegisterView();
+    },
+  );
+}
+
+/// generated route for
+/// [SearchView]
+class SearchRoute extends PageRouteInfo<void> {
+  const SearchRoute({List<PageRouteInfo>? children})
+    : super(SearchRoute.name, initialChildren: children);
+
+  static const String name = 'SearchRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const SearchView();
     },
   );
 }
