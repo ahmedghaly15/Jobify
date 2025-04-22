@@ -12,10 +12,8 @@ class LinkedInConsumerButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     listenToSocialAuthProvider(ref, context, linkedInAuthProvider);
-
     return SocialIconWidget(
       assetPath: Assets.svgsLinkedin,
-
       onPressed: () => ref.read(linkedInAuthProvider.notifier).signIn(),
     );
   }

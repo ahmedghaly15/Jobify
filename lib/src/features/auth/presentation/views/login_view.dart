@@ -4,10 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/router/app_router.dart';
 import '../../../../core/utils/app_strings.dart';
-import '../../../../core/widgets/primary_button.dart';
 import 'widgets/auth_sub_title.dart';
 import 'widgets/auth_title.dart';
 import 'widgets/have_acc_questions.dart';
+import 'widgets/login_consumer_button.dart';
 import 'widgets/login_form.dart';
 import 'widgets/or_continue_with.dart';
 import 'widgets/remember_me_and_forgot_pass.dart';
@@ -42,9 +42,7 @@ class LoginView extends StatelessWidget {
                 child: const RememberMeAndForgotPass(),
               ),
             ),
-            SliverToBoxAdapter(
-              child: PrimaryButton(onPressed: () {}, text: AppStrings.signIn),
-            ),
+            const SliverToBoxAdapter(child: LoginConsumerButton()),
             SliverToBoxAdapter(
               child: Container(
                 margin: EdgeInsets.only(top: 46.h, bottom: 32.h),

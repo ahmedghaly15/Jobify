@@ -13,8 +13,8 @@ class LoginForm extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final autovalidateMode = ref.watch(loginAutovalidateModeProvider);
-    final formKey = ref.read(loginFormKeyProvider);
-    final emailController = ref.read(loginEmailControllerProvider);
+    final formKey = ref.watch(loginFormKeyProvider);
+    final emailController = ref.watch(loginEmailControllerProvider);
     final passFocusNode = ref.read(loginPassFocusNodeProvider);
     return Form(
       key: formKey,
@@ -40,7 +40,7 @@ class _PassFieldConsumer extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final obscureText = ref.watch(loginPassObscureTextProvider);
-    final passController = ref.read(loginPassControllerProvider);
+    final passController = ref.watch(loginPassControllerProvider);
     final passFocusNode = ref.read(loginPassFocusNodeProvider);
     return PasswordTextFormField(
       passController: passController,

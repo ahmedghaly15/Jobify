@@ -19,9 +19,8 @@ class RegisterButtonConsumer extends ConsumerWidget {
     _sendOtpProviderListener(ref, context);
     _registerProviderListener(ref, context);
     return PrimaryButton(
-      onPressed: () {
-        ref.read(registerProvider.notifier).validateFormAndRegister();
-      },
+      onPressed:
+          () => ref.read(registerProvider.notifier).validateFormAndRegister(),
       text: AppStrings.signUp,
     );
   }
