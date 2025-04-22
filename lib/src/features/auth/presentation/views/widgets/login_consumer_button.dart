@@ -15,6 +15,16 @@ class LoginConsumerButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    _listener(ref, context);
+    return PrimaryButton(
+      onPressed: () {
+        ref.read(loginProvider.notifier).validateFormAndLogin();
+      },
+      text: AppStrings.signIn,
+    );
+  }
+
+  void _listener(WidgetRef ref, BuildContext context) {
     ref.listen(loginProvider, (_, current) {
       current?.whenOrNull(
         loading: () {
@@ -36,9 +46,5 @@ class LoginConsumerButton extends ConsumerWidget {
         },
       );
     });
-    return PrimaryButton(
-      onPressed: () => ref.read(loginProvider.notifier).validateFormAndLogin(),
-      text: AppStrings.signIn,
-    );
   }
 }

@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jobify/src/core/router/app_router.dart';
 
 import '../../helpers/extensions.dart';
+import '../../supabase/supabase_error_message.dart';
 
 /// Listens to the given [provider] and when the [AsyncValue] is in either
 /// [AsyncValue.data] or [AsyncValue.error] state, takes the following actions:
@@ -26,11 +27,15 @@ void listenToSocialAuthProvider(
         }
         context.router.replaceAll([const HomeRoute()]);
       },
-      error:
-          (error, _) => context.showAnimatedDialog(
+      error: (error, _) {
+        if (error.toString() != SupabaseErrorMessage.noAccessTokenFound &&
+            error.toString() != SupabaseErrorMessage.noIdTokenFound) {
+          context.showAnimatedDialog(
             state: CustomDialogStates.error,
             message: error.toString(),
-          ),
+          );
+        }
+      },
     );
   });
 }

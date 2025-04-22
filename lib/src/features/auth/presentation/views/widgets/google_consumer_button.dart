@@ -6,6 +6,7 @@ import '../../../../../core/theming/app_colors.dart';
 import '../../../../../core/utils/app_assets.dart';
 import '../../../../../core/utils/functions/listen_to_social_auth_provider.dart';
 import '../../../../../core/widgets/adaptive_circular_progress_indicator.dart';
+import '../../../data/repos/social_auth_repo.dart';
 import '../../providers/social_auth_providers.dart';
 import 'social_icon_widget.dart';
 
@@ -17,10 +18,10 @@ class GoogleConsumerButton extends ConsumerWidget {
     listenToSocialAuthProvider(
       ref,
       context,
-      googleAuthProvider,
+      socialOAuthProvider(googleAuthRepoProvider),
       shouldAwaitBeforeNavigation: false,
     );
-    final googleAuth = ref.watch(googleAuthProvider);
+    final googleAuth = ref.watch(socialOAuthProvider(googleAuthRepoProvider));
     return SocialIconWidget(
       assetPath: Assets.svgsGoogle,
       icon: googleAuth?.whenOrNull(
@@ -33,7 +34,9 @@ class GoogleConsumerButton extends ConsumerWidget {
               ),
             ),
       ),
-      onPressed: () => ref.read(googleAuthProvider.notifier).signIn(),
+      onPressed: () {
+        ref.read(socialOAuthProvider(googleAuthRepoProvider).notifier).signIn();
+      },
     );
   }
 }

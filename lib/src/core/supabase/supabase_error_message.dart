@@ -37,4 +37,6 @@ class SupabaseErrorMessage {
   static const String userAlreadyExists = 'This user already exists.';
   static const String userNotFound = 'User not found.';
   static const String weakPassword = 'The password is too weak.';
+  static const String noAccessTokenFound = 'No Access Token found.';
+  static const String noIdTokenFound = 'No ID Token found.';
 }

@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../../../../core/supabase/supabase_error_message.dart';
 import '../../../../core/supabase/supabase_request_result.dart';
 import '../../../../core/utils/const_strings.dart';
 
@@ -69,15 +70,15 @@ class GoogleAuthDataSource extends SocialAuthDataSource {
     );
 
     final googleUser = await googleSignIn.signIn();
-    final googleAuth = await googleUser!.authentication;
-    final accessToken = googleAuth.accessToken;
-    final idToken = googleAuth.idToken;
+    final googleAuth = await googleUser?.authentication;
+    final accessToken = googleAuth?.accessToken;
+    final idToken = googleAuth?.idToken;
 
     if (accessToken == null) {
-      throw 'No Access Token found.';
+      throw SupabaseErrorMessage.noAccessTokenFound;
     }
     if (idToken == null) {
-      throw 'No ID Token found.';
+      throw SupabaseErrorMessage.noIdTokenFound;
     }
     await _supabaseAuth.signInWithIdToken(
       provider: OAuthProvider.google,
