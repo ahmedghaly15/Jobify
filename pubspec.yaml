@@ -44,6 +44,8 @@ dependencies:
   email_otp: ^3.0.2
   # For google sign in
   google_sign_in: ^6.3.0
+  # Contains beautiful icons for Flutter
+  lucide_icons_flutter: ^2.0.6
 
 dev_dependencies:
   flutter_test:

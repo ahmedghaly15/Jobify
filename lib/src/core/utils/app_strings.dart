@@ -43,4 +43,6 @@ class AppStrings {
   static const String otpVerifiedSuc =
       'OTP has been verified successfully. Please login to your account.';
   static const String invalidOtp = 'Invalid OTP. Please try again.';
+  static const String addJob = 'Add Job';
+  static const String stats = 'Stats';
 }

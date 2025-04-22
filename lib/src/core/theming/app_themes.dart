@@ -45,5 +45,25 @@ class AppThemes {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.r)),
       side: BorderSide(color: AppColors.color757575, width: 2.w),
     ),
+    navigationBarTheme: NavigationBarThemeData(
+      backgroundColor: AppColors.lightModeColor,
+      indicatorColor: Colors.transparent,
+      labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+      iconTheme: WidgetStateProperty.resolveWith<IconThemeData>((states) {
+        if (states.contains(WidgetState.selected)) {
+          return IconThemeData(color: AppColors.primaryColor, size: 24.h);
+        }
+        return IconThemeData(
+          color: AppColors.primaryColor.withAlpha(179),
+          size: 24.h,
+        );
+      }),
+    ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: AppColors.primaryColor,
+      foregroundColor: Colors.white,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(27.r)),
+      iconSize: 32.h,
+    ),
   );
 }
