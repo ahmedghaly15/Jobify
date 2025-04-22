@@ -89,6 +89,13 @@ class CacheHelper {
     return await flutterSecureStorage.read(key: key) ?? '';
   }
 
+  /// Removes a value from FlutterSecureStorage with given [key].
+  static Future<void> removeSecuredData(String key) async {
+    debugPrint('FlutterSecureStorage : data with key : $key has been removed');
+    const flutterSecureStorage = FlutterSecureStorage();
+    return await flutterSecureStorage.delete(key: key);
+  }
+
   /// Removes all keys and values in the FlutterSecureStorage
   static Future<void> clearAllSecuredData() async {
     debugPrint('FlutterSecureStorage : all data has been cleared');
