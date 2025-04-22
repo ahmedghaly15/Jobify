@@ -8,6 +8,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'app_provider_observer.dart';
 import 'src/core/utils/const_strings.dart';
+import 'src/core/utils/functions/check_if_is_user_logged_in.dart';
 import 'src/core/utils/functions/check_if_onboarding_is_visited.dart';
 import 'src/jobify_app.dart';
 
@@ -37,6 +38,7 @@ void main() async {
     anonKey: dotenv.env[ConstStrings.supabaseAnonKey]!,
   );
   await checkIfOnboardingIsVisited();
+  await checkIfIsUserLoggedIn();
   runApp(
     ProviderScope(observers: [AppProviderObserver()], child: const JobifyApp()),
   );
