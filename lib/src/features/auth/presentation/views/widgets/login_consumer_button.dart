@@ -33,6 +33,7 @@ class LoginConsumerButton extends ConsumerWidget {
         },
         data: (jobifyUser) async {
           currentUser = jobifyUser;
+          await ref.read(loginProvider.notifier).rememberMe();
           await JobifyUser.secureUser(jobifyUser);
           context.popTop();
           context.replaceRoute(const HomeRoute());

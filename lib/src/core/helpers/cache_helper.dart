@@ -85,7 +85,7 @@ class CacheHelper {
   /// Gets an String value from FlutterSecureStorage with given [key].
   static Future<String> getSecuredString(String key) async {
     const flutterSecureStorage = FlutterSecureStorage();
-    debugPrint('FlutterSecureStorage : getSecuredString with key :');
+    debugPrint('FlutterSecureStorage : getSecuredString with $key :');
     return await flutterSecureStorage.read(key: key) ?? '';
   }
 
