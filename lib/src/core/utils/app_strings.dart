@@ -52,4 +52,5 @@ class AppStrings {
   static const String location = 'Location';
   static const String status = 'Status';
   static const String mode = 'Mode';
+  static const String jobAddedSuccessfully = 'Job added successfully';
 }

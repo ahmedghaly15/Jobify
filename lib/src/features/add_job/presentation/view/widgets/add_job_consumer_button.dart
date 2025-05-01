@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jobify/src/core/helpers/extensions.dart';
 
 import '../../../../../core/utils/app_strings.dart';
 import '../../../../../core/widgets/adaptive_circular_progress_indicator.dart';
@@ -12,6 +13,7 @@ class AddJobConsumerButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final addJobResult = ref.watch(addJobProvider);
+    _listener(ref, context);
     return PrimaryButton(
       onPressed: () {
         ref.read(addJobProvider.notifier).validateAndAddJob();
@@ -21,5 +23,22 @@ class AddJobConsumerButton extends ConsumerWidget {
         loading: () => const AdaptiveCircularProgressIndicator(),
       ),
     );
+  }
+
+  void _listener(WidgetRef ref, BuildContext context) {
+    ref.listen(addJobProvider, (_, current) {
+      current?.whenOrNull(
+        data:
+            (_) => context.showAnimatedDialog(
+              state: CustomDialogStates.success,
+              message: AppStrings.jobAddedSuccessfully,
+            ),
+        error:
+            (error, _) => context.showAnimatedDialog(
+              state: CustomDialogStates.error,
+              message: error.toString(),
+            ),
+      );
+    });
   }
 }
