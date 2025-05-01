@@ -50,4 +50,11 @@ class FieldValidator {
     }
     return null;
   }
+
+  static String? validatingEmptyField(String? value) {
+    if (value == null || value.isEmpty) {
+      return "This field can't be blank!";
+    }
+    return null;
+  }
 }
