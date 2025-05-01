@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  # A flutter plugin for adapting screen and font size.Guaranteed to look good on different models  
+  # A flutter plugin for adapting screen and font size.Guaranteed to look good on different models
   flutter_screenutil: ^5.9.3
   # Declarative routing solution, where everything needed for navigation is automatically generated
   auto_route: ^10.0.1
@@ -20,7 +20,7 @@ dependencies:
   # Code generator (mainly used with Bloc)
   freezed_annotation: ^2.4.4
   # For caching secured data
-  flutter_secure_storage: ^9.2.4 
+  flutter_secure_storage: ^9.2.4
   # Prints beautiful logs
   logger: ^2.5.0
   # State management
@@ -30,11 +30,11 @@ dependencies:
   skeletonizer: ^1.4.3
   # Provides a set of beautiful animations
   flutter_animate: ^4.5.2
-  # SVG rendering library 
+  # SVG rendering library
   flutter_svg: ^2.1.0
   # Flutter integration for Supabase
   supabase_flutter: ^2.8.4
-  # Easily configure global variables using .env 
+  # Easily configure global variables using .env
   flutter_dotenv: ^5.2.1
   # To check your internet connection
   internet_connection_checker_plus: ^2.7.1

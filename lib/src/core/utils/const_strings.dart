@@ -8,4 +8,5 @@ class ConstStrings {
   static const String supabaseAnonKey = 'SUPABASE_ANON';
   static const String googleWebClientId = 'GOOGLE_WEB_CLIENT_ID';
   static const String googleIosClientId = 'GOOGLE_IOS_CLIENT_ID';
+  static const String jobsTable = 'jobs';
 }
