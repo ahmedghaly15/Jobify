@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jobify/src/core/helpers/extensions.dart';
 
 import '../../../../../core/router/app_router.dart';
@@ -28,10 +27,7 @@ class VerifyOtpConsumerButton extends ConsumerWidget {
               },
       child: verifyOtpResult?.whenOrNull(
         loading:
-            () => SizedBox.square(
-              dimension: 24.h,
-              child: const AdaptiveCircularProgressIndicator(),
-            ),
+            () => const AdaptiveCircularProgressIndicator(),
       ),
     );
   }

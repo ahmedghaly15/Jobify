@@ -15,11 +15,14 @@ class AdaptiveCircularProgressIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CircularProgressIndicator.adaptive(
-      valueColor: AlwaysStoppedAnimation<Color>(color),
-      strokeCap: StrokeCap.butt,
-      strokeWidth: strokeWidth.w,
-      backgroundColor: backgroundColor,
+    return SizedBox.square(
+      dimension: 24.h,
+      child: CircularProgressIndicator.adaptive(
+        valueColor: AlwaysStoppedAnimation<Color>(color),
+        strokeCap: StrokeCap.butt,
+        strokeWidth: strokeWidth.w,
+        backgroundColor: backgroundColor,
+      ),
     );
   }
 }
