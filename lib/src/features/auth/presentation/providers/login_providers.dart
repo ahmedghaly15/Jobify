@@ -64,7 +64,7 @@ class Login extends _$Login {
             password: ref.read(loginPassControllerProvider).text,
           ),
         );
-    state = result.when(
+    result.when(
       success: (jobifyUser) => state = AsyncValue.data(jobifyUser),
       failure:
           (error) =>
