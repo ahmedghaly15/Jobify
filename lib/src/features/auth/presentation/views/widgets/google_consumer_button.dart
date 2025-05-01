@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/theming/app_colors.dart';
 import '../../../../../core/utils/app_assets.dart';
@@ -26,12 +25,9 @@ class GoogleConsumerButton extends ConsumerWidget {
       assetPath: Assets.svgsGoogle,
       icon: googleAuth?.whenOrNull(
         loading:
-            () => SizedBox.square(
-              dimension: 24.h,
-              child: const AdaptiveCircularProgressIndicator(
-                color: AppColors.primaryColor,
-                strokeWidth: 3,
-              ),
+            () => const AdaptiveCircularProgressIndicator(
+              color: AppColors.primaryColor,
+              strokeWidth: 3,
             ),
       ),
       onPressed: () {

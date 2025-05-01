@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/utils/app_strings.dart';
-import '../../../../core/widgets/primary_button.dart';
+import 'widgets/add_job_consumer_button.dart';
 import 'widgets/add_job_form_card.dart';
 
 @RoutePage()
@@ -25,7 +24,7 @@ class AddJobView extends StatelessWidget {
               children: [
                 const Spacer(),
                 const AddJobFormCard(),
-                PrimaryButton(onPressed: () {}, text: AppStrings.addJob)
+                const AddJobConsumerButton()
                     .animate()
                     .fadeIn(duration: 500.milliseconds, curve: Curves.easeInOut)
                     .scale(),
