@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../theming/app_colors.dart';
 import '../theming/app_text_styles.dart';
+import '../utils/app_utils.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
@@ -96,56 +96,21 @@ class CustomTextFormField extends StatelessWidget {
       autofillHints: autofillHints,
       onFieldSubmitted: onSubmit,
       onChanged: onChanged,
-      style: textStyle,
+      style: AppTextStyles.font14Regular,
       maxLines: maxLines,
       minLines: minLines,
       cursorColor: AppColors.primaryColor,
-      decoration: InputDecoration(
-        filled: filled,
-        fillColor: AppColors.textFormFieldFillColor,
-        errorStyle: TextStyle(fontSize: 13.sp, color: Colors.red),
+decoration: AppUtils.decorateTextField(
         hintText: hintText,
-        hintStyle:
-            hintStyle ?? textStyle.copyWith(color: AppColors.colorC2C2C2),
-        errorMaxLines: null,
-        prefixIcon: prefix,
-        suffixIcon: suffix,
-        labelText: label,
-        labelStyle: Theme.of(context).textTheme.titleSmall,
-        contentPadding: contentPadding ?? contentPad,
-        enabledBorder: enabledBorder ?? underlineInputBorder(),
-        focusedBorder:
-            focusedBorder ??
-            underlineInputBorder(borderColor: AppColors.primaryColor, width: 2),
-        errorBorder:
-            errorBorder ??
-            underlineInputBorder(borderColor: Colors.red, width: 1.3),
-        focusedErrorBorder:
-            focusedErrorBorder ??
-            underlineInputBorder(borderColor: Colors.red, width: 1.3),
-        border: border ?? underlineInputBorder(),
-        disabledBorder: disabledBorder,
+        prefix: prefix,
+        suffix: suffix,
+        label: label,
+        filled: filled,
       ),
       validator: validating,
       onEditingComplete: onEditingComplete,
     );
   }
 
-  static EdgeInsetsGeometry get contentPad =>
-      EdgeInsets.symmetric(horizontal: 20.w, vertical: 17.h);
 
-  static TextStyle get textStyle => AppTextStyles.font14Regular;
-
-  static OutlineInputBorder underlineInputBorder({
-    Color? borderColor,
-    double width = 1,
-  }) {
-    return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(16.r),
-      borderSide: BorderSide(
-        color: borderColor ?? AppColors.colorEDEDED,
-        width: width.w,
-      ),
-    );
-  }
 }
