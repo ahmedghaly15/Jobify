@@ -19,12 +19,6 @@ final companyControllerProvider = Provider.autoDispose<TextEditingController>(
 final locationControllerProvider = Provider.autoDispose<TextEditingController>(
   (ref) => TextEditingController(),
 );
-final statusControllerProvider = Provider.autoDispose<TextEditingController>(
-  (ref) => TextEditingController(),
-);
-final modeControllerProvider = Provider.autoDispose<TextEditingController>(
-  (ref) => TextEditingController(),
-);
 final companyFocusNodeProvider = Provider.autoDispose<FocusNode>(
   (ref) => FocusNode(),
 );
@@ -48,8 +42,9 @@ class AddJob extends _$AddJob {
             position: ref.read(positionControllerProvider).text,
             company: ref.read(companyControllerProvider).text,
             location: ref.read(locationControllerProvider).text,
-            status: ref.read(statusControllerProvider).text,
-            mode: ref.read(modeControllerProvider).text,
+            // TODO: handle this
+            status: 'ref.read(statusControllerProvider).text',
+            mode: 'ref.read(modeControllerProvider).text',
           ),
         );
     result.when(
