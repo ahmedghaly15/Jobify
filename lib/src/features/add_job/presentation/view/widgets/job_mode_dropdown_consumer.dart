@@ -15,6 +15,7 @@ class JobModeDropdownConsumer extends ConsumerWidget {
     return DropdownButtonFormField<String>(
       decoration: AppUtils.decorateTextField(hintText: AppStrings.mode),
       validator: (value) => FieldValidator.validatingEmptyField(value),
+      value: ref.watch(modeProvider),
       items:
           AppConstants.jobMode
               .map((mode) => DropdownMenuItem(value: mode, child: Text(mode)))

@@ -15,6 +15,7 @@ class JobStatusDropdownConsumer extends ConsumerWidget {
     return DropdownButtonFormField<String>(
       decoration: AppUtils.decorateTextField(hintText: AppStrings.status),
       validator: (value) => FieldValidator.validatingEmptyField(value),
+      value: ref.watch(statusProvider),
       items:
           AppConstants.jobStatus
               .map(
