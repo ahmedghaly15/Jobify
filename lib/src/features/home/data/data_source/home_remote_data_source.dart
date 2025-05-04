@@ -15,10 +15,14 @@ class HomeRemoteDataSource {
   HomeRemoteDataSource(this._supabaseClient);
 
   Future<List<Job>> fetchJobs() async {
-    final jsonJobs = await _supabaseClient
+    final data = await _supabaseClient
         .from(ConstStrings.jobsTable)
         .select()
         .eq('user_id', Supabase.instance.client.auth.currentUser!.id);
-    return jsonJobs.map((jsonJob) => Job.fromJson(jsonJob)).toList();
+    if (data.isEmpty || data.first['jobs'] == null) return [];
+    final List<dynamic> jsonJobs = data.first['jobs'];
+    return jsonJobs
+        .map((jsonJob) => Job.fromJson(jsonJob as Map<String, dynamic>))
+        .toList();
   }
 }
