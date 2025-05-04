@@ -6,7 +6,7 @@ part 'job.g.dart';
 class Job {
   final String position, company, location, status, mode;
   @JsonKey(name: 'created_at')
-  final String? createdAt;
+  final String createdAt;
 
   Job({
     required this.position,

@@ -12,7 +12,7 @@ Job _$JobFromJson(Map<String, dynamic> json) => Job(
   location: json['location'] as String,
   status: json['status'] as String,
   mode: json['mode'] as String,
-  createdAt: json['created_at'] as String?,
+  createdAt: json['created_at'] as String,
 );
 
 Map<String, dynamic> _$JobToJson(Job instance) => <String, dynamic>{

@@ -63,4 +63,5 @@ class AppStrings {
   static const String allJobs = 'All Jobs';
   static const String date = 'Date';
   static const String tryAgain = 'Try Again';
+  static const String noJobsFound = 'No jobs found';
 }

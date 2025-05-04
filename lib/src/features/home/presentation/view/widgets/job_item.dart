@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
+import '../../../../../core/models/job.dart';
 import '../../../../../core/utils/app_strings.dart';
 import '../../../../../core/utils/svgs_manager.dart';
 import 'job_detail.dart';
 
 class JobItem extends StatelessWidget {
-  const JobItem({super.key});
+  const JobItem({super.key, this.job});
+
+  final Job? job;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +25,12 @@ class JobItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: SvgPicture.asset(
-                SvgsManager.chooseRandomSvg(),
-                fit: BoxFit.cover,
+              child: Skeleton.leaf(
+                enabled: true,
+                child: SvgPicture.asset(
+                  SvgsManager.chooseRandomSvg(),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             Expanded(
@@ -31,26 +38,29 @@ class JobItem extends StatelessWidget {
                 spacing: 8.h,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   JobDetail(
                     icon: LucideIcons.briefcaseBusiness,
-                    title: AppStrings.company,
+                    title: job?.company ?? AppStrings.company,
                   ),
                   JobDetail(
                     icon: LucideIcons.mapPin,
-                    title: AppStrings.location,
+                    title: job?.location ?? AppStrings.location,
                   ),
-                  JobDetail(icon: LucideIcons.calendar, title: AppStrings.date),
+                  JobDetail(
+                    icon: LucideIcons.calendar,
+                    title: job?.createdAt ?? AppStrings.date,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       JobDetail(
                         icon: LucideIcons.circleCheck,
-                        title: AppStrings.status,
+                        title: job?.status ?? AppStrings.status,
                       ),
                       JobDetail(
                         icon: LucideIcons.circleDot,
-                        title: AppStrings.mode,
+                        title: job?.mode ?? AppStrings.mode,
                       ),
                     ],
                   ),
