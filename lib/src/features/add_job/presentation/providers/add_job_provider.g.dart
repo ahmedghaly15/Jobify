@@ -6,7 +6,7 @@ part of 'add_job_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$addJobHash() => r'dbc5cbab4420398a03bd0e10ed7998c144d5247d';
+String _$addJobHash() => r'd2d21536ee56a20143b67a6b71b3a9140b4cc052';
 
 /// See also [AddJob].
 @ProviderFor(AddJob)

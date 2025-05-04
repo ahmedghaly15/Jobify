@@ -55,6 +55,7 @@ class AddJob extends _$AddJob {
             location: ref.read(locationControllerProvider).text,
             status: ref.read(statusProvider),
             mode: ref.read(modeProvider),
+            createdAt: DateTime.now().toIso8601String(),
           ),
         );
     result.when(

@@ -13,6 +13,7 @@ AddJobRequestBody _$AddJobRequestBodyFromJson(Map<String, dynamic> json) =>
       location: json['location'] as String,
       status: json['status'] as String,
       mode: json['mode'] as String,
+      createdAt: json['created_at'] as String?,
     );
 
 Map<String, dynamic> _$AddJobRequestBodyToJson(AddJobRequestBody instance) =>
@@ -22,4 +23,5 @@ Map<String, dynamic> _$AddJobRequestBodyToJson(AddJobRequestBody instance) =>
       'location': instance.location,
       'status': instance.status,
       'mode': instance.mode,
+      'created_at': instance.createdAt,
     };

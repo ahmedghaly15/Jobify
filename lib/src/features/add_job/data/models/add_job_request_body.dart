@@ -5,6 +5,8 @@ part 'add_job_request_body.g.dart';
 @JsonSerializable()
 class AddJobRequestBody {
   final String position, company, location, status, mode;
+  @JsonKey(name: 'created_at')
+  final String? createdAt;
 
   AddJobRequestBody({
     required this.position,
@@ -12,6 +14,7 @@ class AddJobRequestBody {
     required this.location,
     required this.status,
     required this.mode,
+    required this.createdAt,
   });
 
   factory AddJobRequestBody.fromJson(Map<String, dynamic> json) =>
