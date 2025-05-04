@@ -1,4 +1,5 @@
 import '../models/jobify_user.dart';
+import 'app_assets.dart';
 import 'app_strings.dart';
 
 bool isOnboardingVisited = false;
@@ -19,5 +20,13 @@ class AppConstants {
     AppStrings.partTime,
     AppStrings.freelance,
     AppStrings.internship,
+  ];
+
+  static const List<String> jobSvgs = [
+    Assets.svgsJobOne,
+    Assets.svgsJobTow,
+    Assets.svgsJobThree,
+    Assets.svgsJobFour,
+    Assets.svgsJobFive,
   ];
 }

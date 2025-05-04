@@ -46,7 +46,7 @@ class AppStrings {
   static const String addJob = 'Add Job';
   static const String stats = 'Stats';
   static const String search = 'Search';
-  static const String profile = 'Profile';
+  static const String home = 'Home';
   static const String position = 'Position';
   static const String company = 'Company';
   static const String location = 'Location';
@@ -60,4 +60,6 @@ class AppStrings {
   static const String partTime = 'Part Time';
   static const String freelance = 'Freelance';
   static const String internship = 'Internship';
+  static const String allJobs = 'All Jobs';
+  static const String date = 'Date';
 }

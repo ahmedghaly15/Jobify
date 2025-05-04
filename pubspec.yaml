@@ -46,8 +46,7 @@ dependencies:
   google_sign_in: ^6.3.0
   # Contains beautiful icons for Flutter
   lucide_icons_flutter: ^2.0.6
-  # To load and cache network images
-  cached_network_image: ^3.4.1
+
 
 dev_dependencies:
   flutter_test:

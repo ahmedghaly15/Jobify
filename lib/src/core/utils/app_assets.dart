@@ -46,6 +46,26 @@ class Assets {
   /// assets/svgs/google.svg
   static const String svgsGoogle = "assets/svgs/google.svg";
 
+  /// Assets for svgsJobFive
+  /// assets/svgs/job_five.svg
+  static const String svgsJobFive = "assets/svgs/job_five.svg";
+
+  /// Assets for svgsJobFour
+  /// assets/svgs/job_four.svg
+  static const String svgsJobFour = "assets/svgs/job_four.svg";
+
+  /// Assets for svgsJobOne
+  /// assets/svgs/job_one.svg
+  static const String svgsJobOne = "assets/svgs/job_one.svg";
+
+  /// Assets for svgsJobThree
+  /// assets/svgs/job_three.svg
+  static const String svgsJobThree = "assets/svgs/job_three.svg";
+
+  /// Assets for svgsJobTow
+  /// assets/svgs/job_tow.svg
+  static const String svgsJobTow = "assets/svgs/job_tow.svg";
+
   /// Assets for svgsLinkedin
   /// assets/svgs/linkedin.svg
   static const String svgsLinkedin = "assets/svgs/linkedin.svg";
