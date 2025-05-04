@@ -18,7 +18,7 @@ List<AutoRoute> appRoutes = [
       _buildCustomRoute(page: AddJobRoute.page),
       _buildCustomRoute(page: SearchRoute.page),
       _buildCustomRoute(page: StatsRoute.page),
-      _buildCustomRoute(page: ProfileRoute.page),
+      _buildCustomRoute(page: HomeRoute.page),
     ],
   ),
 ];

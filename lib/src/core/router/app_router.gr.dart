@@ -43,6 +43,22 @@ class AuthRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [HomeView]
+class HomeRoute extends PageRouteInfo<void> {
+  const HomeRoute({List<PageRouteInfo>? children})
+    : super(HomeRoute.name, initialChildren: children);
+
+  static const String name = 'HomeRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const HomeView();
+    },
+  );
+}
+
+/// generated route for
 /// [LayoutView]
 class LayoutRoute extends PageRouteInfo<void> {
   const LayoutRoute({List<PageRouteInfo>? children})
@@ -125,22 +141,6 @@ class OtpVerificationRouteArgs {
   String toString() {
     return 'OtpVerificationRouteArgs{key: $key, email: $email}';
   }
-}
-
-/// generated route for
-/// [ProfileView]
-class ProfileRoute extends PageRouteInfo<void> {
-  const ProfileRoute({List<PageRouteInfo>? children})
-    : super(ProfileRoute.name, initialChildren: children);
-
-  static const String name = 'ProfileRoute';
-
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      return const ProfileView();
-    },
-  );
 }
 
 /// generated route for

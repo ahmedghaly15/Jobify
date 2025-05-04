@@ -32,10 +32,12 @@ final companyFocusNodeProvider = Provider.autoDispose<FocusNode>(
 final locationFocusNodeProvider = Provider.autoDispose<FocusNode>(
   (ref) => FocusNode(),
 );
-final statusProvider = StateProvider<String>(
+final statusProvider = StateProvider.autoDispose<String>(
   (ref) => AppConstants.jobStatus.first,
 );
-final modeProvider = StateProvider<String>((ref) => AppConstants.jobMode.first);
+final modeProvider = StateProvider.autoDispose<String>(
+  (ref) => AppConstants.jobMode.first,
+);
 
 @riverpod
 class AddJob extends _$AddJob {
