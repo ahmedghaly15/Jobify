@@ -62,4 +62,5 @@ class AppStrings {
   static const String internship = 'Internship';
   static const String allJobs = 'All Jobs';
   static const String date = 'Date';
+  static const String tryAgain = 'Try Again';
 }
