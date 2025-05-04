@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jobify/src/core/helpers/extensions.dart';
+import 'package:jobify/src/features/home/presentation/providers/home_provider.dart';
 
 import '../../../../../core/utils/app_strings.dart';
 import '../../../../../core/widgets/adaptive_circular_progress_indicator.dart';
@@ -29,10 +30,14 @@ class AddJobConsumerButton extends ConsumerWidget {
     ref.listen(addJobProvider, (_, current) {
       current?.whenOrNull(
         data:
-            (_) => context.showAnimatedDialog(
+            (_) {
+          context.showAnimatedDialog(
               state: CustomDialogStates.success,
               message: AppStrings.jobAddedSuccessfully,
-            ),
+          );
+          // ignore: unused_result
+          ref.refresh(fetchJobsProvider.future);
+        },
         error:
             (error, _) => context.showAnimatedDialog(
               state: CustomDialogStates.error,
