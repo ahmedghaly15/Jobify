@@ -1,10 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../../../../core/models/job.dart';
 import '../../../../core/supabase/supabase_request_result.dart';
 import '../../../../core/utils/const_strings.dart';
 import '../../../../core/utils/constants.dart';
-import '../models/add_job_request_body.dart';
 
 final addJobRemoteDataSourceProvider =
     Provider.autoDispose<AddJobRemoteDataSource>(
@@ -16,12 +16,12 @@ class AddJobRemoteDataSource {
 
   AddJobRemoteDataSource(this._supabaseClient);
 
-  Future<void> addJob(AddJobRequestBody requestBody) async {
+  Future<void> addJob(Job job) async {
     final results = await _fetchJobs();
     if (results.isEmpty) {
-      await _insertFirstJob(requestBody);
+      await _insertFirstJob(job);
     } else {
-      await _updateJobs(results, requestBody);
+      await _updateJobs(results, job);
     }
   }
 
@@ -34,22 +34,22 @@ class AddJobRemoteDataSource {
 
   Future<void> _updateJobs(
     PostgrestList results,
-    AddJobRequestBody requestBody,
+    Job job,
   ) async {
     final existingJobs = results.first['jobs'] as List<dynamic>? ?? [];
-    existingJobs.add(requestBody.toJson());
+    existingJobs.add(job.toJson());
     await _supabaseClient
         .from(ConstStrings.jobsTable)
         .update({'jobs': existingJobs})
         .eq('user_id', currentUser!.user!.id);
   }
 
-  Future<void> _insertFirstJob(AddJobRequestBody requestBody) async {
+  Future<void> _insertFirstJob(Job job) async {
     await _supabaseClient
         .from(ConstStrings.jobsTable)
         .insert({
           'user_id': currentUser!.user!.id,
-          'jobs': [requestBody.toJson()],
+          'jobs': [job.toJson()],
         })
         .eq('user_id', currentUser!.user!.id);
   }

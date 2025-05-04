@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../../core/models/job.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../auth/presentation/providers/form_notifier_providers.dart';
-import '../../data/models/add_job_request_body.dart';
 import '../../data/repo/add_job_repo.dart';
 
 part 'add_job_provider.g.dart';
@@ -51,7 +51,7 @@ class AddJob extends _$AddJob {
     final result = await ref
         .read(addJobRepoProvider)
         .addJob(
-          AddJobRequestBody(
+          Job(
             position: ref.read(positionControllerProvider).text,
             company: ref.read(companyControllerProvider).text,
             location: ref.read(locationControllerProvider).text,
