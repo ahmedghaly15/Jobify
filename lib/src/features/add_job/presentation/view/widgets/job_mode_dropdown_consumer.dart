@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:jobify/src/core/helpers/extensions.dart';
 
 import '../../../../../core/helpers/field_validator.dart';
 import '../../../../../core/utils/app_strings.dart';
@@ -19,7 +20,10 @@ class JobModeDropdownConsumer extends ConsumerWidget {
       items:
           JobMode.values
               .map(
-                (mode) => DropdownMenuItem(value: mode, child: Text(mode.name)),
+                (mode) => DropdownMenuItem(
+                  value: mode,
+                  child: Text(mode.name.capitalize()),
+                ),
               )
               .toList(),
       onChanged: (selectedItem) {
