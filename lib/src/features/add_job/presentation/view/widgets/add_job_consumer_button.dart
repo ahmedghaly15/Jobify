@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jobify/src/core/helpers/extensions.dart';
-import 'package:jobify/src/features/home/presentation/providers/home_provider.dart';
 
 import '../../../../../core/utils/app_strings.dart';
-import '../../../../../core/utils/constants.dart';
+import '../../../../../core/utils/enums.dart';
 import '../../../../../core/widgets/adaptive_circular_progress_indicator.dart';
 import '../../../../../core/widgets/primary_button.dart';
+import '../../../../home/presentation/providers/home_provider.dart';
 import '../../providers/add_job_provider.dart';
 
 class AddJobConsumerButton extends ConsumerWidget {
@@ -30,8 +30,7 @@ class AddJobConsumerButton extends ConsumerWidget {
   void _listener(WidgetRef ref, BuildContext context) {
     ref.listen(addJobProvider, (_, current) {
       current?.whenOrNull(
-        data:
-            (_) => _onSuccess(context, ref),
+        data: (_) => _onSuccess(context, ref),
         error:
             (error, _) => context.showAnimatedDialog(
               state: CustomDialogStates.error,
@@ -55,7 +54,7 @@ class AddJobConsumerButton extends ConsumerWidget {
     ref.read(positionControllerProvider).clear();
     ref.read(companyControllerProvider).clear();
     ref.read(locationControllerProvider).clear();
-    ref.read(statusProvider.notifier).state = AppConstants.jobStatus.first;
-    ref.read(modeProvider.notifier).state = AppConstants.jobMode.first;
+    ref.read(statusProvider.notifier).state = JobStatus.pending;
+    ref.read(modeProvider.notifier).state = JobMode.fullTime;
   }
 }

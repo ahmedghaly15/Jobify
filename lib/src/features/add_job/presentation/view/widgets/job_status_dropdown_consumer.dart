@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../core/helpers/field_validator.dart';
 import '../../../../../core/utils/app_strings.dart';
 import '../../../../../core/utils/app_utils.dart';
-import '../../../../../core/utils/constants.dart';
+import '../../../../../core/utils/enums.dart';
 import '../../providers/add_job_provider.dart';
 
 class JobStatusDropdownConsumer extends ConsumerWidget {
@@ -12,15 +12,15 @@ class JobStatusDropdownConsumer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return DropdownButtonFormField<String>(
+    return DropdownButtonFormField<JobStatus>(
       decoration: AppUtils.decorateTextField(hintText: AppStrings.status),
-      validator: (value) => FieldValidator.validatingEmptyField(value),
+      validator: (value) => FieldValidator.validatingEmptyField(value?.name),
       value: ref.watch(statusProvider),
       items:
-          AppConstants.jobStatus
+          JobStatus.values
               .map(
                 (status) =>
-                    DropdownMenuItem(value: status, child: Text(status)),
+                    DropdownMenuItem(value: status, child: Text(status.name)),
               )
               .toList(),
       onChanged: (selectedItem) {

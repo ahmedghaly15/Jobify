@@ -56,11 +56,11 @@ class JobItem extends StatelessWidget {
                     children: [
                       JobDetail(
                         icon: LucideIcons.circleCheck,
-                        title: job?.status ?? AppStrings.status,
+                        title: job?.status?.name ?? AppStrings.status,
                       ),
                       JobDetail(
                         icon: LucideIcons.circleDot,
-                        title: job?.mode ?? AppStrings.mode,
+                        title: job?.mode?.name ?? AppStrings.mode,
                       ),
                     ],
                   ),
