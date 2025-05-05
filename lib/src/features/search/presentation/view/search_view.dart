@@ -1,5 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'widgets/custom_search_sliver_app_bar.dart';
 
 @RoutePage()
 class SearchView extends StatelessWidget {
@@ -7,8 +10,14 @@ class SearchView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text('Search View', style: TextStyle(fontSize: 24))),
+    return Scaffold(
+      body: Padding(
+        padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
+        child: const CustomScrollView(
+          physics: BouncingScrollPhysics(),
+          slivers: [CustomSearchSliverAppBar()],
+        ),
+      ),
     );
   }
 }
