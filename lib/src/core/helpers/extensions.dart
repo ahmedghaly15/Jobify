@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../theming/app_colors.dart';
 import '../theming/app_text_styles.dart';
 import '../utils/app_strings.dart';
+import '../utils/enums.dart';
 import '../widgets/adaptive_circular_progress_indicator.dart';
 import '../widgets/my_sized_box.dart';
 
@@ -149,4 +150,20 @@ class _LoadingWidget extends StatelessWidget {
 
 extension PopTopMostRoute on BuildContext {
   void popTop() => Navigator.of(this, rootNavigator: true).pop();
+}
+
+
+extension SearchFilterExtension on SearchFilter {
+  JobStatus? toJobStatus() {
+    switch (this) {
+      case SearchFilter.pending:
+        return JobStatus.pending;
+      case SearchFilter.interview:
+        return JobStatus.interview;
+      case SearchFilter.declined:
+        return JobStatus.declined;
+      case SearchFilter.all:
+        return null;
+    }
+  }
 }
