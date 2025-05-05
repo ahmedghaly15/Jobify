@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/models/job.dart';
-import '../../../../core/utils/constants.dart';
+import '../../../../core/utils/enums.dart';
 import '../../../auth/presentation/providers/form_notifier_providers.dart';
 import '../../data/repo/add_job_repo.dart';
 
@@ -32,11 +32,11 @@ final companyFocusNodeProvider = Provider.autoDispose<FocusNode>(
 final locationFocusNodeProvider = Provider.autoDispose<FocusNode>(
   (ref) => FocusNode(),
 );
-final statusProvider = StateProvider.autoDispose<String>(
-  (ref) => AppConstants.jobStatus.first,
+final statusProvider = StateProvider.autoDispose<JobStatus>(
+  (ref) => JobStatus.pending,
 );
-final modeProvider = StateProvider.autoDispose<String>(
-  (ref) => AppConstants.jobMode.first,
+final modeProvider = StateProvider.autoDispose<JobMode>(
+  (ref) => JobMode.fullTime,
 );
 
 @riverpod

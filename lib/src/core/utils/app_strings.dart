@@ -53,13 +53,6 @@ class AppStrings {
   static const String status = 'Status';
   static const String mode = 'Mode';
   static const String jobAddedSuccessfully = 'Job added successfully';
-  static const String pending = 'Pending';
-  static const String interview = 'Interview';
-  static const String declined = 'Declined';
-  static const String fullTime = 'Full Time';
-  static const String partTime = 'Part Time';
-  static const String freelance = 'Freelance';
-  static const String internship = 'Internship';
   static const String allJobs = 'All Jobs';
   static const String date = 'Date';
   static const String tryAgain = 'Try Again';
