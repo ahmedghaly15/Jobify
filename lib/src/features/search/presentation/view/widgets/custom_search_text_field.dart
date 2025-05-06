@@ -7,8 +7,8 @@ import '../../../../../core/utils/app_strings.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 import '../../providers/search_providers.dart';
 
-class CustomSearchController extends ConsumerWidget {
-  const CustomSearchController({super.key});
+class CustomSearchTextField extends ConsumerWidget {
+  const CustomSearchTextField({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

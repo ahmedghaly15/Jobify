@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jobify/src/core/helpers/extensions.dart';
 
+import '../../../../../core/models/job.dart';
 import '../../../../../core/utils/app_strings.dart';
-import '../../../../../core/utils/enums.dart';
 import '../../../../../core/widgets/adaptive_circular_progress_indicator.dart';
 import '../../../../../core/widgets/primary_button.dart';
 import '../../../../home/presentation/providers/home_provider.dart';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:jobify/src/core/helpers/extensions.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -56,11 +57,11 @@ class JobItem extends StatelessWidget {
                     children: [
                       JobDetail(
                         icon: LucideIcons.circleCheck,
-                        title: job?.status?.name ?? AppStrings.status,
+                        title: job?.status?.enumName ?? AppStrings.status,
                       ),
                       JobDetail(
                         icon: LucideIcons.circleDot,
-                        title: job?.mode?.name ?? AppStrings.mode,
+                        title: job?.mode?.enumName ?? AppStrings.mode,
                       ),
                     ],
                   ),

@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jobify/src/core/helpers/extensions.dart';
 
 import '../../../../../core/helpers/field_validator.dart';
+import '../../../../../core/models/job.dart';
 import '../../../../../core/utils/app_strings.dart';
 import '../../../../../core/utils/app_utils.dart';
-import '../../../../../core/utils/enums.dart';
 import '../../providers/add_job_provider.dart';
 
 class JobStatusDropdownConsumer extends ConsumerWidget {

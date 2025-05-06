@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'custom_search_controller.dart';
+import 'custom_search_text_field.dart';
 import 'search_filter_dropdown_consumer.dart';
 
 class CustomSearchSliverAppBar extends StatelessWidget {
@@ -15,7 +15,7 @@ class CustomSearchSliverAppBar extends StatelessWidget {
         spacing: 16.w,
         mainAxisAlignment: MainAxisAlignment.center,
         children: const [
-          Expanded(child: CustomSearchController(),
+          Expanded(child: CustomSearchTextField(),
           ),
           SearchFilterDropdownConsumer(),
         ],
