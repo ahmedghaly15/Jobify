@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../core/widgets/custom_error_widget.dart';
-import '../../providers/home_provider.dart';
-import 'jobs_empty_sliver.dart';
-import 'jobs_loading_sliver.dart';
-import 'jobs_sliver_grid.dart';
+import '../../../../home/presentation/providers/home_provider.dart';
+import '../../../../home/presentation/view/widgets/jobs_loading_sliver.dart';
+import '../../../../home/presentation/view/widgets/jobs_sliver_grid.dart';
+import '../../providers/search_providers.dart';
 
-class JobsSliverGridConsumer extends ConsumerWidget {
-  const JobsSliverGridConsumer({super.key});
+class SearchJobsSliverGridConsumer extends ConsumerWidget {
+  const SearchJobsSliverGridConsumer({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final asyncJobs = ref.watch(fetchJobsProvider);
-    return asyncJobs.when(
+    final filteredJobs = ref.watch(filteredSearchProvider);
+    return filteredJobs.when(
       data:
           (jobs) =>
               jobs.isEmpty
-                  ? const JobsEmptySliver()
+                  ? const SizedBox.shrink()
                   : JobsSliverGrid(jobs: jobs),
       error:
           (error, _) => SliverFillRemaining(
