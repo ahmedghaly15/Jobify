@@ -1,7 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../utils/enums.dart';
-
 part 'job.g.dart';
 
 
@@ -24,4 +22,26 @@ class Job {
 
   factory Job.fromJson(Map<String, dynamic> json) => _$JobFromJson(json);
   Map<String, dynamic> toJson() => _$JobToJson(this);
+}
+
+@JsonEnum()
+enum JobStatus {
+  @JsonValue('Pending')
+  pending,
+  @JsonValue('Interview')
+  interview,
+  @JsonValue('Declined')
+  declined,
+}
+
+@JsonEnum()
+enum JobMode {
+  @JsonValue('Full Time')
+  fullTime,
+  @JsonValue('Part Time')
+  partTime,
+  @JsonValue('Freelance')
+  freelance,
+  @JsonValue('Internship')
+  internship,
 }

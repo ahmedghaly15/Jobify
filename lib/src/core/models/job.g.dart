@@ -25,14 +25,14 @@ Map<String, dynamic> _$JobToJson(Job instance) => <String, dynamic>{
 };
 
 const _$JobStatusEnumMap = {
-  JobStatus.pending: 'pending',
-  JobStatus.interview: 'interview',
-  JobStatus.declined: 'declined',
+  JobStatus.pending: 'Pending',
+  JobStatus.interview: 'Interview',
+  JobStatus.declined: 'Declined',
 };
 
 const _$JobModeEnumMap = {
-  JobMode.fullTime: 'fullTime',
-  JobMode.partTime: 'partTime',
-  JobMode.freelance: 'freelance',
-  JobMode.internship: 'internship',
+  JobMode.fullTime: 'Full Time',
+  JobMode.partTime: 'Part Time',
+  JobMode.freelance: 'Freelance',
+  JobMode.internship: 'Internship',
 };
