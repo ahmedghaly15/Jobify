@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../models/job.dart';
 import '../theming/app_colors.dart';
 import '../theming/app_text_styles.dart';
 import '../utils/app_strings.dart';
@@ -173,5 +174,33 @@ extension StringCapitalization on String {
   String capitalize() {
     if (isEmpty) return this;
     return '${this[0].toUpperCase()}${substring(1)}';
+  }
+}
+
+extension EnumName on JobStatus {
+  String get enumName {
+    switch (this) {
+      case JobStatus.pending:
+        return AppStrings.pending;
+      case JobStatus.interview:
+        return AppStrings.interview;
+      case JobStatus.declined:
+        return AppStrings.declined;
+    }
+  }
+}
+
+extension EnumNameMode on JobMode {
+  String get enumName {
+    switch (this) {
+      case JobMode.fullTime:
+        return AppStrings.fullTime;
+      case JobMode.partTime:
+        return AppStrings.partTime;
+      case JobMode.freelance:
+        return AppStrings.freelance;
+      case JobMode.internship:
+        return AppStrings.internship;
+    }
   }
 }
