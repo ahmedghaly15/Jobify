@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/utils/app_assets.dart';
 import '../../../../../core/widgets/custom_error_widget.dart';
 import '../../../../home/presentation/providers/home_provider.dart';
 import '../../../../home/presentation/view/widgets/jobs_loading_sliver.dart';
@@ -17,7 +19,13 @@ class SearchJobsSliverGridConsumer extends ConsumerWidget {
       data:
           (jobs) =>
               jobs.isEmpty
-                  ? const SizedBox.shrink()
+                  ? SliverFillRemaining(
+                    hasScrollBody: false,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.w),
+                      child: Center(child: Image.asset(Assets.imagesNoResult)),
+                    ),
+                  )
                   : JobsSliverGrid(jobs: jobs),
       error:
           (error, _) => SliverFillRemaining(
