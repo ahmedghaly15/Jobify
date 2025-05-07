@@ -8,7 +8,6 @@ JobifyUser? currentUser;
 class AppConstants {
   AppConstants._();
 
-
   static const List<String> jobSvgs = [
     Assets.svgsJobOne,
     Assets.svgsJobTow,

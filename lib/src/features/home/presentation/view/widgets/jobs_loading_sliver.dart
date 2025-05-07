@@ -22,7 +22,7 @@ class JobsLoadingSliver extends StatelessWidget {
         crossAxisCount: 1,
         children: List.generate(
           10,
-          (index) => const JobItem(),
+          (index) => const JobItem(isLoading: true),
           growable: false,
         ),
       ),

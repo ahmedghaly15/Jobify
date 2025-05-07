@@ -11,8 +11,9 @@ import '../../../../../core/utils/svgs_manager.dart';
 import 'job_detail.dart';
 
 class JobItem extends StatelessWidget {
-  const JobItem({super.key, this.job});
+  const JobItem({super.key, this.job, this.isLoading = false});
 
+  final bool isLoading;
   final Job? job;
 
   @override
@@ -26,13 +27,23 @@ class JobItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: Skeleton.leaf(
-                enabled: true,
-                child: SvgPicture.asset(
-                  SvgsManager.chooseRandomSvg(),
-                  fit: BoxFit.cover,
-                ),
-              ),
+              child:
+                  isLoading
+                      ? Skeleton.leaf(
+                        enabled: true,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.red,
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(16.r),
+                            ),
+                          ),
+                        ),
+                      )
+                      : SvgPicture.asset(
+                        SvgsManager.chooseRandomSvg(),
+                        fit: BoxFit.cover,
+                      ),
             ),
             Expanded(
               child: Column(
@@ -40,9 +51,18 @@ class JobItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  JobDetail(
-                    icon: LucideIcons.briefcaseBusiness,
-                    title: job?.company ?? AppStrings.company,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      JobDetail(
+                        icon: LucideIcons.circleUserRound,
+                        title: job?.position ?? AppStrings.position,
+                      ),
+                      JobDetail(
+                        icon: LucideIcons.briefcaseBusiness,
+                        title: job?.company ?? AppStrings.company,
+                      ),
+                    ],
                   ),
                   JobDetail(
                     icon: LucideIcons.mapPin,
@@ -50,7 +70,7 @@ class JobItem extends StatelessWidget {
                   ),
                   JobDetail(
                     icon: LucideIcons.calendar,
-                    title: job?.createdAt ?? AppStrings.date,
+                    title: job?.createdAt?.formatToDate() ?? AppStrings.date,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

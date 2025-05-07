@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/models/job.dart';
-import '../../../../core/utils/enums.dart';
 import '../../../auth/presentation/providers/form_notifier_providers.dart';
 import '../../data/repo/add_job_repo.dart';
 
