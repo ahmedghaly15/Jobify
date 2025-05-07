@@ -11,19 +11,17 @@ class SearchView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
-        child: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
-          slivers: [
-            const CustomSearchSliverAppBar(),
-            SliverPadding(
-              padding: EdgeInsets.symmetric(vertical: 16.h),
-              sliver: const SearchJobsSliverGridConsumer(),
-            ),
-          ],
-        ),
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
+      child: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
+        slivers: [
+          const CustomSearchSliverAppBar(),
+          SliverPadding(
+            padding: EdgeInsets.symmetric(vertical: 16.h),
+            sliver: const SearchJobsSliverGridConsumer(),
+          ),
+        ],
       ),
     );
   }

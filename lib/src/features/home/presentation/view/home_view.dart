@@ -15,22 +15,20 @@ class HomeView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      body: AdaptiveRefreshIndicator(
-        onRefresh: () => ref.refresh(fetchJobsProvider.future),
-        child: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
-          slivers: [
-            const CustomSliverAppBar(
-              titleText: AppStrings.allJobs,
-              hasLeading: false,
-            ),
-            SliverPadding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-              sliver: const JobsSliverGridConsumer(),
-            ),
-          ],
-        ),
+    return AdaptiveRefreshIndicator(
+      onRefresh: () => ref.refresh(fetchJobsProvider.future),
+      child: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
+        slivers: [
+          const CustomSliverAppBar(
+            titleText: AppStrings.allJobs,
+            hasLeading: false,
+          ),
+          SliverPadding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+            sliver: const JobsSliverGridConsumer(),
+          ),
+        ],
       ),
     );
   }
