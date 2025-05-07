@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'widgets/custom_search_sliver_app_bar.dart';
+import 'widgets/search_jobs_sliver_grid_consumer.dart';
 
 @RoutePage()
 class SearchView extends StatelessWidget {
@@ -13,9 +14,15 @@ class SearchView extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
-        child: const CustomScrollView(
-          physics: BouncingScrollPhysics(),
-          slivers: [CustomSearchSliverAppBar()],
+        child: CustomScrollView(
+          physics: const BouncingScrollPhysics(),
+          slivers: [
+            const CustomSearchSliverAppBar(),
+            SliverPadding(
+              padding: EdgeInsets.symmetric(vertical: 16.h),
+              sliver: const SearchJobsSliverGridConsumer(),
+            ),
+          ],
         ),
       ),
     );
