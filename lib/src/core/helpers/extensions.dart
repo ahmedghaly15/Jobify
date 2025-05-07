@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../models/job.dart';
@@ -153,7 +154,6 @@ extension PopTopMostRoute on BuildContext {
   void popTop() => Navigator.of(this, rootNavigator: true).pop();
 }
 
-
 extension SearchFilterExtension on SearchFilter {
   JobStatus? toJobStatus() {
     switch (this) {
@@ -168,7 +168,6 @@ extension SearchFilterExtension on SearchFilter {
     }
   }
 }
-
 
 extension StringCapitalization on String {
   String capitalize() {
@@ -202,5 +201,12 @@ extension EnumNameMode on JobMode {
       case JobMode.internship:
         return AppStrings.internship;
     }
+  }
+}
+
+extension FormatStringDate on String {
+  String formatToDate() {
+    final DateTime parsedDate = DateTime.parse(this);
+    return DateFormat.yMMMMd().format(parsedDate);
   }
 }
