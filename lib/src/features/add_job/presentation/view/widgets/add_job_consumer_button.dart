@@ -48,10 +48,8 @@ class AddJobConsumerButton extends ConsumerWidget {
       state: CustomDialogStates.success,
       message: AppStrings.jobAddedSuccessfully,
     );
-
     await ref.refresh(fetchJobsProvider.future);
     await ref.refresh(statsProvider(ref.watch(statusProvider)).future);
-
     _resetControllers(ref);
   }
 
