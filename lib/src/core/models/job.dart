@@ -2,9 +2,9 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'job.g.dart';
 
-
 @JsonSerializable()
 class Job {
+  final int id;
   final String? position, company, location;
   final JobMode? mode;
   final JobStatus? status;
@@ -12,6 +12,7 @@ class Job {
   final String? createdAt;
 
   Job({
+    required this.id,
     this.position,
     this.company,
     this.location,

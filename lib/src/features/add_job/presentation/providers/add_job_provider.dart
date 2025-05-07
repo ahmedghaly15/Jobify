@@ -1,4 +1,6 @@
 // ignore_for_file: avoid_manual_providers_as_generated_provider_dependency
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -38,6 +40,8 @@ final modeProvider = StateProvider.autoDispose<JobMode>(
   (ref) => JobMode.fullTime,
 );
 
+final randomLibraryProvider = Provider<Random>((ref) => Random());
+
 @riverpod
 class AddJob extends _$AddJob {
   @override
@@ -51,6 +55,7 @@ class AddJob extends _$AddJob {
         .read(addJobRepoProvider)
         .addJob(
           Job(
+            id: ref.read(randomLibraryProvider).nextInt(10000),
             position: ref.read(positionControllerProvider).text,
             company: ref.read(companyControllerProvider).text,
             location: ref.read(locationControllerProvider).text,

@@ -26,10 +26,6 @@ class Assets {
   /// assets/images/dark_splash_android_12.png
   static const String imagesDarkSplashAndroid12 = "assets/images/dark_splash_android_12.png";
 
-  /// Assets for imagesNoResult
-  /// assets/images/no_result.png
-  static const String imagesNoResult = "assets/images/no_result.png";
-
   /// Assets for imagesSplash
   /// assets/images/splash.png
   static const String imagesSplash = "assets/images/splash.png";
