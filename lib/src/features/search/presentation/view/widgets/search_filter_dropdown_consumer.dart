@@ -11,6 +11,7 @@ class SearchFilterDropdownConsumer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    _filterStateProviderListener(ref);
     return DropdownButton<SearchFilter>(
       icon: const LucideIconWidget(LucideIcons.chevronDown),
       underline: const SizedBox.shrink(),
@@ -28,5 +29,14 @@ class SearchFilterDropdownConsumer extends ConsumerWidget {
         ref.read(filterStateProvider.notifier).state = selectedFilterState!;
       },
     );
+  }
+
+  void _filterStateProviderListener(WidgetRef ref) {
+    ref.listen(filterStateProvider, (_, __) {
+      final searchText = ref.watch(searchTextProvider);
+      if (searchText.isNotEmpty) {
+        ref.read(filteredSearchProvider.notifier).fetchFilteredSearch();
+      }
+    });
   }
 }

@@ -13,18 +13,23 @@ class CustomSearchTextField extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final debouncer = ref.watch(debouncerProvider);
-    final searchText = ref.watch(searchTextProvider);
+    _searchTextProviderListener(ref, debouncer);
     return CustomTextFormField(
       hintText: AppStrings.search,
       validating: (value) => FieldValidator.validatingEmptyField(value),
       onChanged: (value) {
         ref.read(searchTextProvider.notifier).state = value;
-        // if (searchText.isNotEmpty) {
-        //   debouncer.run(() {
-        //     ref.read
-        //   });
-        // }
       },
     );
+  }
+
+  void _searchTextProviderListener(WidgetRef ref, Debouncer debouncer) {
+    ref.listen(searchTextProvider, (_, current) {
+      if (current.isNotEmpty) {
+        debouncer.run(() {
+          ref.read(filteredSearchProvider.notifier).fetchFilteredSearch();
+        });
+      }
+    });
   }
 }
