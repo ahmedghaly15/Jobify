@@ -1,3 +1,5 @@
+// ignore_for_file: unused_result
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jobify/src/core/helpers/extensions.dart';
@@ -7,6 +9,7 @@ import '../../../../../core/utils/app_strings.dart';
 import '../../../../../core/widgets/adaptive_circular_progress_indicator.dart';
 import '../../../../../core/widgets/primary_button.dart';
 import '../../../../home/presentation/providers/home_provider.dart';
+import '../../../../stats/presentation/providers/stats_providers.dart';
 import '../../providers/add_job_provider.dart';
 
 class AddJobConsumerButton extends ConsumerWidget {
@@ -40,13 +43,15 @@ class AddJobConsumerButton extends ConsumerWidget {
     });
   }
 
-  void _onSuccess(BuildContext context, WidgetRef ref) {
+  void _onSuccess(BuildContext context, WidgetRef ref) async {
     context.showAnimatedDialog(
       state: CustomDialogStates.success,
       message: AppStrings.jobAddedSuccessfully,
     );
-    // ignore: unused_result
-    ref.refresh(fetchJobsProvider.future);
+
+    await ref.refresh(fetchJobsProvider.future);
+    await ref.refresh(statsProvider(ref.watch(statusProvider)).future);
+
     _resetControllers(ref);
   }
 

@@ -20,10 +20,9 @@ class JobStatusDropdownConsumer extends ConsumerWidget {
       items:
           JobStatus.values
               .map(
-                (status) =>
-                    DropdownMenuItem(
+                (status) => DropdownMenuItem(
                   value: status,
-                  child: Text(status.name.capitalize()),
+                  child: Text(status.enumName),
                 ),
               )
               .toList(),

@@ -64,4 +64,5 @@ class AppStrings {
   static const String partTime = 'Part Time';
   static const String freelance = 'Freelance';
   static const String internship = 'Internship';
+  static const String jobs = 'Jobs';
 }

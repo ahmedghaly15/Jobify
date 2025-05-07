@@ -20,10 +20,8 @@ class JobModeDropdownConsumer extends ConsumerWidget {
       items:
           JobMode.values
               .map(
-                (mode) => DropdownMenuItem(
-                  value: mode,
-                  child: Text(mode.name.capitalize()),
-                ),
+                (mode) =>
+                    DropdownMenuItem(value: mode, child: Text(mode.enumName)),
               )
               .toList(),
       onChanged: (selectedItem) {
