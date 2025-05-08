@@ -2,8 +2,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jobify/src/core/supabase/supabase_request_result.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../../../../core/models/fetch_jobs_response.dart';
 import '../../../../core/models/job.dart';
 import '../../../../core/utils/const_strings.dart';
+import '../../../../core/utils/constants.dart';
 
 final homeRemoteDataSourceProvider = Provider.autoDispose<HomeRemoteDataSource>(
   (ref) => HomeRemoteDataSource(ref.read(supabaseProvider)),
@@ -15,14 +17,35 @@ class HomeRemoteDataSource {
   HomeRemoteDataSource(this._supabaseClient);
 
   Future<List<Job>> fetchJobs() async {
-    final data = await _supabaseClient
+    final data = await _fetchRemoteJobsJson();
+    final response = FetchJobsResponse.fromJson(data);
+    return response.jobs;
+  }
+
+  Future<PostgrestMap> _fetchRemoteJobsJson() async {
+    return await _supabaseClient
         .from(ConstStrings.jobsTable)
-        .select()
-        .eq('user_id', Supabase.instance.client.auth.currentUser!.id);
-    if (data.isEmpty || data.first['jobs'] == null) return [];
-    final List<dynamic> jsonJobs = data.first['jobs'];
-    return jsonJobs
-        .map((jsonJob) => Job.fromJson(jsonJob as Map<String, dynamic>))
-        .toList();
+        .select('jobs')
+        .eq('user_id', currentUser!.user!.id)
+        .single();
+  }
+
+  Future<void> updateJob(Job job) async {
+    final data = await _fetchRemoteJobsJson();
+    if (data['jobs'] == null) return;
+
+    final jsonJobs = List.from(data['jobs']);
+    final jobIndex = jsonJobs.indexWhere((jsonJob) => jsonJob['id'] == job.id);
+
+    if (jobIndex == -1) return; // job not found
+
+    // Update job field
+    jsonJobs[jobIndex] = {...jsonJobs[jobIndex], ...job.toJson()};
+
+    // Update remote job
+    await _supabaseClient
+        .from(ConstStrings.jobsTable)
+        .update({'jobs': jsonJobs})
+        .eq('user_id', currentUser!.user!.id);
   }
 }

@@ -19,4 +19,10 @@ class HomeRepo {
       () async => await _remoteDataSource.fetchJobs(),
     );
   }
+
+  Future<SupabaseRequestResult<void>> updateJob(Job job) {
+    return executeAndHandleErrors<void>(
+      () async => await _remoteDataSource.updateJob(job),
+    );
+  }
 }
