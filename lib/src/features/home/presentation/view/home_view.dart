@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/widgets/adaptive_refresh_indicator.dart';
 import '../../../../core/widgets/custom_sliver_app_bar.dart';
-import '../providers/home_provider.dart';
+import '../providers/home_providers.dart';
 import 'widgets/jobs_sliver_grid_consumer.dart';
 
 @RoutePage()

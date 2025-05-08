@@ -6,10 +6,11 @@ import '../../../../../core/helpers/field_validator.dart';
 import '../../../../../core/models/job.dart';
 import '../../../../../core/utils/app_strings.dart';
 import '../../../../../core/utils/app_utils.dart';
-import '../../providers/add_job_provider.dart';
 
 class JobStatusDropdownConsumer extends ConsumerWidget {
-  const JobStatusDropdownConsumer({super.key});
+  const JobStatusDropdownConsumer({super.key, required this.statusProvider});
+
+  final AutoDisposeStateProvider<JobStatus> statusProvider;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
