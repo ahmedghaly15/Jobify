@@ -56,5 +56,11 @@ class AppThemes {
         return IconThemeData(color: AppColors.primaryColor, size: 24.h);
       }),
     ),
+    iconButtonTheme: IconButtonThemeData(
+      style: IconButton.styleFrom(
+        iconSize: 16.w,
+        foregroundColor: AppColors.primaryColor,
+      ),
+    ),
   );
 }

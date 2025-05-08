@@ -25,29 +25,13 @@ extension UnfocusKeyboard on BuildContext {
 enum CustomDialogStates { warning, success, error }
 
 extension ShowCustomAnimatedDialog on BuildContext {
-  String _dialogTitle(CustomDialogStates state) {
-    String title;
-    switch (state) {
-      case CustomDialogStates.error:
-        title = AppStrings.opps;
-        break;
-      case CustomDialogStates.warning:
-        title = AppStrings.warning;
-        break;
-
-      case CustomDialogStates.success:
-        title = AppStrings.success;
-        break;
-    }
-    return title;
-  }
-
   void showAnimatedDialog({
-    required CustomDialogStates state,
-    required String message,
+    CustomDialogStates? state,
+    String? message,
     VoidCallback? onAction,
     String actionText = 'Done',
     bool barrierDismissible = true,
+    Widget? content,
   }) {
     showGeneralDialog(
       context: this,
@@ -78,44 +62,87 @@ extension ShowCustomAnimatedDialog on BuildContext {
                       color: Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(24.r)),
                     ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Text(
-                          _dialogTitle(state),
-                          style: AppTextStyles.font18Bold,
+                    child:
+                        content ??
+                        _AnimatedDialogContent(
+                          state: state,
+                          message: message,
+                          onAction: onAction,
+                          actionText: actionText,
                         ),
-                        MySizedBox.height8,
-                        Flexible(
-                          child: Text(
-                            message,
-                            style: AppTextStyles.font14Regular.copyWith(
-                              color: AppColors.color242424,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                        MySizedBox.height16,
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: TextButton(
-                            onPressed: onAction ?? () => context.popTop(),
-                            child: Text(
-                              actionText,
-                              style: AppTextStyles.font16SemiBold.copyWith(
-                                color: AppColors.primaryColor,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
                   ),
                 ),
               ),
             ),
           ),
     );
+  }
+}
+
+class _AnimatedDialogContent extends StatelessWidget {
+  const _AnimatedDialogContent({
+    this.state,
+    this.message,
+    this.onAction,
+    this.actionText,
+  });
+
+  final CustomDialogStates? state;
+  final String? message;
+  final VoidCallback? onAction;
+  final String? actionText;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Text(_dialogTitle(state!), style: AppTextStyles.font18Bold),
+        if (message != null) ...[
+          MySizedBox.height8,
+          Flexible(
+            child: Text(
+              message!,
+              style: AppTextStyles.font14Regular.copyWith(
+                color: AppColors.color242424,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ],
+
+        MySizedBox.height16,
+        Align(
+          alignment: Alignment.centerRight,
+          child: TextButton(
+            onPressed: onAction ?? () => context.popTop(),
+            child: Text(
+              actionText!,
+              style: AppTextStyles.font16SemiBold.copyWith(
+                color: AppColors.primaryColor,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  String _dialogTitle(CustomDialogStates state) {
+    String title;
+    switch (state) {
+      case CustomDialogStates.error:
+        title = AppStrings.opps;
+        break;
+      case CustomDialogStates.warning:
+        title = AppStrings.warning;
+        break;
+
+      case CustomDialogStates.success:
+        title = AppStrings.success;
+        break;
+    }
+    return title;
   }
 }
 
