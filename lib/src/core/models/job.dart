@@ -1,28 +1,22 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'job.g.dart';
+part 'job.freezed.dart';
 
-@JsonSerializable()
-class Job {
-  final int id;
-  final String? position, company, location;
-  final JobMode? mode;
-  final JobStatus? status;
-  @JsonKey(name: 'created_at')
-  final String? createdAt;
-
-  Job({
-    required this.id,
-    this.position,
-    this.company,
-    this.location,
-    this.status,
-    this.mode,
-    this.createdAt,
-  });
+@freezed
+class Job with _$Job {
+  @JsonSerializable()
+  const factory Job({
+    required int id,
+    String? position,
+    String? company,
+    String? location,
+    JobMode? mode,
+    JobStatus? status,
+    @JsonKey(name: 'created_at') String? createdAt,
+  }) = _Job;
 
   factory Job.fromJson(Map<String, dynamic> json) => _$JobFromJson(json);
-  Map<String, dynamic> toJson() => _$JobToJson(this);
 }
 
 @JsonEnum()

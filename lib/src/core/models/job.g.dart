@@ -6,17 +6,17 @@ part of 'job.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Job _$JobFromJson(Map<String, dynamic> json) => Job(
+_$JobImpl _$$JobImplFromJson(Map<String, dynamic> json) => _$JobImpl(
   id: (json['id'] as num).toInt(),
   position: json['position'] as String?,
   company: json['company'] as String?,
   location: json['location'] as String?,
-  status: $enumDecodeNullable(_$JobStatusEnumMap, json['status']),
   mode: $enumDecodeNullable(_$JobModeEnumMap, json['mode']),
+  status: $enumDecodeNullable(_$JobStatusEnumMap, json['status']),
   createdAt: json['created_at'] as String?,
 );
 
-Map<String, dynamic> _$JobToJson(Job instance) => <String, dynamic>{
+Map<String, dynamic> _$$JobImplToJson(_$JobImpl instance) => <String, dynamic>{
   'id': instance.id,
   'position': instance.position,
   'company': instance.company,
@@ -26,15 +26,15 @@ Map<String, dynamic> _$JobToJson(Job instance) => <String, dynamic>{
   'created_at': instance.createdAt,
 };
 
-const _$JobStatusEnumMap = {
-  JobStatus.pending: 'Pending',
-  JobStatus.interview: 'Interview',
-  JobStatus.declined: 'Declined',
-};
-
 const _$JobModeEnumMap = {
   JobMode.fullTime: 'Full Time',
   JobMode.partTime: 'Part Time',
   JobMode.freelance: 'Freelance',
   JobMode.internship: 'Internship',
+};
+
+const _$JobStatusEnumMap = {
+  JobStatus.pending: 'Pending',
+  JobStatus.interview: 'Interview',
+  JobStatus.declined: 'Declined',
 };
