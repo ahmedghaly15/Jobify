@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../models/job.dart';
 import '../theming/app_colors.dart';
 import '../theming/app_text_styles.dart';
+import '../utils/app_assets.dart';
 import '../utils/app_strings.dart';
 import '../utils/enums.dart';
 import '../widgets/adaptive_circular_progress_indicator.dart';
@@ -236,4 +237,30 @@ extension FormatStringDate on String {
     final DateTime parsedDate = DateTime.parse(this);
     return DateFormat.yMMMMd().format(parsedDate);
   }
+}
+
+extension ShowMyToast on BuildContext {
+  void showToast(String message) => ScaffoldMessenger.of(this).showSnackBar(
+    SnackBar(
+      backgroundColor: Colors.black54,
+      elevation: 0,
+      duration: const Duration(seconds: 2),
+      dismissDirection: DismissDirection.startToEnd,
+      behavior: SnackBarBehavior.floating,
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.r)),
+      content: Row(
+        spacing: 8.w,
+        children: [
+          Image.asset(Assets.jobifyIcon, height: 32.h, width: 32.h),
+          Expanded(
+            child: Text(
+              message,
+              style: AppTextStyles.font14Medium.copyWith(color: Colors.white),
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
 }
