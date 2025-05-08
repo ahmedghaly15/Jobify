@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../core/widgets/custom_error_widget.dart';
-import '../../providers/home_provider.dart';
+import '../../providers/home_providers.dart';
 import 'jobs_empty_sliver.dart';
 import 'jobs_loading_sliver.dart';
 import 'jobs_sliver_grid.dart';

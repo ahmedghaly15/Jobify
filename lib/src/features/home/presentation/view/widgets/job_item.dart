@@ -8,6 +8,8 @@ import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../../core/models/job.dart';
 import '../../../../../core/utils/app_strings.dart';
 import '../../../../../core/utils/svgs_manager.dart';
+
+import 'edit_job_dialog_content.dart';
 import 'job_detail.dart';
 
 class JobItem extends StatelessWidget {
@@ -87,6 +89,23 @@ class JobItem extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  onPressed: () {
+                    context.showAnimatedDialog(
+                      content: EditJobDialogContent(job: job),
+                    );
+                  },
+                  icon: const LucideIconWidget(LucideIcons.pencilRuler),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: const LucideIconWidget(LucideIcons.trash),
+                ),
+              ],
             ),
           ],
         ),
