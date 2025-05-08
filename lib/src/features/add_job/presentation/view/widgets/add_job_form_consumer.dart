@@ -33,6 +33,7 @@ class AddJobFormConsumer extends ConsumerWidget {
             controller: positionController,
             hintText: AppStrings.position,
             validating: (value) => FieldValidator.validatingEmptyField(value),
+            onEditingComplete: () => context.requestFocus(companyFocusNode),
           ),
           CustomTextFormField(
             controller: companyController,

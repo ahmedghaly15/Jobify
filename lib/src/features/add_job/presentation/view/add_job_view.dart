@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'widgets/add_job_consumer_button.dart';
@@ -21,14 +20,11 @@ class AddJobView extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               spacing: 24.h,
-              children: [
-                const Spacer(),
-                const AddJobFormCard(),
-                const AddJobConsumerButton()
-                    .animate()
-                    .fadeIn(duration: 500.milliseconds, curve: Curves.easeInOut)
-                    .scale(),
-                const Spacer(),
+              children: const [
+                Spacer(),
+                AddJobFormCard(),
+                AddJobConsumerButton(),
+                Spacer(),
               ],
             ),
           ),

@@ -18,10 +18,11 @@ class EditJobDialogContent extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         spacing: 16.h,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(AppStrings.addJob, style: AppTextStyles.font36SemiBold),
+          Text(AppStrings.editJob, style: AppTextStyles.font36SemiBold),
           EditJobFormConsumer(job: job!),
           EditJobConsumerButton(job: job!),
         ],
