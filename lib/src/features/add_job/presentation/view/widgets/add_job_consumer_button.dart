@@ -8,7 +8,6 @@ import '../../../../../core/models/job.dart';
 import '../../../../../core/utils/app_strings.dart';
 import '../../../../../core/widgets/adaptive_circular_progress_indicator.dart';
 import '../../../../../core/widgets/primary_button.dart';
-import '../../../../home/data/data_source/home_remote_data_source.dart';
 import '../../../../home/presentation/providers/home_providers.dart';
 import '../../../../stats/presentation/providers/stats_providers.dart';
 import '../../providers/add_job_provider.dart';
@@ -22,7 +21,7 @@ class AddJobConsumerButton extends ConsumerWidget {
     _listener(ref, context);
     return PrimaryButton(
       onPressed: () {
-        // ref.read(addJobProvider.notifier).validateAndAddJob();
+        ref.read(addJobProvider.notifier).validateAndAddJob();
       },
       text: AppStrings.addJob,
       child: addJobResult?.whenOrNull(

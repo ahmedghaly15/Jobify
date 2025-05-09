@@ -16,15 +16,25 @@ class PasswordValidations extends ConsumerStatefulWidget {
 }
 
 class _PasswordValidationsState extends ConsumerState<PasswordValidations> {
+  void _listener() {
+    final passController = ref.watch(registerPassControllerProvider);
+    ref
+        .read(passValidationsProvider.notifier)
+        .validatePassword(passController.text);
+  }
+
   @override
   void didChangeDependencies() {
     final passController = ref.watch(registerPassControllerProvider);
-    passController.addListener(() {
-      ref
-          .read(passValidationsProvider.notifier)
-          .validatePassword(passController.text);
-    });
+    passController.addListener(_listener);
     super.didChangeDependencies();
+  }
+
+  @override
+  void dispose() {
+    final passController = ref.watch(registerPassControllerProvider);
+    passController.removeListener(_listener);
+    super.dispose();
   }
 
   @override
