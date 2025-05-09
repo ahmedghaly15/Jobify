@@ -16,9 +16,8 @@ class StatsRepo {
   StatsRepo(this._remoteDataSource);
 
   Future<SupabaseRequestResult<int>> countJobStatus(JobStatus jobStatus) {
-    return executeAndHandleErrors<int>(() async {
-      final matchesJobs = await _remoteDataSource.fetchMatchesJobs(jobStatus);
-      return matchesJobs.length;
-    });
+    return executeAndHandleErrors<int>(
+      () async => await _remoteDataSource.countMatchesJobs(jobStatus),
+    );
   }
 }

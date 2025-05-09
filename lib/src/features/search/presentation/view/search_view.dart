@@ -12,7 +12,7 @@ class SearchView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
+      padding: EdgeInsets.symmetric(vertical: 32.h, horizontal: 16.w),
       child: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [

@@ -13,8 +13,8 @@ final class StatsRemoteDataSource {
 
   StatsRemoteDataSource(this._homeRemoteDataSource);
 
-  Future<List<Job>> fetchMatchesJobs(JobStatus jobStatus) async {
+  Future<int> countMatchesJobs(JobStatus jobStatus) async {
     final jobs = await _homeRemoteDataSource.fetchJobs();
-    return jobs.where((job) => job.status == jobStatus).toList();
+    return jobs.where((job) => job.status == jobStatus).toList().length;
   }
 }
