@@ -48,4 +48,23 @@ class HomeRemoteDataSource {
         .update({'jobs': jsonJobs})
         .eq('user_id', currentUser!.user!.id);
   }
+
+  Future<void> deleteJob(int jobId) async {
+    final data = await _fetchRemoteJobsJson();
+    if (data['jobs'] == null) return;
+
+    final jsonJobs = List.from(data['jobs']);
+    final jobIndex = jsonJobs.indexWhere((jsonJob) => jsonJob['id'] == jobId);
+
+    if (jobIndex == -1) return; // job not found
+
+    // Remove job from list
+    jsonJobs.removeAt(jobIndex);
+
+    // Update remote jobs
+    await _supabaseClient
+        .from(ConstStrings.jobsTable)
+        .update({'jobs': jsonJobs})
+        .eq('user_id', currentUser!.user!.id);
+  }
 }

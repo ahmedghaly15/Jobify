@@ -25,4 +25,10 @@ class HomeRepo {
       () async => await _remoteDataSource.updateJob(job),
     );
   }
+
+  Future<SupabaseRequestResult<void>> deleteJob(int jobId) {
+    return executeAndHandleErrors<void>(
+      () async => await _remoteDataSource.deleteJob(jobId),
+    );
+  }
 }

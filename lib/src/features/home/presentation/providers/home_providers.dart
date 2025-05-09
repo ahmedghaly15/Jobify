@@ -86,3 +86,22 @@ class UpdateJob extends _$UpdateJob {
     }
   }
 }
+
+@riverpod
+class DeleteJob extends _$DeleteJob {
+  @override
+  AsyncValue<void>? build() {
+    return null;
+  }
+
+  void deleteJob(int jobId) async {
+    state = const AsyncValue.loading();
+    final result = await ref.read(homeRepoProvider).deleteJob(jobId);
+    result.when(
+      success: (_) => state = const AsyncValue.data(null),
+      failure:
+          (error) =>
+              state = AsyncValue.error(error.message, StackTrace.current),
+    );
+  }
+}
