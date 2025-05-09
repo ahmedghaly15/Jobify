@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:jobify/src/core/helpers/extensions.dart';
-import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../../core/models/job.dart';
-import '../../../../../core/utils/app_strings.dart';
 import '../../../../../core/utils/svgs_manager.dart';
 
-import 'edit_job_dialog_content.dart';
-import 'job_detail.dart';
+import 'edit_and_delete_icon_buttons.dart';
+import 'job_item_details.dart';
 
 class JobItem extends StatelessWidget {
   const JobItem({super.key, this.job, this.isLoading = false});
@@ -47,73 +44,8 @@ class JobItem extends StatelessWidget {
                         fit: BoxFit.cover,
                       ),
             ),
-            Expanded(
-              child: Column(
-                spacing: 8.h,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      JobDetail(
-                        icon: LucideIcons.circleUserRound,
-                        title: job?.position ?? AppStrings.position,
-                      ),
-                      JobDetail(
-                        icon: LucideIcons.briefcaseBusiness,
-                        title: job?.company ?? AppStrings.company,
-                      ),
-                    ],
-                  ),
-                  JobDetail(
-                    icon: LucideIcons.mapPin,
-                    title: job?.location ?? AppStrings.location,
-                  ),
-                  JobDetail(
-                    icon: LucideIcons.calendar,
-                    title: job?.createdAt?.formatToDate() ?? AppStrings.date,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      JobDetail(
-                        icon: LucideIcons.circleCheck,
-                        title: job?.status?.enumName ?? AppStrings.status,
-                      ),
-                      JobDetail(
-                        icon: LucideIcons.circleDot,
-                        title: job?.mode?.enumName ?? AppStrings.mode,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  onPressed:
-                      () => context.showAnimatedDialog(
-                        content: EditJobDialogContent(job: job),
-                      ),
-                  icon: const LucideIconWidget(LucideIcons.pencilRuler),
-                ),
-                IconButton(
-                  onPressed: () {
-                    context.displayAdaptiveDialog(
-                      contentText: AppStrings.areYouSureToDeleteJob,
-                      yesOnPressed: () {},
-                    );
-                  },
-                  icon: const LucideIconWidget(
-                    LucideIcons.trash,
-                    color: Colors.red,
-                  ),
-                ),
-              ],
-            ),
+            Expanded(child: JobItemDetails(job: job)),
+            EditAndDeleteIconButtons(job: job),
           ],
         ),
       ),
