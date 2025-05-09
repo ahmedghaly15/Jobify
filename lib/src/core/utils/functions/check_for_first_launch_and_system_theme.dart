@@ -4,7 +4,7 @@ import '../../helpers/cache_helper.dart';
 import '../../helpers/cache_keys.dart';
 import '../constants.dart';
 
-void checkForFirstLaunchAndSystemTheme() async {
+Future<void> checkForFirstLaunchAndSystemTheme() async {
   final cachedFirstLaunch = await CacheHelper.getBool(CacheKeys.firstLaunch);
   if (cachedFirstLaunch == null) {
     isFirstLaunch = true;
