@@ -9,31 +9,20 @@ import '../../data/repo/home_repo.dart';
 
 part 'home_providers.g.dart';
 
+final editJobFormKeyProvider = Provider.autoDispose<GlobalKey<FormState>>(
+  (ref) => GlobalKey<FormState>(),
+);
 final editJobAutovalidateModeProvider = StateNotifierProvider.autoDispose<
   AutovalidateModeNotifier,
   AutovalidateMode
 >((ref) => AutovalidateModeNotifier());
-final editJobFormKeyProvider = Provider.autoDispose<GlobalKey<FormState>>(
-  (ref) => GlobalKey<FormState>(),
+final editJobPositionProvider = StateProvider.autoDispose
+    .family<String, String>((ref, position) => position);
+final editJobCompanyProvider = StateProvider.autoDispose.family<String, String>(
+  (ref, company) => company,
 );
-final editJobPositionControllerProvider = Provider.autoDispose
-    .family<TextEditingController, String>(
-      (ref, position) => TextEditingController(text: position),
-    );
-final editJobCompanyControllerProvider = Provider.autoDispose
-    .family<TextEditingController, String>(
-      (ref, company) => TextEditingController(text: company),
-    );
-final editJobLocationControllerProvider = Provider.autoDispose
-    .family<TextEditingController, String>(
-      (ref, location) => TextEditingController(text: location),
-    );
-final companyFocusNodeProvider = Provider.autoDispose<FocusNode>(
-  (ref) => FocusNode(),
-);
-final locationFocusNodeProvider = Provider.autoDispose<FocusNode>(
-  (ref) => FocusNode(),
-);
+final editJobLocationProvider = StateProvider.autoDispose
+    .family<String, String>((ref, location) => location);
 final editJobStatusProvider = StateProvider.autoDispose
     .family<JobStatus, JobStatus>((ref, jobStatus) => jobStatus);
 final editJobModeProvider = StateProvider.autoDispose.family<JobMode, JobMode>(
@@ -49,6 +38,20 @@ final fetchJobsProvider = FutureProvider.autoDispose<List<Job>>((ref) async {
   );
 });
 
+final isEditJobButtonEnabledProvider = StateProvider.autoDispose
+    .family<bool, Job>((ref, job) {
+      final position = ref.watch(editJobPositionProvider(job.position!));
+      final company = ref.watch(editJobCompanyProvider(job.company!));
+      final location = ref.watch(editJobLocationProvider(job.location!));
+      final status = ref.watch(editJobStatusProvider(job.status!));
+      final mode = ref.watch(editJobModeProvider(job.mode!));
+      return position != job.position ||
+          company != job.company ||
+          location != job.location ||
+          status != job.status ||
+          mode != job.mode;
+    });
+
 @riverpod
 class UpdateJob extends _$UpdateJob {
   @override
@@ -59,9 +62,9 @@ class UpdateJob extends _$UpdateJob {
   void _updateJob(Job job) async {
     state = const AsyncValue.loading();
     final newJob = job.copyWith(
-      position: ref.read(editJobPositionControllerProvider(job.position!)).text,
-      company: ref.read(editJobCompanyControllerProvider(job.company!)).text,
-      location: ref.read(editJobLocationControllerProvider(job.location!)).text,
+      position: ref.read(editJobPositionProvider(job.position!)),
+      company: ref.read(editJobCompanyProvider(job.company!)),
+      location: ref.read(editJobLocationProvider(job.location!)),
       mode: ref.read(editJobModeProvider(job.mode!)),
       status: ref.read(editJobStatusProvider(job.status!)),
     );
