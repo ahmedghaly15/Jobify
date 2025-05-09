@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:jobify/src/core/helpers/extensions.dart';
 
 import '../../../../../core/helpers/field_validator.dart';
 import '../../../../../core/models/job.dart';
@@ -20,17 +19,6 @@ class EditJobFormConsumer extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final autovalidateMode = ref.watch(editJobAutovalidateModeProvider);
     final formKey = ref.watch(editJobFormKeyProvider);
-    final positionController = ref.watch(
-      editJobPositionControllerProvider(job.position!),
-    );
-    final companyController = ref.watch(
-      editJobCompanyControllerProvider(job.company!),
-    );
-    final locationController = ref.watch(
-      editJobLocationControllerProvider(job.location!),
-    );
-    final companyFocusNode = ref.watch(companyFocusNodeProvider);
-    final locationFocusNode = ref.watch(locationFocusNodeProvider);
     return Form(
       key: formKey,
       autovalidateMode: autovalidateMode,
@@ -39,23 +27,31 @@ class EditJobFormConsumer extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomTextFormField(
-            controller: positionController,
             hintText: AppStrings.position,
+            initialValue: job.position,
             validating: (value) => FieldValidator.validatingEmptyField(value),
-            onEditingComplete: () => context.requestFocus(companyFocusNode),
+            onChanged: (value) {
+              ref.read(editJobPositionProvider(job.position!).notifier).state =
+                  value;
+            },
           ),
           CustomTextFormField(
-            controller: companyController,
             hintText: AppStrings.company,
-            focusNode: companyFocusNode,
+            initialValue: job.company,
             validating: (value) => FieldValidator.validatingEmptyField(value),
-            onEditingComplete: () => context.requestFocus(locationFocusNode),
+            onChanged: (value) {
+              ref.read(editJobCompanyProvider(job.company!).notifier).state =
+                  value;
+            },
           ),
           CustomTextFormField(
-            controller: locationController,
-            focusNode: locationFocusNode,
             hintText: AppStrings.location,
+            initialValue: job.location,
             validating: (value) => FieldValidator.validatingEmptyField(value),
+            onChanged: (value) {
+              ref.read(editJobLocationProvider(job.location!).notifier).state =
+                  value;
+            },
           ),
           JobStatusDropdownConsumer(
             statusProvider: editJobStatusProvider(job.status!),
