@@ -12,11 +12,6 @@ final themeProvider =
       (ref) => ThemeNotifier(),
     );
 
-final isDarkModeProvider = StateProvider.autoDispose<bool>((ref) {
-  final theme = ref.watch(themeProvider);
-  return theme.brightness == Brightness.dark;
-});
-
 class ThemeNotifier extends StateNotifier<ThemeData> {
   ThemeNotifier() : super(AppThemes.dark) {
     _retrieveCachedTheme();

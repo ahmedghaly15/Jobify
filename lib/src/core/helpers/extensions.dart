@@ -60,7 +60,10 @@ extension ShowCustomAnimatedDialog on BuildContext {
                     ),
                     margin: EdgeInsets.symmetric(horizontal: 24.w),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color:
+                          isDarkModeActive
+                              ? AppColors.color1f283b
+                              : Colors.white,
                       borderRadius: BorderRadius.all(Radius.circular(24.r)),
                     ),
                     child:
@@ -104,14 +107,11 @@ class _AnimatedDialogContent extends StatelessWidget {
           Flexible(
             child: Text(
               message!,
-              style: AppTextStyles.font14Regular.copyWith(
-                color: AppColors.color242424,
-              ),
+              style: AppTextStyles.font14Regular,
               textAlign: TextAlign.center,
             ),
           ),
         ],
-
         MySizedBox.height16,
         Align(
           alignment: Alignment.centerRight,
@@ -172,7 +172,9 @@ extension ShowAdaptiveDialog<T> on BuildContext {
       builder:
           builder ??
           (_) => AlertDialog.adaptive(
-            icon: Image.asset(Assets.jobifyIcon, height: 48.h, width: 48.h),
+            backgroundColor:
+                isDarkModeActive ? AppColors.color1f283b : Colors.white,
+            icon: Image.asset(Assets.jobifyIcon, height: 40.h, width: 40.h),
             content: contentWidget ?? Text(contentText!),
             contentTextStyle: AppTextStyles.font16Regular,
             contentPadding: EdgeInsets.symmetric(
@@ -197,8 +199,7 @@ extension ShowAdaptiveDialog<T> on BuildContext {
 }
 
 class _LoadingWidget extends StatelessWidget {
-  // ignore: unused_element_parameter
-  const _LoadingWidget({super.key});
+  const _LoadingWidget();
 
   @override
   Widget build(BuildContext context) {
@@ -206,7 +207,8 @@ class _LoadingWidget extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(16.h),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color:
+              context.isDarkModeActive ? AppColors.color1f283b : Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(16.r)),
         ),
         child: const AdaptiveCircularProgressIndicator(
@@ -304,4 +306,8 @@ extension ShowMyToast on BuildContext {
       ),
     ),
   );
+}
+
+extension CheckDarkThemeActivation on BuildContext {
+  bool get isDarkModeActive => Theme.of(this).brightness == Brightness.dark;
 }
