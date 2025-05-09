@@ -16,11 +16,15 @@ class EditJobConsumerButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncUpdateJob = ref.watch(updateJobProvider);
+    final isEnabled = ref.watch(isEditJobButtonEnabledProvider(job));
     _listener(ref, context);
     return PrimaryButton(
-      onPressed: () {
-        ref.read(updateJobProvider.notifier).validateFormAndUpdateJob(job);
-      },
+      onPressed:
+          isEnabled
+              ? () => ref
+                  .read(updateJobProvider.notifier)
+                  .validateFormAndUpdateJob(job)
+              : null,
       text: AppStrings.editJob,
       child: asyncUpdateJob?.whenOrNull(
         loading: () => const AdaptiveCircularProgressIndicator(),
@@ -31,21 +35,13 @@ class EditJobConsumerButton extends ConsumerWidget {
   void _listener(WidgetRef ref, BuildContext context) {
     ref.listen(updateJobProvider, (_, current) {
       current?.whenOrNull(
-        data: (_) async {
+        data: (_) {
           context.popTop();
-          await Future.delayed(const Duration(milliseconds: 500));
-          context.showAnimatedDialog(
-            state: CustomDialogStates.success,
-            message: AppStrings.jobEditedSuccessfully,
-          );
+          context.showToast(AppStrings.jobEditedSuccessfully);
         },
-        error: (error, __) async {
+        error: (error, __) {
           context.popTop();
-          await Future.delayed(const Duration(milliseconds: 500));
-          context.showAnimatedDialog(
-            state: CustomDialogStates.error,
-            message: error.toString(),
-          );
+          context.showToast(error.toString());
         },
       );
     });
