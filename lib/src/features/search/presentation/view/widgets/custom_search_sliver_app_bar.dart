@@ -9,14 +9,12 @@ class CustomSearchSliverAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return SliverToBoxAdapter(
       child: Row(
         spacing: 16.w,
         mainAxisAlignment: MainAxisAlignment.center,
         children: const [
-          Expanded(child: CustomSearchTextField(),
-          ),
+          Expanded(child: CustomSearchTextField()),
           SearchFilterDropdownConsumer(),
         ],
       ),

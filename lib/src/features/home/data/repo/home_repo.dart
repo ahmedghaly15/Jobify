@@ -15,7 +15,7 @@ class HomeRepo {
   HomeRepo(this._remoteDataSource);
 
   Future<SupabaseRequestResult<List<Job>>> fetchJobs() {
-    return executeAndHandleErrors(
+    return executeAndHandleErrors<List<Job>>(
       () async => await _remoteDataSource.fetchJobs(),
     );
   }

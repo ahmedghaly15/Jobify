@@ -250,6 +250,8 @@ extension ShowMyToast on BuildContext {
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.r)),
       content: Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
         spacing: 8.w,
         children: [
           Image.asset(Assets.jobifyIcon, height: 32.h, width: 32.h),

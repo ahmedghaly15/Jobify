@@ -6,6 +6,8 @@ import '../../../../../core/models/job.dart';
 import '../../../../../core/utils/app_strings.dart';
 import '../../../../../core/widgets/adaptive_circular_progress_indicator.dart';
 import '../../../../../core/widgets/primary_button.dart';
+import '../../../../add_job/presentation/providers/add_job_provider.dart';
+import '../../../../stats/presentation/providers/stats_providers.dart';
 import '../../providers/home_providers.dart';
 
 class EditJobConsumerButton extends ConsumerWidget {
@@ -35,15 +37,21 @@ class EditJobConsumerButton extends ConsumerWidget {
   void _listener(WidgetRef ref, BuildContext context) {
     ref.listen(updateJobProvider, (_, current) {
       current?.whenOrNull(
-        data: (_) {
-          context.popTop();
-          context.showToast(AppStrings.jobEditedSuccessfully);
-        },
-        error: (error, __) {
-          context.popTop();
-          context.showToast(error.toString());
-        },
+        data: (_) async => await _onSuccess(context, ref),
+        error: (error, __) => _onError(context, error),
       );
     });
+  }
+
+  void _onError(BuildContext context, Object error) {
+    context.popTop();
+    context.showToast(error.toString());
+  }
+
+  Future<void> _onSuccess(BuildContext context, WidgetRef ref) async {
+    context.popTop();
+    context.showToast(AppStrings.jobEditedSuccessfully);
+    await ref.refresh(fetchJobsProvider.future);
+    await ref.refresh(statsProvider(ref.watch(statusProvider)).future);
   }
 }
