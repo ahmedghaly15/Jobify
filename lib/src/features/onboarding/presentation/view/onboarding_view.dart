@@ -1,15 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:jobify/src/core/helpers/extensions.dart';
 
 import '../../../../core/helpers/cache_helper.dart';
 import '../../../../core/helpers/cache_keys.dart';
 import '../../../../core/router/app_router.dart';
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/app_text_styles.dart';
-import '../../../../core/theming/theming_provider.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/widgets/app_logo_and_name.dart';
 import '../../../../core/widgets/primary_button.dart';
@@ -29,34 +28,35 @@ class OnboardingView extends StatelessWidget {
           children: [
             const AppLogoAndName().animate().fadeIn(duration: 1.seconds),
             const Spacer(),
-            Consumer(
-                  builder: (_, ref, __) {
-                    final isDarkMode = ref.watch(isDarkModeProvider);
-                    return RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: AppStrings.job,
-                            style: AppTextStyles.font36Bold.copyWith(
-                              color: isDarkMode ? Colors.white : Colors.black,
-                            ),
-                          ),
-                          TextSpan(
-                            text: ' ${AppStrings.tracking} ',
-                            style: AppTextStyles.font36Bold.copyWith(
-                              color: AppColors.primaryColor,
-                            ),
-                          ),
-                          TextSpan(
-                            text: AppStrings.app,
-                            style: AppTextStyles.font36Bold.copyWith(
-                              color: isDarkMode ? Colors.white : Colors.black,
-                            ),
-                          ),
-                        ],
+            RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: AppStrings.job,
+                        style: AppTextStyles.font36Bold.copyWith(
+                          color:
+                              context.isDarkModeActive
+                                  ? Colors.white
+                                  : Colors.black,
+                        ),
                       ),
-                    );
-                  },
+                      TextSpan(
+                        text: ' //${AppStrings.tracking} ',
+                        style: AppTextStyles.font36Bold.copyWith(
+                          color: AppColors.primaryColor,
+                        ),
+                      ),
+                      TextSpan(
+                        text: AppStrings.app,
+                        style: AppTextStyles.font36Bold.copyWith(
+                          color:
+                              context.isDarkModeActive
+                                  ? Colors.white
+                                  : Colors.black,
+                        ),
+                      ),
+                    ],
+                  ),
                 )
                 .animate()
                 .fadeIn(delay: 500.milliseconds)

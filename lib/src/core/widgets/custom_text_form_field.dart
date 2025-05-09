@@ -1,12 +1,11 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
+import 'package:jobify/src/core/helpers/extensions.dart';
 
 import '../theming/app_colors.dart';
 import '../theming/app_text_styles.dart';
-import '../theming/theming_provider.dart';
 import '../utils/app_utils.dart';
 
-class CustomTextFormField extends ConsumerWidget {
+class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
     this.controller,
@@ -82,8 +81,7 @@ class CustomTextFormField extends ConsumerWidget {
   final bool filled;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final isDarkMode = ref.watch(isDarkModeProvider);
+  Widget build(BuildContext context) {
     return TextFormField(
       initialValue: initialValue,
       controller: controller,
@@ -111,7 +109,7 @@ class CustomTextFormField extends ConsumerWidget {
         suffix: suffix,
         label: label,
         filled: filled,
-        isDarkMode: isDarkMode,
+        isDarkMode: context.isDarkModeActive,
       ),
       validator: validating,
       onEditingComplete: onEditingComplete,

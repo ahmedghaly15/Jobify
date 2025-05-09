@@ -34,8 +34,7 @@ class LoginForm extends ConsumerWidget {
 }
 
 class _PassFieldConsumer extends ConsumerWidget {
-  // ignore: unused_element_parameter
-  const _PassFieldConsumer({super.key});
+  const _PassFieldConsumer();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

@@ -37,31 +37,20 @@ class AppUtils {
       suffixIcon: suffix,
       labelText: label,
       contentPadding: contentPadding ?? _textFieldContentPad,
-      enabledBorder:
-          enabledBorder ??
-          _textFieldUnderlineInputBorder(isDarkMode: isDarkMode),
+      enabledBorder: enabledBorder ?? _textFieldUnderlineInputBorder(),
       focusedBorder:
           focusedBorder ??
           _textFieldUnderlineInputBorder(
             borderColor: AppColors.primaryColor,
             width: 2,
-            isDarkMode: isDarkMode,
           ),
       errorBorder:
           errorBorder ??
-          _textFieldUnderlineInputBorder(
-            borderColor: Colors.red,
-            width: 1.3,
-            isDarkMode: isDarkMode,
-          ),
+          _textFieldUnderlineInputBorder(borderColor: Colors.red, width: 1.3),
       focusedErrorBorder:
           focusedErrorBorder ??
-          _textFieldUnderlineInputBorder(
-            borderColor: Colors.red,
-            width: 1.3,
-            isDarkMode: isDarkMode,
-          ),
-      border: border ?? _textFieldUnderlineInputBorder(isDarkMode: isDarkMode),
+          _textFieldUnderlineInputBorder(borderColor: Colors.red, width: 1.3),
+      border: border ?? _textFieldUnderlineInputBorder(),
       disabledBorder: disabledBorder,
     );
   }
@@ -74,14 +63,11 @@ class AppUtils {
   static OutlineInputBorder _textFieldUnderlineInputBorder({
     Color? borderColor,
     double width = 1,
-    isDarkMode = false,
   }) {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(16.r),
       borderSide: BorderSide(
-        color:
-            borderColor ??
-            (isDarkMode ? AppColors.color1f283b : AppColors.colorEDEDED),
+        color: borderColor ?? AppColors.colorEDEDED,
         width: width.w,
       ),
     );

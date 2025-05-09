@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:jobify/src/core/helpers/extensions.dart';
 
+import '../../../../../core/theming/app_colors.dart';
 import '../../../../../core/theming/app_text_styles.dart';
 import '../../../../../core/utils/app_strings.dart';
 import 'add_job_form_consumer.dart';
@@ -12,7 +14,7 @@ class AddJobFormCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 8.h,
-      color: Colors.white,
+      color: context.isDarkModeActive ? AppColors.color1f283b : Colors.white,
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
         child: Column(

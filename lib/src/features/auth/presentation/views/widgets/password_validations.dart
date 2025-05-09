@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:jobify/src/core/helpers/extensions.dart';
 
 import '../../../../../core/theming/app_colors.dart';
 import '../../../../../core/theming/app_text_styles.dart';
-import '../../../../../core/theming/theming_provider.dart';
 import '../../providers/form_notifier_providers.dart';
 import '../../providers/register_providers.dart';
 
@@ -32,16 +32,15 @@ class _PasswordValidationsState extends ConsumerState<PasswordValidations> {
   }
 
   @override
-  void dispose() {
+  void deactivate() {
     final passController = ref.watch(registerPassControllerProvider);
     passController.removeListener(_listener);
-    super.dispose();
+    super.deactivate();
   }
 
   @override
   Widget build(BuildContext context) {
     final passValidations = ref.watch(passValidationsProvider);
-
     return Column(
       spacing: 2.h,
       children: [
@@ -67,7 +66,6 @@ class _PasswordValidationsState extends ConsumerState<PasswordValidations> {
   }
 
   Widget _buildValidationRow(String text, bool hasValidated) {
-    final isDarkMode = ref.watch(isDarkModeProvider);
     return Row(
       spacing: 6.w,
       children: [
@@ -82,7 +80,9 @@ class _PasswordValidationsState extends ConsumerState<PasswordValidations> {
             color:
                 hasValidated
                     ? AppColors.color757575
-                    : (isDarkMode ? Colors.white60 : AppColors.color242424),
+                    : (context.isDarkModeActive
+                        ? Colors.white60
+                        : AppColors.color242424),
           ),
         ),
       ],

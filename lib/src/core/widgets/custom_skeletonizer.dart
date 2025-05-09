@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jobify/src/core/helpers/extensions.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 enum CustomSkeletonizerType { sliver, normal }
@@ -17,8 +18,14 @@ class CustomSkeletonizer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final baseColor = Colors.grey.shade300;
-    final highlightColor = Colors.grey.shade100;
+    final baseColor =
+        context.isDarkModeActive
+            ? Colors.grey.shade700.withAlpha(153)
+            : Colors.grey.shade300;
+    final highlightColor =
+        context.isDarkModeActive
+            ? Colors.grey.shade800.withAlpha(76)
+            : Colors.grey.shade100;
     const textBoneBorderRadius = TextBoneBorderRadius.fromHeightFactor(0.5);
     const duration = Duration(seconds: 1);
     const justifyMultiLineText = true;

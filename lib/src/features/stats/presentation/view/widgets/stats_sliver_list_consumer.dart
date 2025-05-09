@@ -27,11 +27,9 @@ class StatsSliverListConsumer extends StatelessWidget {
               );
               return asyncFetchedMatchesStatusCount
                   .when(
-                    loading:
-                        () =>
-                            const CustomSkeletonizer(child: AnimatedStatItem()),
+                    loading: () => const CustomSkeletonizer(child: StatItem()),
                     data:
-                        (fetchedMatchesStatusCount) => AnimatedStatItem(
+                        (fetchedMatchesStatusCount) => StatItem(
                           titleText:
                               '${JobStatus.values[index].enumName} ${AppStrings.jobs}',
                           trailingText: fetchedMatchesStatusCount.toString(),
@@ -48,14 +46,15 @@ class StatsSliverListConsumer extends StatelessWidget {
   }
 }
 
-class AnimatedStatItem extends StatelessWidget {
-  const AnimatedStatItem({super.key, this.titleText, this.trailingText});
+class StatItem extends StatelessWidget {
+  const StatItem({super.key, this.titleText, this.trailingText});
 
   final String? titleText, trailingText;
 
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: context.isDarkModeActive ? AppColors.color1f283b : Colors.white,
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
         child: Row(
