@@ -26,6 +26,14 @@ class Assets {
   /// assets/images/dark_splash_android_12.png
   static const String imagesDarkSplashAndroid12 = "assets/images/dark_splash_android_12.png";
 
+  /// Assets for imagesFemale
+  /// assets/images/female.jpg
+  static const String imagesFemale = "assets/images/female.jpg";
+
+  /// Assets for imagesMaleUser
+  /// assets/images/male_user.jpg
+  static const String imagesMaleUser = "assets/images/male_user.jpg";
+
   /// Assets for imagesSplash
   /// assets/images/splash.png
   static const String imagesSplash = "assets/images/splash.png";

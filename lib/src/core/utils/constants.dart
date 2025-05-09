@@ -4,6 +4,8 @@ import 'app_assets.dart';
 bool isOnboardingVisited = false;
 bool isUserLoggedIn = false;
 JobifyUser? currentUser;
+bool isFirstLaunch = false;
+bool isSystemDarkModeActive = false;
 
 class AppConstants {
   AppConstants._();
