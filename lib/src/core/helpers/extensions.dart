@@ -157,6 +157,45 @@ extension ShowLoadingDialog on BuildContext {
   }
 }
 
+extension ShowAdaptiveDialog<T> on BuildContext {
+  Future<T?> displayAdaptiveDialog({
+    Widget Function(BuildContext)? builder,
+    bool barrierDismissible = true,
+    String? contentText,
+    Widget? contentWidget,
+    List<Widget>? actions,
+    VoidCallback? yesOnPressed,
+  }) {
+    return showAdaptiveDialog<T?>(
+      context: this,
+      barrierDismissible: barrierDismissible,
+      builder:
+          builder ??
+          (_) => AlertDialog.adaptive(
+            icon: Image.asset(Assets.jobifyIcon, height: 48.h, width: 48.h),
+            content: contentWidget ?? Text(contentText!),
+            contentTextStyle: AppTextStyles.font16Regular,
+            contentPadding: EdgeInsets.symmetric(
+              horizontal: 16.w,
+              vertical: 16.h,
+            ),
+            actions:
+                actions ??
+                [
+                  TextButton(
+                    onPressed: () => Navigator.of(this).pop(),
+                    child: const Text(AppStrings.no),
+                  ),
+                  TextButton(
+                    onPressed: yesOnPressed,
+                    child: const Text(AppStrings.yes),
+                  ),
+                ],
+          ),
+    );
+  }
+}
+
 class _LoadingWidget extends StatelessWidget {
   // ignore: unused_element_parameter
   const _LoadingWidget({super.key});

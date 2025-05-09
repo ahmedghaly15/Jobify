@@ -68,4 +68,9 @@ class AppStrings {
   static const String editJob = 'Edit Job';
   static const String jobEditedSuccessfully =
       'Job has been edited successfully!';
+  static const String yes = 'Yes';
+  static const String no = 'No';
+  static const String areYouSureToDeleteJob =
+      'Are you sure to delete this job?';
+  static const String jobDeletedSuccessfully = 'Job deleted successfully!';
 }

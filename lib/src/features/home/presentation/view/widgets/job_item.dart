@@ -94,16 +94,23 @@ class JobItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
-                  onPressed: () {
-                    context.showAnimatedDialog(
-                      content: EditJobDialogContent(job: job),
-                    );
-                  },
+                  onPressed:
+                      () => context.showAnimatedDialog(
+                        content: EditJobDialogContent(job: job),
+                      ),
                   icon: const LucideIconWidget(LucideIcons.pencilRuler),
                 ),
                 IconButton(
-                  onPressed: () {},
-                  icon: const LucideIconWidget(LucideIcons.trash),
+                  onPressed: () {
+                    context.displayAdaptiveDialog(
+                      contentText: AppStrings.areYouSureToDeleteJob,
+                      yesOnPressed: () {},
+                    );
+                  },
+                  icon: const LucideIconWidget(
+                    LucideIcons.trash,
+                    color: Colors.red,
+                  ),
                 ),
               ],
             ),

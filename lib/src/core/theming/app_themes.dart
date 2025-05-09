@@ -25,7 +25,7 @@ class AppThemes {
       style: ButtonStyle(
         foregroundColor: const WidgetStatePropertyAll(AppColors.primaryColor),
         padding: WidgetStatePropertyAll(
-          EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
+          EdgeInsets.symmetric(horizontal: 8.w, vertical: 16.h),
         ),
         tapTargetSize: MaterialTapTargetSize.padded,
         minimumSize: const WidgetStatePropertyAll(Size.zero),
