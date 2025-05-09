@@ -1,0 +1,24 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
+
+import '../theming/theming_provider.dart';
+
+class ThemeIconButtonConsumer extends ConsumerWidget {
+  const ThemeIconButtonConsumer({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final theme = ref.watch(themeProvider);
+    return IconButton.filledTonal(
+      onPressed: () => ref.read(themeProvider.notifier).toggle(),
+      icon: LucideIconWidget(
+        theme.brightness == Brightness.light
+            ? LucideIcons.moon
+            : LucideIcons.sun,
+        color:
+            theme.brightness == Brightness.light ? Colors.black : Colors.white,
+      ),
+    );
+  }
+}

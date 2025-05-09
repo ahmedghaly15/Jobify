@@ -2,6 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/widgets/custom_sliver_app_bar.dart';
+import '../../../../core/widgets/theme_icon_button_consumer.dart';
 import 'widgets/add_job_consumer_button.dart';
 import 'widgets/add_job_form_card.dart';
 
@@ -15,6 +17,7 @@ class AddJobView extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h),
       child: CustomScrollView(
         slivers: [
+          const CustomSliverAppBar(actions: [ThemeIconButtonConsumer()]),
           SliverFillRemaining(
             hasScrollBody: false,
             child: Column(

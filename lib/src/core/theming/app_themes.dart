@@ -63,4 +63,59 @@ class AppThemes {
       ),
     ),
   );
+  static ThemeData get dark => ThemeData(
+    primaryColor: AppColors.primaryColor,
+    colorScheme: const ColorScheme.dark(primary: AppColors.primaryColor),
+    fontFamily: ConstStrings.fontFamily,
+    useMaterial3: true,
+    brightness: Brightness.dark,
+    scaffoldBackgroundColor: AppColors.darkModeColor,
+    appBarTheme: AppBarTheme(
+      backgroundColor: AppColors.darkModeColor,
+      elevation: 0,
+      titleTextStyle: AppTextStyles.font18Bold.copyWith(color: Colors.white),
+      centerTitle: true,
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: ButtonStyle(
+        foregroundColor: const WidgetStatePropertyAll(AppColors.primaryColor),
+        padding: WidgetStatePropertyAll(
+          EdgeInsets.symmetric(horizontal: 8.w, vertical: 16.h),
+        ),
+        tapTargetSize: MaterialTapTargetSize.padded,
+        minimumSize: const WidgetStatePropertyAll(Size.zero),
+        textStyle: WidgetStatePropertyAll(AppTextStyles.font12SemiBold),
+      ),
+    ),
+    checkboxTheme: CheckboxThemeData(
+      fillColor: WidgetStateProperty.resolveWith<Color>((
+        Set<WidgetState> states,
+      ) {
+        if (states.contains(WidgetState.selected)) {
+          return AppColors.primaryColor;
+        }
+        return AppColors.darkModeColor;
+      }),
+      checkColor: const WidgetStatePropertyAll(Colors.white),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.r)),
+      side: BorderSide(color: AppColors.color757575, width: 2.w),
+    ),
+    navigationBarTheme: NavigationBarThemeData(
+      backgroundColor: AppColors.darkModeColor,
+      indicatorColor: Colors.transparent,
+      labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+      iconTheme: WidgetStateProperty.resolveWith<IconThemeData>((states) {
+        if (states.contains(WidgetState.selected)) {
+          return IconThemeData(color: Colors.white, size: 24.h);
+        }
+        return IconThemeData(color: AppColors.primaryColor, size: 24.h);
+      }),
+    ),
+    iconButtonTheme: IconButtonThemeData(
+      style: IconButton.styleFrom(
+        iconSize: 16.w,
+        foregroundColor: AppColors.primaryColor,
+      ),
+    ),
+  );
 }

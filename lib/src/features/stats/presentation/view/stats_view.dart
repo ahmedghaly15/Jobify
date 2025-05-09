@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/widgets/adaptive_refresh_indicator.dart';
 import '../../../../core/widgets/custom_sliver_app_bar.dart';
+import '../../../../core/widgets/theme_icon_button_consumer.dart';
 import '../../../add_job/presentation/providers/add_job_provider.dart';
 import '../providers/stats_providers.dart';
 import 'widgets/stats_sliver_list_consumer.dart';
@@ -25,6 +26,7 @@ class StatsView extends ConsumerWidget {
           const CustomSliverAppBar(
             hasLeading: false,
             titleText: AppStrings.stats,
+            actions: [ThemeIconButtonConsumer()],
           ),
           SliverPadding(
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),

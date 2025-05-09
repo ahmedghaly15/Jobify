@@ -5,7 +5,7 @@ import 'custom_search_text_field.dart';
 import 'search_filter_dropdown_consumer.dart';
 
 class CustomSearchSliverAppBar extends StatelessWidget {
-  const CustomSearchSliverAppBar({super.key});
+  const CustomSearchSliverAppBar({super.key, required List<dynamic> actions});
 
   @override
   Widget build(BuildContext context) {

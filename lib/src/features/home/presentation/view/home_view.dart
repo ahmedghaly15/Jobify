@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/widgets/adaptive_refresh_indicator.dart';
 import '../../../../core/widgets/custom_sliver_app_bar.dart';
+import '../../../../core/widgets/theme_icon_button_consumer.dart';
 import '../providers/home_providers.dart';
 import 'widgets/jobs_sliver_grid_consumer.dart';
 
@@ -23,6 +24,7 @@ class HomeView extends ConsumerWidget {
           const CustomSliverAppBar(
             titleText: AppStrings.allJobs,
             hasLeading: false,
+            actions: [ThemeIconButtonConsumer()],
           ),
           SliverPadding(
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
