@@ -14,6 +14,7 @@ class CustomTextFormField extends StatelessWidget {
     this.obscureText = false,
     this.label,
     this.hintText,
+    this.initialValue,
     this.onSubmit,
     this.borderRadius,
     this.onSaved,
@@ -55,7 +56,7 @@ class CustomTextFormField extends StatelessWidget {
   final Function(String submittedText)? onSubmit;
   final Function(String? value)? onSaved;
   final void Function()? onTap;
-  final String? hintText;
+  final String? hintText, initialValue;
   final TextAlign textAlign;
   final double? borderRadius;
   final EdgeInsetsGeometry? contentPadding;
@@ -81,6 +82,7 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: initialValue,
       controller: controller,
       focusNode: focusNode,
       enabled: enabled,
@@ -100,7 +102,7 @@ class CustomTextFormField extends StatelessWidget {
       maxLines: maxLines,
       minLines: minLines,
       cursorColor: AppColors.primaryColor,
-decoration: AppUtils.decorateTextField(
+      decoration: AppUtils.decorateTextField(
         hintText: hintText,
         prefix: prefix,
         suffix: suffix,
@@ -111,6 +113,4 @@ decoration: AppUtils.decorateTextField(
       onEditingComplete: onEditingComplete,
     );
   }
-
-
 }
