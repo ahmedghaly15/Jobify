@@ -7,9 +7,15 @@ import '../utils/constants.dart';
 import '../utils/functions/check_for_first_launch_and_system_theme.dart';
 import 'app_themes.dart';
 
-final themeProvider = StateNotifierProvider<ThemeNotifier, ThemeData>(
-  (ref) => ThemeNotifier(),
-);
+final themeProvider =
+    StateNotifierProvider.autoDispose<ThemeNotifier, ThemeData>(
+      (ref) => ThemeNotifier(),
+    );
+
+final isDarkModeProvider = StateProvider.autoDispose<bool>((ref) {
+  final theme = ref.watch(themeProvider);
+  return theme.brightness == Brightness.dark;
+});
 
 class ThemeNotifier extends StateNotifier<ThemeData> {
   ThemeNotifier() : super(AppThemes.dark) {

@@ -1,10 +1,12 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 
 import '../theming/app_colors.dart';
 import '../theming/app_text_styles.dart';
+import '../theming/theming_provider.dart';
 import '../utils/app_utils.dart';
 
-class CustomTextFormField extends StatelessWidget {
+class CustomTextFormField extends ConsumerWidget {
   const CustomTextFormField({
     super.key,
     this.controller,
@@ -80,7 +82,8 @@ class CustomTextFormField extends StatelessWidget {
   final bool filled;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isDarkMode = ref.watch(isDarkModeProvider);
     return TextFormField(
       initialValue: initialValue,
       controller: controller,
@@ -108,6 +111,7 @@ class CustomTextFormField extends StatelessWidget {
         suffix: suffix,
         label: label,
         filled: filled,
+        isDarkMode: isDarkMode,
       ),
       validator: validating,
       onEditingComplete: onEditingComplete,

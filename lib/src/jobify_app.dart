@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../app_router_observer.dart';
 import 'core/router/app_router.dart';
-import 'core/theming/app_themes.dart';
 import 'core/theming/theming_provider.dart';
 import 'core/utils/const_strings.dart';
 
