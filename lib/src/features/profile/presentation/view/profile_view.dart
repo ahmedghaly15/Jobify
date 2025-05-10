@@ -35,7 +35,9 @@ class ProfileView extends StatelessWidget {
                     backgroundColor: AppColors.primaryColor,
                     child: Text(
                       currentUser?.user?.email?.capitalizeFirst() ?? 'A',
-                      style: AppTextStyles.font24SemiBold,
+                      style: AppTextStyles.font24SemiBold.copyWith(
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                   Container(
