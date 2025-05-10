@@ -9,26 +9,30 @@ import 'custom_text_form_field.dart';
 class PasswordTextFormField extends StatelessWidget {
   const PasswordTextFormField({
     super.key,
-    required this.passController,
+    this.passController,
     required this.obscureText,
     required this.suffixOnPressed,
     this.passFocusNode,
     this.nextFocusNode,
     this.validating,
     this.hintText = AppStrings.password,
+    this.initialValue,
+    this.onChanged,
   });
 
-  final TextEditingController passController;
+  final TextEditingController? passController;
   final FocusNode? nextFocusNode, passFocusNode;
   final bool obscureText;
   final VoidCallback suffixOnPressed;
   final String? Function(String?)? validating;
-
   final String hintText;
+  final String? initialValue;
+  final void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
     return CustomTextFormField(
+      initialValue: initialValue,
       hintText: hintText,
       controller: passController,
       focusNode: passFocusNode,
@@ -49,6 +53,7 @@ class PasswordTextFormField extends StatelessWidget {
           nextFocusNode != null
               ? () => context.requestFocus(nextFocusNode!)
               : null,
+      onChanged: onChanged,
     );
   }
 }

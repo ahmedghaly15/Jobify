@@ -8,16 +8,21 @@ import 'custom_text_form_field.dart';
 class NameTextFormField extends StatelessWidget {
   const NameTextFormField({
     super.key,
-    required this.controller,
+    this.controller,
     this.nextFocusNode,
+    this.initialValue,
+    this.onChanged,
   });
 
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final FocusNode? nextFocusNode;
+  final String? initialValue;
+  final void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
     return CustomTextFormField(
+      initialValue: initialValue,
       controller: controller,
       hintText: AppStrings.name,
       textCapitalization: TextCapitalization.words,
@@ -27,6 +32,7 @@ class NameTextFormField extends StatelessWidget {
           nextFocusNode != null
               ? () => context.requestFocus(nextFocusNode!)
               : null,
+      onChanged: onChanged,
     );
   }
 }

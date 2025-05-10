@@ -62,7 +62,7 @@ class CustomTextFormField extends StatelessWidget {
   final double? borderRadius;
   final EdgeInsetsGeometry? contentPadding;
   final int? maxLength;
-  final Function(String)? onChanged;
+  final void Function(String)? onChanged;
   final FocusNode? focusNode;
   final void Function()? onEditingComplete;
   final String? Function(String?)? validating;
