@@ -21,7 +21,7 @@ class RememberMeHelper {
         passwordValue: passwordValue,
       );
     } else {
-      await _deleteRememberedEmailAndPassword();
+      await deleteRememberedData();
     }
   }
 
@@ -36,7 +36,7 @@ class RememberMeHelper {
     );
   }
 
-  static Future<void> _deleteRememberedEmailAndPassword() async {
+  static Future<void> deleteRememberedData() async {
     await CacheHelper.removeSecuredData(CacheKeys.rememberedEmail);
     await CacheHelper.removeSecuredData(CacheKeys.rememberedPassword);
   }

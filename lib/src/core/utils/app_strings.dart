@@ -75,4 +75,6 @@ class AppStrings {
   static const String jobDeletedSuccessfully = 'Job deleted successfully!';
   static const String update = 'Update';
   static const String profile = 'Profile';
+  static const String profileUpdatedSuccessfully =
+      'Profile updated successfully!';
 }

@@ -21,6 +21,16 @@ class FieldValidator {
     return null;
   }
 
+  static String? validateOptionalPassword({String? value}) {
+    if (value == null || value.isEmpty) {
+      // User did not enter a password; considered valid (no update intended)
+      return null;
+    } else if (!AppRegex.isPasswordValid(value)) {
+      return "Please enter a valid password";
+    }
+    return null;
+  }
+
   static String? validateEgPhoneField({String? value}) {
     if (value == null || value.isEmpty) {
       return "Phone can't be blank!";

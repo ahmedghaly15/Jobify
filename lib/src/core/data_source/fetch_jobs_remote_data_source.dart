@@ -19,15 +19,16 @@ class FetchJobsRemoteDataSource {
 
   Future<List<Job>> fetchJobs() async {
     final data = await fetchRemoteJobsJson();
+    if (data == null) return [];
     final response = FetchJobsResponse.fromJson(data);
     return response.jobs;
   }
 
-  Future<PostgrestMap> fetchRemoteJobsJson() async {
+  Future<PostgrestMap?> fetchRemoteJobsJson() async {
     return await _supabaseClient
         .from(ConstStrings.jobsTable)
         .select('jobs')
         .eq('user_id', currentUser!.user!.id)
-        .single();
+        .maybeSingle();
   }
 }
