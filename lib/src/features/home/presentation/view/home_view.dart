@@ -2,8 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:jobify/src/core/helpers/extensions.dart';
 
+import '../../../../core/router/app_router.dart';
+import '../../../../core/theming/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
+import '../../../../core/utils/constants.dart';
 import '../../../../core/widgets/adaptive_refresh_indicator.dart';
 import '../../../../core/widgets/custom_sliver_app_bar.dart';
 import '../../../../core/widgets/theme_icon_button_consumer.dart';
@@ -21,10 +25,16 @@ class HomeView extends ConsumerWidget {
       child: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
-          const CustomSliverAppBar(
+          CustomSliverAppBar(
+            leading: IconButton.filledTonal(
+              style: IconButton.styleFrom(
+                backgroundColor: AppColors.primaryColor.withAlpha(127),
+              ),
+              onPressed: () => context.pushRoute(const ProfileRoute()),
+              icon: Text(currentUser?.user?.email?.capitalizeFirst() ?? 'A'),
+            ),
             titleText: AppStrings.allJobs,
-            hasLeading: false,
-            actions: [ThemeIconButtonConsumer()],
+            actions: const [ThemeIconButtonConsumer()],
           ),
           SliverPadding(
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),

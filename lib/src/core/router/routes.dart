@@ -21,6 +21,10 @@ List<AutoRoute> appRoutes = [
       _buildCustomRoute(page: HomeRoute.page),
     ],
   ),
+  _buildCustomRoute(
+    page: ProfileRoute.page,
+    transitionsBuilder: TransitionsBuilders.slideLeft,
+  ),
 ];
 
 CustomRoute _buildCustomRoute({
