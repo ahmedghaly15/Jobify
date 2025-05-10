@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../../core/models/jobify_user.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../auth/presentation/providers/form_notifier_providers.dart';
 import '../../data/models/update_profile_params.dart';
@@ -19,44 +20,40 @@ final profileFormKeyProvider = Provider.autoDispose<GlobalKey<FormState>>(
   (ref) => GlobalKey<FormState>(),
 );
 
-final profileEmailControllerProvider =
-    Provider.autoDispose<TextEditingController>(
-      (ref) => TextEditingController(text: currentUser?.user?.email),
-    );
-
-final profileNameControllerProvider =
-    Provider.autoDispose<TextEditingController>(
-      (ref) => TextEditingController(text: currentUser?.name),
-    );
-
-final profilePassControllerProvider =
-    Provider.autoDispose<TextEditingController>(
-      (ref) => TextEditingController(
-        text: currentUser?.user?.userMetadata?['password'],
-      ),
-    );
-
 final profilePassObscureTextProvider =
     StateNotifierProvider.autoDispose<ToggleBoolNotifier, bool>(
       (ref) => ToggleBoolNotifier(),
     );
 
+final profileEmailTextProvider = StateProvider.autoDispose<String>(
+  (ref) => currentUser?.user?.email ?? '',
+);
+
+final profileNameTextProvider = StateProvider.autoDispose<String>(
+  (ref) => currentUser?.user?.userMetadata?['name'] ?? '',
+);
+
+final profilePassTextProvider = StateProvider.autoDispose<String>((ref) => '');
+
 final isUpdateProfileButtonEnabledProvider = StateProvider.autoDispose<bool>((
   ref,
 ) {
-  final emailController = ref.watch(profileEmailControllerProvider);
-  final nameController = ref.watch(profileNameControllerProvider);
-  final passController = ref.watch(profilePassControllerProvider);
-  return emailController.text != currentUser?.user?.email ||
-      nameController.text != currentUser?.name ||
-      nameController.text.isNotEmpty ||
-      passController.text.isNotEmpty;
+  final email = ref.watch(profileEmailTextProvider);
+  final name = ref.watch(profileNameTextProvider);
+  final pass = ref.watch(profilePassTextProvider);
+
+  final currentEmail = currentUser?.user?.email ?? '';
+  final currentName = currentUser?.user?.userMetadata?['name'] ?? '';
+
+  return email.trim() != currentEmail ||
+      name.trim() != currentName ||
+      pass.trim().isNotEmpty;
 });
 
 @riverpod
 class UpdateProfile extends _$UpdateProfile {
   @override
-  AsyncValue<void>? build() {
+  AsyncValue<JobifyUser>? build() {
     return null;
   }
 
@@ -66,13 +63,16 @@ class UpdateProfile extends _$UpdateProfile {
         .read(profileRepoProvider)
         .updateProfile(
           UpdateProfileParams(
-            email: ref.read(profileEmailControllerProvider).text,
-            password: ref.read(profilePassControllerProvider).text,
-            data: {'name': ref.read(profileNameControllerProvider).text},
+            email: ref.read(profileEmailTextProvider),
+            password:
+                ref.read(profilePassTextProvider) == ''
+                    ? null
+                    : ref.read(profilePassTextProvider),
+            data: {'name': ref.read(profileNameTextProvider)},
           ),
         );
     result.when(
-      success: (_) => state = const AsyncData(null),
+      success: (jobifyUser) => state = AsyncData(jobifyUser),
       failure: (error) => state = AsyncError(error.message, StackTrace.current),
     );
   }
