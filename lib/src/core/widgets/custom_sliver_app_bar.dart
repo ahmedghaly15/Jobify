@@ -46,7 +46,7 @@ class ArrowBackIconButton extends StatelessWidget {
           side: BorderSide(color: AppColors.colorEDEDED, width: 1.w),
           borderRadius: BorderRadius.circular(10.r),
         ),
-        foregroundColor: Colors.black,
+        foregroundColor: context.isDarkModeActive ? Colors.white : Colors.black,
         padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
         iconSize: 16.h,
       ),
