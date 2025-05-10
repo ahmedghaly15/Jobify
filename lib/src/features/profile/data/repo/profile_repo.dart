@@ -22,4 +22,10 @@ class ProfileRepo {
       () async => await _remoteDataSource.updateProfile(params),
     );
   }
+
+  Future<SupabaseRequestResult<void>> logOut() {
+    return executeAndHandleErrors<void>(
+      () async => await _remoteDataSource.logOut(),
+    );
+  }
 }

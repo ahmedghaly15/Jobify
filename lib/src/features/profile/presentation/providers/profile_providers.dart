@@ -86,3 +86,20 @@ class UpdateProfile extends _$UpdateProfile {
     }
   }
 }
+
+@riverpod
+class LogOut extends _$LogOut {
+  @override
+  AsyncValue<void>? build() {
+    return null;
+  }
+
+  void logOut() async {
+    state = const AsyncLoading();
+    final result = await ref.read(profileRepoProvider).logOut();
+    result.when(
+      success: (_) => state = const AsyncData(null),
+      failure: (error) => state = AsyncError(error.message, StackTrace.current),
+    );
+  }
+}

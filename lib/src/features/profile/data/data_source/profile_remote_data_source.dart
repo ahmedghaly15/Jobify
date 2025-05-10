@@ -26,4 +26,8 @@ class ProfileRemoteDataSource {
     );
     return JobifyUser(user: userResponse.user, name: params.data?['name']);
   }
+
+  Future<void> logOut() async {
+    await _supabaseClient.auth.signOut();
+  }
 }

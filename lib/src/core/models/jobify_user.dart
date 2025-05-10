@@ -32,6 +32,10 @@ abstract class JobifyUser with _$JobifyUser {
     final userString = await CacheHelper.getSecuredString(CacheKeys.user);
     return JobifyUser.fromJson(json.decode(userString));
   }
+
+  static Future<void> deleteSecuredUser() async {
+    await CacheHelper.removeSecuredData(CacheKeys.user);
+  }
 }
 
 class _SessionJsonConverter

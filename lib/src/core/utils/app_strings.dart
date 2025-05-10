@@ -77,4 +77,5 @@ class AppStrings {
   static const String profile = 'Profile';
   static const String profileUpdatedSuccessfully =
       'Profile updated successfully!';
+  static const String sureToLogOut = 'Are you sure you want to log out?';
 }
