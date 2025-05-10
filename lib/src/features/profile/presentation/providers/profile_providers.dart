@@ -1,8 +1,14 @@
+// ignore_for_file: avoid_manual_providers_as_generated_provider_dependency
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/utils/constants.dart';
 import '../../../auth/presentation/providers/form_notifier_providers.dart';
+import '../../data/models/update_profile_params.dart';
+import '../../data/repo/profile_repo.dart';
+
+part 'profile_providers.g.dart';
 
 final profileAutovalidateModeProvider = StateNotifierProvider.autoDispose<
   AutovalidateModeNotifier,
@@ -46,3 +52,37 @@ final isUpdateProfileButtonEnabledProvider = StateProvider.autoDispose<bool>((
       nameController.text.isNotEmpty ||
       passController.text.isNotEmpty;
 });
+
+@riverpod
+class UpdateProfile extends _$UpdateProfile {
+  @override
+  AsyncValue<void>? build() {
+    return null;
+  }
+
+  void _update() async {
+    state = const AsyncLoading();
+    final result = await ref
+        .read(profileRepoProvider)
+        .updateProfile(
+          UpdateProfileParams(
+            email: ref.read(profileEmailControllerProvider).text,
+            password: ref.read(profilePassControllerProvider).text,
+            data: {'name': ref.read(profileNameControllerProvider).text},
+          ),
+        );
+    result.when(
+      success: (_) => state = const AsyncData(null),
+      failure: (error) => state = AsyncError(error.message, StackTrace.current),
+    );
+  }
+
+  void validateFormAndUpdate() {
+    final formKey = ref.read(profileFormKeyProvider);
+    if (formKey.currentState!.validate()) {
+      _update();
+    } else {
+      ref.read(profileAutovalidateModeProvider.notifier).enableAutoValidate();
+    }
+  }
+}
