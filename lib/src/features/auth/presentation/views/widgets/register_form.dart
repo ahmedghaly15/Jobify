@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:jobify/src/core/helpers/extensions.dart';
 
 import '../../../../../core/helpers/field_validator.dart';
 import '../../../../../core/utils/app_strings.dart';
-import '../../../../../core/widgets/custom_text_form_field.dart';
+import '../../../../../core/widgets/name_text_form_field.dart';
 import '../../providers/form_notifier_providers.dart';
 import '../../providers/register_providers.dart';
-import 'email_text_form_field.dart';
-import 'password_text_form_field.dart';
+import '../../../../../core/widgets/email_text_form_field.dart';
+import '../../../../../core/widgets/password_text_form_field.dart';
 
 class RegisterForm extends ConsumerWidget {
   const RegisterForm({super.key});
@@ -28,16 +27,12 @@ class RegisterForm extends ConsumerWidget {
       child: Column(
         spacing: 16.h,
         children: <Widget>[
-          CustomTextFormField(
+          NameTextFormField(
             controller: nameController,
-            hintText: AppStrings.name,
-            textCapitalization: TextCapitalization.words,
-            keyboardType: TextInputType.name,
-            validating: (val) => FieldValidator.validatingNameField(val),
-            onEditingComplete: () => context.requestFocus(emailFocusNode),
+            nextFocusNode: emailFocusNode,
           ),
           EmailTextFormField(
-            emailController: emailController,
+            controller: emailController,
             emailFocusNode: emailFocusNode,
             nextFocusNode: passwordFocusNode,
           ),
@@ -50,10 +45,7 @@ class RegisterForm extends ConsumerWidget {
 }
 
 class _ConfirmPassFieldConsumer extends ConsumerWidget {
-  const _ConfirmPassFieldConsumer({
-    // ignore: unused_element_parameter
-    super.key,
-  });
+  const _ConfirmPassFieldConsumer();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -80,10 +72,7 @@ class _ConfirmPassFieldConsumer extends ConsumerWidget {
 }
 
 class _PasswordTextFieldConsumer extends ConsumerWidget {
-  const _PasswordTextFieldConsumer({
-    // ignore: unused_element_parameter
-    super.key,
-  });
+  const _PasswordTextFieldConsumer();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

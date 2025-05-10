@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/helpers/field_validator.dart';
-import '../../../../../core/utils/app_strings.dart';
-import '../../../../../core/widgets/custom_text_form_field.dart';
+import '../../../../../core/widgets/email_text_form_field.dart';
+import '../../../../../core/widgets/name_text_form_field.dart';
+import '../../../../../core/widgets/password_text_form_field.dart';
 import '../../providers/profile_providers.dart';
 
 class ProfileFormConsumer extends ConsumerWidget {
@@ -23,19 +23,28 @@ class ProfileFormConsumer extends ConsumerWidget {
         spacing: 16.h,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomTextFormField(
-            controller: nameController,
-            hintText: AppStrings.name,
-            validating: (value) => FieldValidator.validatingNameField(value),
-          ),
-          CustomTextFormField(
-            controller: emailController,
-            hintText: AppStrings.email,
-            validating:
-                (value) => FieldValidator.validatingEmailField(value: value),
-          ),
+          NameTextFormField(controller: nameController),
+          EmailTextFormField(controller: emailController),
+          const _ProfilePassFieldConsumer(),
         ],
       ),
+    );
+  }
+}
+
+class _ProfilePassFieldConsumer extends ConsumerWidget {
+  const _ProfilePassFieldConsumer();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final controller = ref.watch(profilePassControllerProvider);
+    final obscureText = ref.watch(profilePassObscureTextProvider);
+    return PasswordTextFormField(
+      passController: controller,
+      obscureText: obscureText,
+      suffixOnPressed: () {
+        ref.read(profilePassObscureTextProvider.notifier).toggle();
+      },
     );
   }
 }
