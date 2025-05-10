@@ -1,5 +1,3 @@
-// ignore_for_file: unused_result
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jobify/src/core/helpers/extensions.dart';

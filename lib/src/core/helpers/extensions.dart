@@ -311,3 +311,10 @@ extension ShowMyToast on BuildContext {
 extension CheckDarkThemeActivation on BuildContext {
   bool get isDarkModeActive => Theme.of(this).brightness == Brightness.dark;
 }
+
+extension FirstLetterCapitalization on String {
+  String capitalizeFirst() {
+    if (isEmpty) return this;
+    return this[0].toUpperCase();
+  }
+}
