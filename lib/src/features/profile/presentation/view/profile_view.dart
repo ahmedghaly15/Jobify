@@ -8,6 +8,7 @@ import '../../../../core/theming/app_text_styles.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../../core/widgets/custom_sliver_app_bar.dart';
+import 'widgets/logout_consumer_button.dart';
 import 'widgets/profile_form_consumer.dart';
 import 'widgets/update_profile_consumer_button.dart';
 
@@ -22,7 +23,10 @@ class ProfileView extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
         child: CustomScrollView(
           slivers: [
-            const CustomSliverAppBar(titleText: AppStrings.profile),
+            const CustomSliverAppBar(
+              titleText: AppStrings.profile,
+              actions: [LogOutConsumerButton()],
+            ),
             SliverFillRemaining(
               hasScrollBody: false,
               child: Column(
