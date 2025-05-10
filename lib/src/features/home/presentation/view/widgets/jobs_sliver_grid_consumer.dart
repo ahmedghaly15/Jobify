@@ -24,7 +24,7 @@ class JobsSliverGridConsumer extends ConsumerWidget {
             hasScrollBody: false,
             child: CustomErrorWidget(
               error: error.toString(),
-              onPressed: () => ref.refresh(fetchJobsProvider),
+              onPressed: () => ref.refresh(fetchJobsProvider.future),
             ),
           ),
       loading: () => const JobsLoadingSliver(),

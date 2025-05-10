@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../core/widgets/custom_error_widget.dart';
-import '../../../../home/presentation/providers/home_providers.dart';
 import '../../../../home/presentation/view/widgets/jobs_empty_sliver.dart';
 import '../../../../home/presentation/view/widgets/jobs_loading_sliver.dart';
 import '../../../../home/presentation/view/widgets/jobs_sliver_grid.dart';
@@ -25,7 +24,11 @@ class SearchJobsSliverGridConsumer extends ConsumerWidget {
             hasScrollBody: false,
             child: CustomErrorWidget(
               error: error.toString(),
-              onPressed: () => ref.refresh(fetchJobsProvider),
+              onPressed:
+                  () =>
+                      ref
+                          .refresh(filteredSearchProvider.notifier)
+                          .fetchFilteredSearch(),
             ),
           ),
       loading: () => const JobsLoadingSliver(),

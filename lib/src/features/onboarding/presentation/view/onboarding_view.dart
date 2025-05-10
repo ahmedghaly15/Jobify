@@ -41,7 +41,7 @@ class OnboardingView extends StatelessWidget {
                         ),
                       ),
                       TextSpan(
-                        text: ' //${AppStrings.tracking} ',
+                        text: ' ${AppStrings.tracking} ',
                         style: AppTextStyles.font36Bold.copyWith(
                           color: AppColors.primaryColor,
                         ),
