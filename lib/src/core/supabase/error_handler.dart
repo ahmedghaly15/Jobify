@@ -18,6 +18,8 @@ class ErrorHandler {
       return SupabaseErrorModel(message: error);
     } else if (error is PlatformException) {
       return _handlePlatformErrorFromCode(error.code);
+    } else if (error is StorageException) {
+      return SupabaseErrorModel(message: error.message, code: error.statusCode);
     } else {
       return const SupabaseErrorModel(message: AppStrings.defaultError);
     }

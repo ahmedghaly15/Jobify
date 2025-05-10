@@ -175,7 +175,9 @@ extension ShowAdaptiveDialog<T> on BuildContext {
             backgroundColor:
                 isDarkModeActive ? AppColors.color1f283b : Colors.white,
             icon: Image.asset(Assets.jobifyIcon, height: 40.h, width: 40.h),
-            content: contentWidget ?? Text(contentText!),
+            content:
+                contentWidget ??
+                Text(contentText!, textAlign: TextAlign.center),
             contentTextStyle: AppTextStyles.font16Regular,
             contentPadding: EdgeInsets.symmetric(
               horizontal: 16.w,
