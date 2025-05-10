@@ -23,7 +23,7 @@ List<AutoRoute> appRoutes = [
   ),
   _buildCustomRoute(
     page: ProfileRoute.page,
-    transitionsBuilder: TransitionsBuilders.slideLeft,
+    transitionsBuilder: TransitionsBuilders.slideRight,
   ),
 ];
 
@@ -38,6 +38,6 @@ CustomRoute _buildCustomRoute({
   initial: initial,
   page: page,
   transitionsBuilder: transitionsBuilder ?? TransitionsBuilders.fadeIn,
-  duration: Duration(milliseconds: durationInMilliseconds ?? 350),
+  duration: Duration(milliseconds: durationInMilliseconds ?? 500),
   children: children,
 );
