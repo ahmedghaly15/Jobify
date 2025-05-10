@@ -2,36 +2,29 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jobify/src/core/supabase/supabase_request_result.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-import '../../../../core/models/fetch_jobs_response.dart';
+import '../../../../core/data_source/fetch_jobs_remote_data_source.dart';
 import '../../../../core/models/job.dart';
 import '../../../../core/utils/const_strings.dart';
 import '../../../../core/utils/constants.dart';
 
 final homeRemoteDataSourceProvider = Provider.autoDispose<HomeRemoteDataSource>(
-  (ref) => HomeRemoteDataSource(ref.read(supabaseProvider)),
+  (ref) {
+    final supabaseClient = ref.read(supabaseProvider);
+    final fetchJobsRemoteDataSource = ref.read(
+      fetchJobsRemoteDataSourceProvider,
+    );
+    return HomeRemoteDataSource(fetchJobsRemoteDataSource, supabaseClient);
+  },
 );
 
 class HomeRemoteDataSource {
+  final FetchJobsRemoteDataSource _remoteDataSource;
   final SupabaseClient _supabaseClient;
 
-  HomeRemoteDataSource(this._supabaseClient);
-
-  Future<List<Job>> fetchJobs() async {
-    final data = await _fetchRemoteJobsJson();
-    final response = FetchJobsResponse.fromJson(data);
-    return response.jobs;
-  }
-
-  Future<PostgrestMap> _fetchRemoteJobsJson() async {
-    return await _supabaseClient
-        .from(ConstStrings.jobsTable)
-        .select('jobs')
-        .eq('user_id', currentUser!.user!.id)
-        .single();
-  }
+  HomeRemoteDataSource(this._remoteDataSource, this._supabaseClient);
 
   Future<void> updateJob(Job job) async {
-    final data = await _fetchRemoteJobsJson();
+    final data = await _remoteDataSource.fetchRemoteJobsJson();
     if (data['jobs'] == null) return;
 
     final jsonJobs = List.from(data['jobs']);
@@ -50,7 +43,7 @@ class HomeRemoteDataSource {
   }
 
   Future<void> deleteJob(int jobId) async {
-    final data = await _fetchRemoteJobsJson();
+    final data = await _remoteDataSource.fetchRemoteJobsJson();
     if (data['jobs'] == null) return;
 
     final jsonJobs = List.from(data['jobs']);

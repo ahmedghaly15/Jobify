@@ -1,20 +1,19 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../core/data_source/fetch_jobs_remote_data_source.dart';
 import '../../../../core/models/job.dart';
-import '../../../home/data/data_source/home_remote_data_source.dart';
 
 final statsRemoteDataSourceProvider = Provider<StatsRemoteDataSource>((ref) {
-  final homeRemoteDataSource = ref.watch(homeRemoteDataSourceProvider);
-  return StatsRemoteDataSource(homeRemoteDataSource);
+  return StatsRemoteDataSource(ref.read(fetchJobsRemoteDataSourceProvider));
 });
 
 final class StatsRemoteDataSource {
-  final HomeRemoteDataSource _homeRemoteDataSource;
+  final FetchJobsRemoteDataSource _remoteDataSource;
 
-  StatsRemoteDataSource(this._homeRemoteDataSource);
+  StatsRemoteDataSource(this._remoteDataSource);
 
   Future<int> countMatchesJobs(JobStatus jobStatus) async {
-    final jobs = await _homeRemoteDataSource.fetchJobs();
+    final jobs = await _remoteDataSource.fetchJobs();
     return jobs.where((job) => job.status == jobStatus).toList().length;
   }
 }

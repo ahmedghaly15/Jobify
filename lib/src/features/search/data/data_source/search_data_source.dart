@@ -1,22 +1,22 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jobify/src/core/helpers/extensions.dart';
 
+import '../../../../core/data_source/fetch_jobs_remote_data_source.dart';
 import '../../../../core/models/job.dart';
 import '../../../../core/utils/enums.dart';
-import '../../../home/data/data_source/home_remote_data_source.dart';
 import '../models/search_params.dart';
 
 final searchDataSourceProvider = Provider.autoDispose<SearchDataSource>(
-  (ref) => SearchDataSource(ref.read(homeRemoteDataSourceProvider)),
+  (ref) => SearchDataSource(ref.read(fetchJobsRemoteDataSourceProvider)),
 );
 
 class SearchDataSource {
-  final HomeRemoteDataSource _homeRemoteDataSource;
+  final FetchJobsRemoteDataSource _remoteDataSource;
 
-  SearchDataSource(this._homeRemoteDataSource);
+  SearchDataSource(this._remoteDataSource);
 
   Future<List<Job>> searchJobs(SearchParams params) async {
-    final jobs = await _homeRemoteDataSource.fetchJobs();
+    final jobs = await _remoteDataSource.fetchJobs();
     return jobs.where((job) {
       final matchesStatus =
           params.filter == SearchFilter.all ||
