@@ -45,9 +45,9 @@ final isEditJobButtonEnabledProvider = StateProvider.autoDispose
       final location = ref.watch(editJobLocationProvider(job.location!));
       final status = ref.watch(editJobStatusProvider(job.status!));
       final mode = ref.watch(editJobModeProvider(job.mode!));
-      return position != job.position ||
-          company != job.company ||
-          location != job.location ||
+      return position.trim() != job.position ||
+          company.trim() != job.company ||
+          location.trim() != job.location ||
           status != job.status ||
           mode != job.mode;
     });

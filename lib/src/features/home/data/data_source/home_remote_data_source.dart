@@ -25,9 +25,9 @@ class HomeRemoteDataSource {
 
   Future<void> updateJob(Job job) async {
     final data = await _remoteDataSource.fetchRemoteJobsJson();
-    if (data['jobs'] == null) return;
+    if (data?['jobs'] == null) return;
 
-    final jsonJobs = List.from(data['jobs']);
+    final jsonJobs = List.from(data?['jobs']);
     final jobIndex = jsonJobs.indexWhere((jsonJob) => jsonJob['id'] == job.id);
 
     if (jobIndex == -1) return; // job not found
@@ -44,9 +44,9 @@ class HomeRemoteDataSource {
 
   Future<void> deleteJob(int jobId) async {
     final data = await _remoteDataSource.fetchRemoteJobsJson();
-    if (data['jobs'] == null) return;
+    if (data?['jobs'] == null) return;
 
-    final jsonJobs = List.from(data['jobs']);
+    final jsonJobs = List.from(data?['jobs']);
     final jobIndex = jsonJobs.indexWhere((jsonJob) => jsonJob['id'] == jobId);
 
     if (jobIndex == -1) return; // job not found
